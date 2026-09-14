@@ -1,0 +1,77 @@
+.timeline {
+  display: flex;
+  flex-direction: column;
+}
+
+.role {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: 22px;
+  padding-block: 26px;
+  position: relative;
+}
+.role:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 34px;
+  bottom: -26px;
+  width: 1px;
+  background: var(--line);
+}
+
+.marker {
+  display: flex;
+  justify-content: center;
+  padding-top: 6px;
+}
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--panel);
+  border: 2px solid var(--accent);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.title { font-size: 1.2rem; font-weight: 700; }
+.company { font-size: 0.9rem; color: var(--accent); margin-top: 2px; }
+.period {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  max-width: 66ch;
+}
+.bullets li {
+  font-size: 0.92rem;
+  color: var(--ink-2);
+  line-height: 1.6;
+  padding-left: 16px;
+  position: relative;
+}
+.bullets li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--ink-3);
+}

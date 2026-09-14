@@ -1,0 +1,14 @@
+.groups {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.groupTitle {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
