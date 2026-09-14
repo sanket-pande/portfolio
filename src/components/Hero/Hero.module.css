@@ -1,6 +1,9 @@
 .hero {
   position: relative;
   overflow: hidden;
+  min-height: clamp(460px, 64vh, 640px);
+  display: flex;
+  align-items: center;
 }
 
 .field {
@@ -16,9 +19,10 @@
 
 .inner {
   position: relative;
+  width: 100%;
   max-width: var(--container);
   margin-inline: auto;
-  padding: 72px 24px 88px;
+  padding: 64px 24px;
   display: flex;
   flex-direction: column;
   gap: 26px;
@@ -82,27 +86,6 @@
   flex-wrap: wrap;
 }
 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.02em;
-  padding: 9px 16px;
-  border-radius: 6px;
-  border: 1px solid transparent;
-  cursor: pointer;
-  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease, filter 0.15s ease, transform 0.1s ease;
-}
-.btn:active { transform: translateY(1px); }
-
-.btnPrimary { background: var(--accent); color: var(--on-accent); }
-.btnPrimary:hover { filter: brightness(1.08); }
-
-.btnGhost { background: transparent; border-color: var(--line); color: var(--ink); }
-.btnGhost:hover { border-color: var(--accent); color: var(--accent); }
-
 .stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -114,39 +97,24 @@
   margin-top: 8px;
 }
 
-.stat {
-  background: var(--panel);
-  padding: 18px 18px 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.statValue {
-  font-family: var(--font-display);
-  font-size: 1.7rem;
-  font-weight: 800;
-  color: var(--ink);
-  letter-spacing: -0.02em;
-  font-variant-numeric: tabular-nums;
-}
-
-.statLabel {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-
-.statContext {
-  font-size: 0.78rem;
-  color: var(--ink-3);
-  line-height: 1.5;
-  margin-top: 2px;
-}
-
 @media (max-width: 720px) {
   .stats { grid-template-columns: 1fr; }
   .headline { max-width: 100%; }
+}
+
+/* ---------- entrance sequence (page-load, not scroll-triggered —
+   the hero is always in the initial viewport) ---------- */
+@keyframes heroIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate { animation: heroIn 0.7s cubic-bezier(0.16, 0.8, 0.3, 1) both; }
+.delay1 { animation-delay: 0.08s; }
+.delay2 { animation-delay: 0.18s; }
+.delay3 { animation-delay: 0.28s; }
+.delay4 { animation-delay: 0.38s; }
+.delay5 { animation-delay: 0.48s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate { animation: none; }
 }

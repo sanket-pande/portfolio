@@ -13,12 +13,12 @@ export default function ThemeToggle({ theme, onToggle }: ThemeToggleProps) {
       type="button"
       className={styles.toggle}
       onClick={onToggle}
-      aria-label={`Switch to ${isDark ? "light" : "dark"} theme`}
+      aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
     >
       <span className={styles.icon} aria-hidden="true">
         {isDark ? "☾" : "☀"}
       </span>
-      <span className={styles.label}>{isDark ? "Dark" : "Light"}</span>
+      <span className={styles.label}>{isDark ? "Dark mode" : "Light mode"}</span>
     </button>
   );
 }

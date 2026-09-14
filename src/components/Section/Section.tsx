@@ -6,12 +6,15 @@ interface SectionProps {
   eyebrow: string;
   title: string;
   children: ReactNode;
-  noBorder?: boolean;
+  /** Folds this section's height into whatever sits above it instead of
+   * claiming its own 80–90vh — used by About, which shares a chapter (and
+   * a background) with Hero rather than reading as a separate room. */
+  compact?: boolean;
 }
 
-export default function Section({ id, eyebrow, title, children, noBorder }: SectionProps) {
+export default function Section({ id, eyebrow, title, children, compact }: SectionProps) {
   return (
-    <section id={id} className={`${styles.section} ${noBorder ? styles.noBorder : ""}`}>
+    <section id={id} className={`${styles.section} ${compact ? styles.compact : ""}`}>
       <div className={styles.head}>
         <p className={styles.eyebrow}>{eyebrow}</p>
         <h2>{title}</h2>

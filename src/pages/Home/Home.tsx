@@ -8,11 +8,20 @@ import styles from "./Home.module.css";
 export default function Home() {
   return (
     <main className={styles.home}>
-      <Hero />
-      <About />
-      <Experience />
-      <Skills />
-      <Contact />
+      {/* hero + about share one chapter — same wash, no seam between them */}
+      <div className={`${styles.chapter} ${styles.surfaceA}`}>
+        <Hero />
+        <About />
+      </div>
+      <div className={`${styles.chapter} ${styles.surfaceB}`}>
+        <Experience />
+      </div>
+      <div className={`${styles.chapter} ${styles.surfaceA}`}>
+        <Skills />
+      </div>
+      <div className={`${styles.chapter} ${styles.surfaceB}`}>
+        <Contact />
+      </div>
     </main>
   );
 }

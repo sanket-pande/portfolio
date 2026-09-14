@@ -1,4 +1,6 @@
 import ChipList from "../Chip/Chip";
+import Button from "../Button/Button";
+import Stat from "../Stat/Stat";
 import { coreStack, profile, stats } from "../../data/resume";
 import styles from "./Hero.module.css";
 
@@ -7,7 +9,7 @@ export default function Hero() {
     <section id="top" className={styles.hero}>
       <div className={styles.field} aria-hidden="true" />
       <div className={styles.inner}>
-        <div className={styles.bar}>
+        <div className={`${styles.bar} ${styles.animate}`}>
           <span className={styles.livePill}>
             <span className={styles.liveDot} />
             Currently at {profile.currentEmployer}
@@ -15,32 +17,30 @@ export default function Hero() {
           <span className={styles.location}>{profile.location}</span>
         </div>
 
-        <h1 className={styles.headline}>
-          I build backend systems for <em>healthcare data</em> that has to be right.
+        <h1 className={`${styles.headline} ${styles.animate} ${styles.delay1}`}>
+          I build backend systems that have to be <em>right</em>.
         </h1>
 
-        <p className={styles.summary}>{profile.summary}</p>
+        <p className={`${styles.summary} ${styles.animate} ${styles.delay2}`}>{profile.summary}</p>
 
-        <div className={styles.actions}>
-          <a className={`${styles.btn} ${styles.btnPrimary}`} href={`mailto:${profile.email}`}>
-            Email me
-          </a>
-          <a className={`${styles.btn} ${styles.btnGhost}`} href="#experience">
+        <div className={`${styles.actions} ${styles.animate} ${styles.delay3}`}>
+          <Button variant="primary" size="lg" href="#contact">
+            Contact me
+          </Button>
+          <Button variant="ghost" size="lg" href="#experience">
             View experience
-          </a>
+          </Button>
         </div>
 
-        <ChipList items={coreStack} tone="accent" ariaLabel="Core stack" />
+        <div className={`${styles.animate} ${styles.delay4}`}>
+          <ChipList items={coreStack} tone="accent" ariaLabel="Core stack" />
+        </div>
 
-        <dl className={styles.stats}>
+        <div className={`${styles.stats} ${styles.animate} ${styles.delay5}`}>
           {stats.map((stat) => (
-            <div className={styles.stat} key={stat.label}>
-              <dt className={styles.statValue}>{stat.value}</dt>
-              <dd className={styles.statLabel}>{stat.label}</dd>
-              <dd className={styles.statContext}>{stat.context}</dd>
-            </div>
+            <Stat key={stat.label} {...stat} />
           ))}
-        </dl>
+        </div>
       </div>
     </section>
   );

@@ -23,6 +23,11 @@
   --signal:      #0E7E8C;
   --on-accent:   #FFFFFF;
 
+  /* alternating section wash — chapters swap between these two so the
+     scroll reads as a sequence of rooms, not one flat page */
+  --surface-a: #EEF1FA; /* hero+about, skills */
+  --surface-b: #E1E6F5; /* experience, contact */
+
   --shadow: 0 1px 2px rgba(17, 20, 42, 0.05), 0 18px 40px -26px rgba(17, 20, 42, 0.32);
 
   --font-display: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -58,6 +63,9 @@
     --signal:      #4FD6E0;
     --on-accent:   #0B0D14;
 
+    --surface-a: #070911;
+    --surface-b: #141A33;
+
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 18px 40px -26px rgba(0, 0, 0, 0.75);
   }
 }
@@ -80,12 +88,15 @@
   --signal:      #4FD6E0;
   --on-accent:   #0B0D14;
 
+  --surface-a: #070911;
+  --surface-b: #0D1120;
+
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 18px 40px -26px rgba(0, 0, 0, 0.75);
 }
 
 /* ---------- reset & base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
-html { color-scheme: light dark; }
+html { color-scheme: light dark; scroll-behavior: smooth; }
 body {
   margin: 0;
   background: var(--bg);
@@ -105,4 +116,19 @@ img { max-width: 100%; display: block; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  html { scroll-behavior: auto; }
+}
+
+/* ---------- scroll reveal ----------
+   Driven by the useInView hook: an element renders with
+   data-reveal="hidden" until it scrolls into view, then
+   data-reveal="visible" is set once (not on every scroll). */
+[data-reveal] {
+  transition: opacity 0.7s cubic-bezier(0.16, 0.8, 0.3, 1), transform 0.7s cubic-bezier(0.16, 0.8, 0.3, 1);
+}
+[data-reveal="hidden"] { opacity: 0; transform: translateY(20px); }
+[data-reveal="visible"] { opacity: 1; transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal="hidden"] { opacity: 1; transform: none; }
 }

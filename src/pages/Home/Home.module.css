@@ -1,3 +1,10 @@
 .home {
   min-height: 100dvh;
 }
+
+.chapter {
+  transition: background-color 0.25s ease;
+}
+
+.surfaceA { background: var(--surface-a); }
+.surfaceB { background: var(--surface-b); }

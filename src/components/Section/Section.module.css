@@ -1,13 +1,26 @@
+/* Each section is a "room": at least 80–90vh tall so the next one only
+   ever peeks in along the bottom edge of the viewport, never appears in
+   full, until the visitor actually scrolls to it. The clamp keeps that
+   true on very short (landscape phone) and very tall (large desktop)
+   viewports without ever clipping content that runs longer. */
 .section {
   max-width: var(--container);
   margin-inline: auto;
   padding: 76px 24px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 32px;
-  border-top: 1px solid var(--line-2);
+  min-height: clamp(560px, 88vh, 880px);
 }
-.noBorder { border-top: none; }
+
+/* About: no room of its own — it flows directly under Hero inside the
+   same coloured chapter, so it just wraps its content. */
+.compact {
+  min-height: 0;
+  justify-content: flex-start;
+  padding-top: 0;
+}
 
 .head {
   display: flex;
