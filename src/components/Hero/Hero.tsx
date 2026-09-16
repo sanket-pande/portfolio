@@ -9,13 +9,18 @@ export default function Hero() {
     <section id="top" className={styles.hero}>
       <div className={styles.field} aria-hidden="true" />
       <div className={styles.inner}>
-        <h1 className={`${styles.headline} ${styles.animate}`}>
-          {profile.headline} <em>{profile.headlineAccent}</em>
+        {/* one line, one size — the whole greeting is the heading */}
+        <h1 className={`${styles.name} ${styles.animate}`}>
+          {profile.greeting} {profile.name}
         </h1>
 
-        <p className={`${styles.summary} ${styles.animate} ${styles.delay1}`}>{profile.summary}</p>
+        <p className={`${styles.headline} ${styles.animate} ${styles.delay1}`}>
+          {profile.headline} <em>{profile.headlineAccent}</em>
+        </p>
 
-        <div className={`${styles.actions} ${styles.animate} ${styles.delay2}`}>
+        <p className={`${styles.summary} ${styles.animate} ${styles.delay2}`}>{profile.summary}</p>
+
+        <div className={`${styles.actions} ${styles.animate} ${styles.delay3}`}>
           <Button variant="primary" size="lg" href="#contact">
             Contact me
           </Button>
@@ -24,11 +29,11 @@ export default function Hero() {
           </Button>
         </div>
 
-        <div className={`${styles.animate} ${styles.delay3}`}>
+        <div className={`${styles.animate} ${styles.delay4}`}>
           <ChipList items={coreStack} tone="accent" ariaLabel="Core stack" />
         </div>
 
-        <div className={`${styles.stats} ${styles.animate} ${styles.delay4}`}>
+        <div className={`${styles.stats} ${styles.animate} ${styles.delay5}`}>
           {stats.map((stat) => (
             <Stat key={stat.label} {...stat} />
           ))}

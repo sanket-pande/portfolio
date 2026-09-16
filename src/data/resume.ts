@@ -23,13 +23,14 @@ export interface Role {
 }
 
 export const profile = {
+  greeting: "Hi, I am",
   name: "Sanket Pande",
   /** One positioning string — used by the <title>, the header and the footer. */
   title: "Full Stack Engineer",
   location: "Mumbai, India",
   currentEmployer: "HealthCompiler",
   yearsExperience: "7+",
-  headline: "I build backend systems that have to be",
+  headline: "I build systems that have to be",
   /** Last clause of the headline, set in the accent colour. */
   headlineAccent: "right.",
   summary:

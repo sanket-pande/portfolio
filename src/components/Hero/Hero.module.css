@@ -25,20 +25,33 @@
   padding: 64px 24px;
   display: flex;
   flex-direction: column;
-  gap: 26px;
+  gap: 22px;
 }
 
-.headline {
+.name {
   font-size: var(--step-4);
   font-weight: 800;
-  letter-spacing: -0.03em;
-  max-width: 18ch;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  color: var(--ink);
+}
+
+/* the thesis — clearly second to the name, still the largest sentence */
+.headline {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.35;
+  /* wide enough that the shortened thesis stays on one line and the
+     accent word is never orphaned */
+  max-width: 44ch;
   color: var(--ink);
 }
 .headline em { font-style: normal; color: var(--accent); }
 
 .summary {
-  font-size: var(--step-1);
+  font-size: var(--step-0);
   color: var(--ink-2);
   max-width: 62ch;
   line-height: 1.65;
@@ -64,6 +77,7 @@
 @media (max-width: 720px) {
   .stats { grid-template-columns: 1fr; }
   .headline { max-width: 100%; }
+  .name { letter-spacing: -0.03em; }
 }
 
 /* ---------- entrance sequence (page-load, not scroll-triggered —
@@ -77,6 +91,7 @@
 .delay2 { animation-delay: 0.18s; }
 .delay3 { animation-delay: 0.28s; }
 .delay4 { animation-delay: 0.38s; }
+.delay5 { animation-delay: 0.46s; }
 
 @media (prefers-reduced-motion: reduce) {
   .animate { animation: none; }
