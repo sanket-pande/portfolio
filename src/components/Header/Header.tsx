@@ -7,11 +7,11 @@ import { profile } from "../../data/resume";
 import { useScrollSpy } from "../../hooks/useScrollSpy";
 import styles from "./Header.module.css";
 
-const NAV_LINKS: { label: string; href?: string; to?: string }[] = [
+/** The four in-page jumps, in document order — kept as one group. */
+const SECTION_LINKS = [
   { href: "#about", label: "About" },
   { href: "#experience", label: "Experience" },
   { href: "#skills", label: "Skills" },
-  { to: "/components", label: "Components" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -30,10 +30,10 @@ export default function Header({ theme, onToggleTheme }: HeaderProps) {
   const headerRef = useRef<HTMLElement>(null);
 
   // The header's height changes with viewport width (the nav drops to a
-  // second row, the brand wraps, the toggle label reflows) and with the
-  // user's own font size. Anything that hardcodes it — scroll-padding,
-  // the scroll spy — is wrong at some width, so publish the real measured
-  // value instead and let both read it.
+  // second row, the toggle label reflows) and with the user's own font
+  // size. Anything that hardcodes it — scroll-padding, the scroll spy —
+  // is wrong at some width, so publish the real measured value instead
+  // and let both read it.
   useEffect(() => {
     const el = headerRef.current;
     if (!el) return;
@@ -68,29 +68,29 @@ export default function Header({ theme, onToggleTheme }: HeaderProps) {
         </Link>
 
         <nav className={styles.navLinks} aria-label="Primary">
-          {NAV_LINKS.map((link) => {
-            if (link.to) {
-              return (
-                <NavLink key={link.to} to={link.to} className={styles.routeLink}>
-                  {link.label}
-                </NavLink>
+          {/* the in-page jumps stay together as one group */}
+          <span className={styles.sectionLinks}>
+            {SECTION_LINKS.map(({ href, label }) => {
+              const current = onHome && activeId === href.slice(1);
+              // On the home page a bare hash is the cheapest correct thing.
+              // Anywhere else it would resolve against the current route and
+              // hit nothing, so route back to "/" and carry the hash along.
+              return onHome ? (
+                <a key={href} href={href} aria-current={current ? "location" : undefined}>
+                  {label}
+                </a>
+              ) : (
+                <Link key={href} to={`/${href}`}>
+                  {label}
+                </Link>
               );
-            }
-            const hash = link.href!;
-            // On the home page a bare hash is the cheapest correct thing.
-            // Anywhere else it would resolve against the current route and
-            // hit nothing, so route back to "/" and carry the hash along.
-            const current = onHome && activeId === hash.slice(1);
-            return onHome ? (
-              <a key={hash} href={hash} aria-current={current ? "location" : undefined}>
-                {link.label}
-              </a>
-            ) : (
-              <Link key={hash} to={`/${hash}`}>
-                {link.label}
-              </Link>
-            );
-          })}
+            })}
+          </span>
+
+          {/* a route change, not a jump — so it sits apart, over on the right */}
+          <NavLink to="/components" className={styles.routeLink}>
+            Components
+          </NavLink>
         </nav>
 
         <div className={styles.actions}>

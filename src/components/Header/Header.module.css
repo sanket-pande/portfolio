@@ -8,9 +8,10 @@
 }
 
 .inner {
-  max-width: var(--container);
-  margin-inline: auto;
-  padding: 14px 24px;
+  /* deliberately NOT capped at --container: the bar spans the window so the
+     brand and the actions sit at the screen's edges, while the page content
+     below stays in its column */
+  padding: 14px 32px;
   display: flex;
   align-items: center;
   gap: 20px;
@@ -59,11 +60,20 @@
 }
 
 .navLinks {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  font-size: var(--ui-md);
+  color: var(--ink-2);
+}
+
+/* auto margins on both sides centre the four jumps between the brand and
+   the right-hand cluster, and push Components to the nav's right edge */
+.sectionLinks {
   display: flex;
   gap: 22px;
   margin-inline: auto;
-  font-size: var(--ui-md);
-  color: var(--ink-2);
 }
 .navLinks a { transition: color 0.15s ease; }
 @media (hover: hover) {
@@ -92,6 +102,7 @@
   .navLinks {
     order: 3;
     width: 100%;
+    flex: none;
     margin-inline: 0;
     gap: 20px;
     font-family: var(--font-mono);
@@ -106,6 +117,8 @@
     padding-inline: 16px;
   }
   .navLinks::-webkit-scrollbar { display: none; }
+  /* the row is already its own line — no need to centre the group in it */
+  .sectionLinks { margin-inline: 0; gap: 20px; }
   /* fades the last item rather than guillotining it, so the row reads as
      scrollable instead of broken */
   .navLinks {
