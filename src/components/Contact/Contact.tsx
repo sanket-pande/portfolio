@@ -16,7 +16,7 @@ export default function Contact() {
         <p className={sectionStyles.eyebrow} aria-hidden="true">
           04 · Contact
         </p>
-        <h2 id="contact-title">Building something in healthcare data infra? Let's talk.</h2>
+        <h2 id="contact-title">Building something that has to be right? Let's talk.</h2>
       </div>
 
       <div ref={ref} data-reveal={inView ? "visible" : "hidden"} className={styles.panel}>

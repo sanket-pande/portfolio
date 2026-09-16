@@ -18,8 +18,19 @@
 
 .icon { font-size: var(--ui-md); line-height: 1; }
 
-@media (max-width: 560px) {
-  .label { display: none; }
+/* The label is long now, so it gives way earlier and the button falls back
+   to its icon. It is hidden *visually only* — still the buttons accessible
+   name, so screen readers and voice control keep the full phrase. */
+@media (max-width: 1000px) {
+  .label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .toggle { padding: 7px 11px; }
 }
 
 @media (pointer: coarse) {

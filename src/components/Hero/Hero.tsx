@@ -9,21 +9,13 @@ export default function Hero() {
     <section id="top" className={styles.hero}>
       <div className={styles.field} aria-hidden="true" />
       <div className={styles.inner}>
-        <div className={`${styles.bar} ${styles.animate}`}>
-          <span className={styles.livePill}>
-            <span className={styles.liveDot} />
-            Currently at {profile.currentEmployer}
-          </span>
-          <span className={styles.location}>{profile.location}</span>
-        </div>
-
-        <h1 className={`${styles.headline} ${styles.animate} ${styles.delay1}`}>
+        <h1 className={`${styles.headline} ${styles.animate}`}>
           {profile.headline} <em>{profile.headlineAccent}</em>
         </h1>
 
-        <p className={`${styles.summary} ${styles.animate} ${styles.delay2}`}>{profile.summary}</p>
+        <p className={`${styles.summary} ${styles.animate} ${styles.delay1}`}>{profile.summary}</p>
 
-        <div className={`${styles.actions} ${styles.animate} ${styles.delay3}`}>
+        <div className={`${styles.actions} ${styles.animate} ${styles.delay2}`}>
           <Button variant="primary" size="lg" href="#contact">
             Contact me
           </Button>
@@ -32,11 +24,11 @@ export default function Hero() {
           </Button>
         </div>
 
-        <div className={`${styles.animate} ${styles.delay4}`}>
+        <div className={`${styles.animate} ${styles.delay3}`}>
           <ChipList items={coreStack} tone="accent" ariaLabel="Core stack" />
         </div>
 
-        <div className={`${styles.stats} ${styles.animate} ${styles.delay5}`}>
+        <div className={`${styles.stats} ${styles.animate} ${styles.delay4}`}>
           {stats.map((stat) => (
             <Stat key={stat.label} {...stat} />
           ))}

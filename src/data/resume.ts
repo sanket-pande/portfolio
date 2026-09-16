@@ -29,11 +29,11 @@ export const profile = {
   location: "Mumbai, India",
   currentEmployer: "HealthCompiler",
   yearsExperience: "7+",
-  headline: "I build backend systems for healthcare data that has to be",
+  headline: "I build backend systems that have to be",
   /** Last clause of the headline, set in the accent colour. */
   headlineAccent: "right.",
   summary:
-    "7+ years building reliable, user-focused applications across Python/Django, FastAPI and React, with depth in cloud infrastructure and security hardening. Currently at HealthCompiler, working on healthcare data systems for the US and Canada — EHR integrations, analytics pipelines, and the GCP infrastructure underneath them.",
+    "7+ years building reliable, user-focused applications across Python/Django, FastAPI and React, with depth in cloud infrastructure and security hardening. Currently at HealthCompiler, working on data-heavy systems for the US and Canada — third-party integrations, analytics pipelines, and the GCP infrastructure underneath them.",
   email: "sanketpande99001@gmail.com",
   linkedin: "https://linkedin.com/in/sanket-pande",
   github: "https://github.com/sanket-pande",

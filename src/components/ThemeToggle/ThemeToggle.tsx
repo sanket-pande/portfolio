@@ -8,22 +8,18 @@ interface ThemeToggleProps {
 
 export default function ThemeToggle({ theme, onToggle }: ThemeToggleProps) {
   const isDark = theme === "dark";
-  // The visible label names the *action*, not the current state, so the
-  // accessible name below contains it (WCAG 2.5.3 Label in Name) — "Dark
-  // mode" is inside "Switch to dark mode", and voice control can say it.
-  const target = isDark ? "light" : "dark";
+  // The label spells out the whole action and is the button's only text, so
+  // the accessible name and the visible label are the same string by
+  // construction and can't drift apart (WCAG 2.5.3 Label in Name). On narrow
+  // screens the CSS hides it visually but leaves it in the a11y tree.
+  const label = isDark ? "Switch to Light Mode" : "Switch to Dark Mode";
 
   return (
-    <button
-      type="button"
-      className={styles.toggle}
-      onClick={onToggle}
-      aria-label={`Switch to ${target} mode`}
-    >
+    <button type="button" className={styles.toggle} onClick={onToggle} title={label}>
       <span className={styles.icon} aria-hidden="true">
         {isDark ? "☀" : "☾"}
       </span>
-      <span className={styles.label}>{isDark ? "Light mode" : "Dark mode"}</span>
+      <span className={styles.label}>{label}</span>
     </button>
   );
 }
