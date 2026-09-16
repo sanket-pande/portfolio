@@ -14,7 +14,7 @@ export default function About() {
           messy integration or a slow query and making it obviously correct. The part that has
           changed is how much of that now happens through other people.
         </p>
-        <ul className={styles.list}>
+        <ul className={styles.list} role="list">
           {highlights.map((item) => (
             <li key={item}>{item}</li>
           ))}

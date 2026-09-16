@@ -13,11 +13,20 @@ interface SectionProps {
 }
 
 export default function Section({ id, eyebrow, title, children, compact }: SectionProps) {
+  const titleId = `${id}-title`;
+
   return (
-    <section id={id} className={`${styles.section} ${compact ? styles.compact : ""}`}>
+    <section
+      id={id}
+      aria-labelledby={titleId}
+      className={`${styles.section} ${compact ? styles.compact : ""}`}
+    >
       <div className={styles.head}>
-        <p className={styles.eyebrow}>{eyebrow}</p>
-        <h2>{title}</h2>
+        {/* decorative chapter number — the heading is the accessible name */}
+        <p className={styles.eyebrow} aria-hidden="true">
+          {eyebrow}
+        </p>
+        <h2 id={titleId}>{title}</h2>
       </div>
       {children}
     </section>

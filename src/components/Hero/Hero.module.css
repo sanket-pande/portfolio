@@ -41,7 +41,7 @@
   align-items: center;
   gap: 8px;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--ui-xs);
   letter-spacing: 0.04em;
   color: var(--signal);
 }
@@ -58,7 +58,7 @@
 
 .location {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--ui-xs);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--ink-3);

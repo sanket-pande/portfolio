@@ -1,24 +1,26 @@
-/* Each section is a "room": at least 80–90vh tall so the next one only
-   ever peeks in along the bottom edge of the viewport, never appears in
-   full, until the visitor actually scrolls to it. The clamp keeps that
-   true on very short (landscape phone) and very tall (large desktop)
-   viewports without ever clipping content that runs longer. */
+/* Each section is a "room": tall enough that the next one only ever peeks
+   in along the bottom edge of the viewport, never appears in full, until
+   the visitor actually scrolls to it. Content is top-anchored, so every
+   anchor link lands the eyebrow at the same predictable offset under the
+   sticky header — and short sections stop floating in a pool of dead wash. */
 .section {
   max-width: var(--container);
   margin-inline: auto;
-  padding: 76px 24px;
+  /* top air lives on the chapter wrapper, not here — so an anchor lands
+     this section's first line at scroll-padding-top exactly, the same
+     distance for every section on the page */
+  padding: 0 24px 76px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 32px;
-  min-height: clamp(560px, 88vh, 880px);
+  min-height: clamp(520px, 78vh, 760px);
 }
 
 /* About: no room of its own — it flows directly under Hero inside the
    same coloured chapter, so it just wraps its content. */
 .compact {
   min-height: 0;
-  justify-content: flex-start;
   padding-top: 0;
 }
 
@@ -26,12 +28,11 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  max-width: 62ch;
 }
 
 .eyebrow {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--ui-xs);
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -41,4 +42,8 @@
 .head h2 {
   font-size: var(--step-3);
   font-weight: 700;
+  /* the measure lives on the heading itself, not the block — so the
+     eyebrow stays full-width and the title breaks at a display measure
+     instead of a body one */
+  max-width: 20ch;
 }

@@ -1,14 +1,44 @@
+/* Groups stack rather than sitting three-across: each gets the full
+   measure, and the third column says where the group actually shows up,
+   so the section fills the room it reserves with something load-bearing. */
 .groups {
   display: flex;
   flex-direction: column;
-  gap: 26px;
+  /* deliberately does NOT stretch to the section's min-height: spreading
+     three 90px groups over 500px orphans each rule from the group it
+     divides. Better an honestly short room than a stretched rhythm. */
+  gap: 28px;
 }
 
+.group {
+  display: grid;
+  grid-template-columns: minmax(0, 190px) minmax(0, 1fr) minmax(0, 24ch);
+  gap: 12px 32px;
+  align-items: start;
+  padding-bottom: 26px;
+  border-bottom: 1px solid var(--line-2);
+}
+.group:last-child { border-bottom: none; padding-bottom: 0; }
+
 .groupTitle {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  font-weight: 700;
+  letter-spacing: -0.01em;
   color: var(--ink);
-  margin-bottom: 12px;
+}
+
+.note {
+  font-size: var(--ui-md);
+  line-height: 1.6;
+  color: var(--ink-3);
+}
+
+@media (max-width: 960px) {
+  .group { grid-template-columns: minmax(0, 190px) minmax(0, 1fr); }
+  .note { grid-column: 2; }
+}
+@media (max-width: 720px) {
+  .group { grid-template-columns: 1fr; gap: 12px; }
+  .note { grid-column: 1; }
 }

@@ -6,7 +6,7 @@
 }
 
 .lede {
-  font-size: 1.05rem;
+  font-size: var(--step-1);
   color: var(--ink-2);
   line-height: 1.7;
 }
@@ -18,7 +18,7 @@
 }
 
 .list li {
-  font-size: 0.92rem;
+  font-size: var(--ui-md);
   color: var(--ink-2);
   line-height: 1.6;
   padding-left: 18px;

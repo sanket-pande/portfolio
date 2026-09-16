@@ -7,7 +7,7 @@
   border-radius: 999px;
   padding: 7px 13px 7px 11px;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--ui-xs);
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--ink-2);
@@ -16,8 +16,12 @@
 }
 .toggle:hover { color: var(--ink); border-color: var(--accent); }
 
-.icon { font-size: 0.9rem; line-height: 1; }
+.icon { font-size: var(--ui-md); line-height: 1; }
 
 @media (max-width: 560px) {
   .label { display: none; }
+}
+
+@media (pointer: coarse) {
+  .toggle { min-height: 44px; padding-inline: 16px; }
 }

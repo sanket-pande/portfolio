@@ -14,6 +14,9 @@ export default function App() {
 
   return (
     <>
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
       <Header theme={theme} onToggleTheme={toggleTheme} />
       <Routes>
         <Route path="/" element={<Home />} />

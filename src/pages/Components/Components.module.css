@@ -15,18 +15,18 @@
 }
 .eyebrow {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--ui-xs);
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--accent);
 }
 .intro h1 {
-  font-size: var(--step-3);
+  font-size: var(--step-4);
   font-weight: 700;
 }
 .lede {
-  font-size: 1.02rem;
+  font-size: var(--step-1);
   color: var(--ink-2);
   line-height: 1.65;
 }
@@ -49,12 +49,12 @@
 
 .info { display: flex; flex-direction: column; gap: 14px; }
 .info h2 { font-size: var(--step-2); font-weight: 700; }
-.summary { color: var(--ink-2); font-size: 0.95rem; line-height: 1.65; }
+.summary { color: var(--ink-2); font-size: var(--step-0); line-height: 1.65; }
 
 .infoBlock { display: flex; flex-direction: column; gap: 8px; }
 .infoLabel {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: var(--ui-xs);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink-3);
@@ -62,7 +62,7 @@
 
 .usedIn { display: flex; flex-direction: column; gap: 5px; }
 .usedIn li {
-  font-size: 0.86rem;
+  font-size: var(--ui-md);
   color: var(--ink-2);
   padding-left: 14px;
   position: relative;
@@ -75,7 +75,7 @@
 }
 
 .propsList { display: flex; flex-direction: column; gap: 8px; }
-.propsList li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px; font-size: 0.82rem; }
+.propsList li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px; font-size: var(--ui-sm); }
 .propName {
   font-family: var(--font-mono);
   font-weight: 600;
@@ -86,7 +86,7 @@
   padding: 1px 6px;
 }
 .propType { font-family: var(--font-mono); color: var(--accent); }
-.propNote { color: var(--ink-3); font-size: 0.78rem; }
+.propNote { color: var(--ink-3); font-size: var(--ui-sm); }
 
 .demo {
   display: flex;
@@ -109,7 +109,7 @@
 
 .editorLabel {
   font-family: var(--font-mono);
-  font-size: 0.64rem;
+  font-size: var(--ui-xs);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: #7E86A3;
@@ -121,7 +121,7 @@
   background: #1E2128;
   padding: 10px 20px 18px;
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-size: var(--ui-sm);
   line-height: 1.6;
   overflow-x: auto;
 }
@@ -130,7 +130,7 @@
   background: #2A1418;
   color: #FF8A8A;
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: var(--ui-sm);
   padding: 12px 20px;
   white-space: pre-wrap;
   margin: 0;

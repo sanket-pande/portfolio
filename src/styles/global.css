@@ -3,14 +3,25 @@
    state, a real light "IDE" variant, royal blue as the signal.
    Imported once in main.tsx. Component/page styling lives in
    their own .module.css files, scoped to that component only.
+
+   Theming is three-way and the dark palette is declared ONCE:
+     1. bare :root            → the light palette (every token)
+                              → plus the dark palette's *values*,
+                                parked on --dk-* source tokens
+     2. prefers-color-scheme  → re-points the live tokens at --dk-*
+     3. [data-theme="dark"]   → re-points them the same way
+   Blocks 2 and 3 contain no colour literals at all — only
+   `--token: var(--dk-token)` aliases — so the two can no longer
+   drift apart the way --surface-b did.
    ============================================================ */
 :root {
+  /* ---------- light palette (the default) ---------- */
   --bg:          #EEF1FA;
   --panel:       #FFFFFF;
   --panel-2:     #F5F7FD;
   --ink:         #11142A;
   --ink-2:       #4A5170;
-  --ink-3:       #7B819C;
+  --ink-3:       #575D78;
   --line:        rgba(17, 20, 42, 0.12);
   --line-2:      rgba(17, 20, 42, 0.08);
 
@@ -20,83 +31,134 @@
   --chip-bg:     rgba(36, 64, 217, 0.07);
   --chip-border: rgba(36, 64, 217, 0.28);
   --chip-text:   #2440D9;
-  --signal:      #0E7E8C;
+  --signal:      #0A6B77;
   --on-accent:   #FFFFFF;
 
   /* alternating section wash — chapters swap between these two so the
      scroll reads as a sequence of rooms, not one flat page */
   --surface-a: #EEF1FA; /* hero+about, skills */
-  --surface-b: #E1E6F5; /* experience, contact */
+  --surface-b: #DCE3F5; /* experience, contact */
 
   --shadow: 0 1px 2px rgba(17, 20, 42, 0.05), 0 18px 40px -26px rgba(17, 20, 42, 0.32);
+
+  /* ---------- dark palette values — the single source of truth ----------
+     Never referenced directly by a component; the two dark selectors
+     below alias the live tokens onto these. */
+  --dk-bg:          #070911;
+  --dk-panel:       #1A2138;
+  --dk-panel-2:     #212A45;
+  --dk-ink:         #F2F5FF;
+  --dk-ink-2:       #B7BEDC;
+  --dk-ink-3:       #8A92AF;
+  --dk-line:        rgba(126, 134, 163, 0.22);
+  --dk-line-2:      rgba(126, 134, 163, 0.14);
+
+  --dk-accent:      #6E86FF;
+  --dk-accent-glow: rgba(61, 90, 254, 0.22);
+  --dk-grid-line:   #0C0F1B;
+  --dk-chip-bg:     rgba(61, 90, 254, 0.14);
+  --dk-chip-border: rgba(109, 134, 255, 0.32);
+  --dk-chip-text:   #AEBEFF;
+  --dk-signal:      #4FD6E0;
+  --dk-on-accent:   #0B0D14;
+
+  --dk-surface-a: #070911;
+  --dk-surface-b: #0E1322;
+
+  --dk-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 24px 60px -30px rgba(0, 0, 0, 0.85);
 
   --font-display: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-body:    "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono:    "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
-  --step-0: 1rem;
-  --step-1: 1.125rem;
-  --step-2: clamp(1.4rem, 1.2rem + 1vw, 1.85rem);
-  --step-3: clamp(1.75rem, 1.35rem + 1.8vw, 2.5rem);
-  --step-4: clamp(2.3rem, 1.5rem + 3.4vw, 3.6rem);
+  /* ---------- type scale ----------
+     Two ladders, because the page has two jobs. --ui-* is the mono
+     chrome (labels, dates, chips, buttons) and bottoms out at 12px;
+     --step-* is the body/display ladder. Nothing sets a raw font-size
+     outside this block, so "how big is a section heading" has exactly
+     one answer. */
+  --ui-xs: 0.75rem;    /* 12px — eyebrows, chips, keys, footer */
+  --ui-sm: 0.8125rem;  /* 13px — dates, buttons, prop tables */
+  --ui-md: 0.875rem;   /* 14px — bullets, captions */
+
+  --step-0: 1rem;      /* 16px — body */
+  --step-1: 1.125rem;  /* 18px — lede */
+  --step-2: 1.25rem;   /* 20px — h3 */
+  --step-3: clamp(1.9rem, 1.2rem + 2vw, 2.6rem);   /* h2 — ~42px at 1400 */
+  --step-4: clamp(2.3rem, 1.5rem + 3.4vw, 3.6rem); /* h1 — 57.6px, h1:h2 ≈ 1.4 */
+  --step-stat: clamp(1.6rem, 1.2rem + 1.4vw, 2rem); /* the stat numerals */
 
   --container: 1080px;
+  /* fallback only — Header measures the real height and overwrites this
+     on <html> at runtime, so no anchor depends on this number being right */
+  --header-offset: 88px;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg:          #070911;
-    --panel:       #0D1120;
-    --panel-2:     #10142A;
-    --ink:         #F2F5FF;
-    --ink-2:       #B7BEDC;
-    --ink-3:       #7E86A3;
-    --line:        rgba(126, 134, 163, 0.22);
-    --line-2:      rgba(126, 134, 163, 0.14);
+    color-scheme: dark;
 
-    --accent:      #6E86FF;
-    --accent-glow: rgba(61, 90, 254, 0.22);
-    --grid-line:   #0C0F1B;
-    --chip-bg:     rgba(61, 90, 254, 0.14);
-    --chip-border: rgba(109, 134, 255, 0.32);
-    --chip-text:   #AEBEFF;
-    --signal:      #4FD6E0;
-    --on-accent:   #0B0D14;
+    --bg:          var(--dk-bg);
+    --panel:       var(--dk-panel);
+    --panel-2:     var(--dk-panel-2);
+    --ink:         var(--dk-ink);
+    --ink-2:       var(--dk-ink-2);
+    --ink-3:       var(--dk-ink-3);
+    --line:        var(--dk-line);
+    --line-2:      var(--dk-line-2);
 
-    --surface-a: #070911;
-    --surface-b: #141A33;
+    --accent:      var(--dk-accent);
+    --accent-glow: var(--dk-accent-glow);
+    --grid-line:   var(--dk-grid-line);
+    --chip-bg:     var(--dk-chip-bg);
+    --chip-border: var(--dk-chip-border);
+    --chip-text:   var(--dk-chip-text);
+    --signal:      var(--dk-signal);
+    --on-accent:   var(--dk-on-accent);
 
-    --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 18px 40px -26px rgba(0, 0, 0, 0.75);
+    --surface-a:   var(--dk-surface-a);
+    --surface-b:   var(--dk-surface-b);
+
+    --shadow:      var(--dk-shadow);
   }
 }
 :root[data-theme="dark"] {
-  --bg:          #070911;
-  --panel:       #0D1120;
-  --panel-2:     #10142A;
-  --ink:         #F2F5FF;
-  --ink-2:       #B7BEDC;
-  --ink-3:       #7E86A3;
-  --line:        rgba(126, 134, 163, 0.22);
-  --line-2:      rgba(126, 134, 163, 0.14);
+  color-scheme: dark;
 
-  --accent:      #6E86FF;
-  --accent-glow: rgba(61, 90, 254, 0.22);
-  --grid-line:   #0C0F1B;
-  --chip-bg:     rgba(61, 90, 254, 0.14);
-  --chip-border: rgba(109, 134, 255, 0.32);
-  --chip-text:   #AEBEFF;
-  --signal:      #4FD6E0;
-  --on-accent:   #0B0D14;
+  --bg:          var(--dk-bg);
+  --panel:       var(--dk-panel);
+  --panel-2:     var(--dk-panel-2);
+  --ink:         var(--dk-ink);
+  --ink-2:       var(--dk-ink-2);
+  --ink-3:       var(--dk-ink-3);
+  --line:        var(--dk-line);
+  --line-2:      var(--dk-line-2);
 
-  --surface-a: #070911;
-  --surface-b: #0D1120;
+  --accent:      var(--dk-accent);
+  --accent-glow: var(--dk-accent-glow);
+  --grid-line:   var(--dk-grid-line);
+  --chip-bg:     var(--dk-chip-bg);
+  --chip-border: var(--dk-chip-border);
+  --chip-text:   var(--dk-chip-text);
+  --signal:      var(--dk-signal);
+  --on-accent:   var(--dk-on-accent);
 
-  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 18px 40px -26px rgba(0, 0, 0, 0.75);
+  --surface-a:   var(--dk-surface-a);
+  --surface-b:   var(--dk-surface-b);
+
+  --shadow:      var(--dk-shadow);
 }
+:root[data-theme="light"] { color-scheme: light; }
 
 /* ---------- reset & base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
-html { color-scheme: light dark; scroll-behavior: smooth; }
+html {
+  color-scheme: light dark;
+  scroll-behavior: smooth;
+  /* every in-page anchor clears the sticky header instead of landing
+     under it — the header measures ~71px, this leaves a little air */
+  scroll-padding-top: var(--header-offset);
+}
 body {
   margin: 0;
   background: var(--bg);
@@ -105,8 +167,14 @@ body {
   font-size: var(--step-0);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+}
+/* The palette is stamped on <html> by a blocking script before first
+   paint, so load never needs to animate. `theme-ready` is added one
+   frame after mount — from then on a user toggle cross-fades. */
+:root.theme-ready body {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
+
 h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; line-height: 1.15; letter-spacing: -0.02em; }
 p, dl, ul, ol { margin: 0; }
 ul, ol { padding: 0; list-style: none; }
@@ -131,4 +199,29 @@ img { max-width: 100%; display: block; }
 
 @media (prefers-reduced-motion: reduce) {
   [data-reveal="hidden"] { opacity: 1; transform: none; }
+}
+
+/* ---------- skip link ----------
+   Off-screen until focused, then the first thing in the tab order —
+   the header holds 8 controls out of ~13 focusable elements on the page. */
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 200;
+  transform: translateY(calc(-100% - 24px));
+  background: var(--accent);
+  color: var(--on-accent);
+  font-family: var(--font-mono);
+  font-size: var(--ui-sm);
+  padding: 11px 18px;
+  border-radius: 6px;
+  transition: transform 0.15s ease;
+}
+.skip-link:focus-visible { transform: translateY(0); }
+
+/* Touch devices get comfortable targets; pointer devices keep the
+   compact header the design calls for. */
+@media (pointer: coarse) {
+  .skip-link { padding-block: 14px; }
 }

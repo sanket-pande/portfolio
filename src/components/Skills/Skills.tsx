@@ -12,9 +12,11 @@ function SkillGroupBlock({ group, index }: { group: SkillGroup; index: number })
       ref={ref}
       data-reveal={inView ? "visible" : "hidden"}
       style={{ transitionDelay: `${index * 80}ms` }}
+      className={styles.group}
     >
       <h3 className={styles.groupTitle}>{group.title}</h3>
-      <ChipList items={group.items} tone="muted" />
+      <ChipList items={group.items} tone="muted" ariaLabel={group.title} />
+      <p className={styles.note}>{group.note}</p>
     </div>
   );
 }

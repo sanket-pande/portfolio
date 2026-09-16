@@ -44,7 +44,7 @@
 .brandText {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: var(--step-0);
   display: flex;
   flex-direction: column;
   gap: 1px;
@@ -53,7 +53,7 @@
 .brandTag {
   font-family: var(--font-mono);
   font-weight: 400;
-  font-size: 0.65rem;
+  font-size: var(--ui-xs);
   letter-spacing: 0.06em;
   color: var(--ink-3);
 }
@@ -62,11 +62,13 @@
   display: flex;
   gap: 22px;
   margin-inline: auto;
-  font-size: 0.85rem;
+  font-size: var(--ui-md);
   color: var(--ink-2);
 }
 .navLinks a { transition: color 0.15s ease; }
-.navLinks a:hover { color: var(--accent); }
+@media (hover: hover) {
+  .navLinks a:hover { color: var(--accent); }
+}
 
 .actions {
   display: flex;
@@ -74,6 +76,91 @@
   gap: 10px;
 }
 
-@media (max-width: 700px) {
-  .navLinks { display: none; }
+/* Below 700px the nav drops to its own row under the brand rather than
+   disappearing: five short words scroll horizontally if they have to, so
+   every section — and /components, which is linked nowhere else in the
+   header — stays reachable on a phone. */
+@media (max-width: 900px) {
+  .inner {
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    padding: 12px 16px 8px;
+  }
+
+  .brand { margin-right: auto; }
+
+  .navLinks {
+    order: 3;
+    width: 100%;
+    margin-inline: 0;
+    gap: 20px;
+    font-family: var(--font-mono);
+    font-size: var(--ui-xs);
+    letter-spacing: 0.04em;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    /* bleed to the screen edges so the row visibly runs off, which is
+       what tells you it scrolls */
+    margin-inline: -16px;
+    padding-inline: 16px;
+  }
+  .navLinks::-webkit-scrollbar { display: none; }
+  /* fades the last item rather than guillotining it, so the row reads as
+     scrollable instead of broken */
+  .navLinks {
+    mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+  }
+  .navLinks a {
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+  }
+}
+
+/* Punctuation that exists only for the accessibility tree. */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Where you are, on both routes. */
+.navLinks a[aria-current] {
+  color: var(--accent);
+  position: relative;
+}
+/* drawn INSIDE the link box — an outside ::after gets clipped by the
+   mobile nav's overflow-x:auto, which also forces overflow-y */
+.navLinks a[aria-current] {
+  box-shadow: inset 0 -2px 0 var(--accent);
+  padding-bottom: 4px;
+}
+/* the one link that leaves the page rather than jumping down it */
+.routeLink { display: inline-flex; align-items: center; gap: 6px; }
+.routeLink::before {
+  content: "";
+  width: 1px;
+  height: 13px;
+  margin-right: 10px;
+  background: var(--line);
+}
+
+@media (pointer: coarse) {
+  .navLinks a { min-height: 44px; }
+}
+
+/* Phones keep the nav to ONE row — wrapping it turned the sticky header
+   into a third of the viewport. Tightening the gap instead fits all five
+   links, Contact included, without scrolling at typical phone widths;
+   below that the mask still signals the row scrolls. */
+@media (max-width: 480px) {
+  .navLinks { gap: 12px; }
+  /* the route-link divider costs 11px that "Contact" needs more */
+  .routeLink { gap: 0; }
+  .routeLink::before { display: none; }
 }

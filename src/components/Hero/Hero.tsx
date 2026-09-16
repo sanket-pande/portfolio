@@ -18,7 +18,7 @@ export default function Hero() {
         </div>
 
         <h1 className={`${styles.headline} ${styles.animate} ${styles.delay1}`}>
-          I build backend systems that have to be <em>right</em>.
+          {profile.headline} <em>{profile.headlineAccent}</em>
         </h1>
 
         <p className={`${styles.summary} ${styles.animate} ${styles.delay2}`}>{profile.summary}</p>

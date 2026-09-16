@@ -3,27 +3,38 @@
   flex-direction: column;
 }
 
+/* Dates get their own rail so they read as a scannable column instead of
+   floating in the gutter at the far right of the text measure. */
 .role {
   display: grid;
-  grid-template-columns: 20px 1fr;
-  gap: 22px;
-  padding-block: 26px;
-  position: relative;
+  grid-template-columns: 152px 20px minmax(0, 1fr);
+  grid-template-areas: "period marker body";
+  align-items: start;
+  gap: 0 22px;
+  padding-block: 28px;
 }
-.role:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  left: 9px;
-  top: 34px;
-  bottom: -26px;
-  width: 1px;
-  background: var(--line);
+
+.period {
+  grid-area: period;
+  font-family: var(--font-mono);
+  font-size: var(--ui-sm);
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.5;
+  padding-top: 4px;
 }
 
 .marker {
+  grid-area: marker;
   display: flex;
   justify-content: center;
   padding-top: 6px;
+  position: relative;
+}
+.current .period { color: var(--signal); }
+.current .dot {
+  border-color: var(--signal);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--signal) 18%, transparent);
 }
 .dot {
   width: 12px;
@@ -31,39 +42,40 @@
   border-radius: 50%;
   background: var(--panel);
   border: 2px solid var(--accent);
+  flex-shrink: 0;
+}
+/* connector runs from under this dot to just above the next one */
+.role:not(:last-child) .marker::after {
+  content: "";
+  position: absolute;
+  top: 26px;
+  bottom: -54px;
+  left: 50%;
+  width: 1px;
+  transform: translateX(-50%);
+  background: var(--line);
 }
 
 .body {
+  grid-area: body;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
 }
 
-.head {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-.title { font-size: 1.2rem; font-weight: 700; }
-.company { font-size: 0.9rem; color: var(--accent); margin-top: 2px; }
-.period {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--ink-3);
-  font-variant-numeric: tabular-nums;
-  white-space: nowrap;
-}
+.title { font-size: var(--step-2); font-weight: 700; }
+/* not a link, so it must not wear the accent — that's the link signal */
+.company { font-size: var(--ui-md); color: var(--ink-2); font-weight: 600; margin-top: -6px; }
 
 .bullets {
   display: flex;
   flex-direction: column;
   gap: 9px;
-  max-width: 66ch;
+  max-width: 68ch;
+  margin-top: 2px;
 }
 .bullets li {
-  font-size: 0.92rem;
+  font-size: var(--ui-md);
   color: var(--ink-2);
   line-height: 1.6;
   padding-left: 16px;
@@ -74,4 +86,21 @@
   position: absolute;
   left: 0;
   color: var(--ink-3);
+}
+
+.metric {
+  color: var(--ink);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 720px) {
+  .role {
+    grid-template-columns: 20px minmax(0, 1fr);
+    grid-template-areas:
+      "marker period"
+      "marker body";
+    gap: 0 18px;
+  }
+  .period { padding-top: 0; margin-bottom: 10px; }
 }

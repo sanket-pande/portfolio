@@ -2,9 +2,15 @@
   min-height: 100dvh;
 }
 
-.chapter {
+/* Scoped to theme-ready for the same reason body's transition is: the
+   chapter washes must not animate while the page is still loading. */
+:global(html.theme-ready) .chapter {
   transition: background-color 0.25s ease;
 }
+
+.chapter { padding-top: 76px; }
+/* the opening chapter starts with the hero, which brings its own height */
+.flush { padding-top: 0; }
 
 .surfaceA { background: var(--surface-a); }
 .surfaceB { background: var(--surface-b); }

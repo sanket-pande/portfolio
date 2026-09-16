@@ -5,8 +5,24 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="light dark" />
-    <meta name="description" content="Sanket Pande — Software Engineer. 7+ years building backend systems and cloud infrastructure for healthcare data, currently at HealthCompiler." />
-    <title>Sanket Pande — Software Engineer</title>
+    <!-- Stamp the persisted theme before the stylesheet is applied, so the
+         first paint is already the right palette. Without this the page
+         paints whatever the OS prefers and React corrects it ~370ms later,
+         which the body transition then animates in front of the visitor. -->
+    <script>
+      (function () {
+        try {
+          var stored = window.localStorage.getItem("portfolio-theme");
+          if (stored === "light" || stored === "dark") {
+            document.documentElement.setAttribute("data-theme", stored);
+          }
+        } catch (e) {
+          /* private mode / blocked storage — fall back to prefers-color-scheme */
+        }
+      })();
+    </script>
+    <meta name="description" content="Sanket Pande — Full Stack Engineer. 7+ years building backend systems and cloud infrastructure for healthcare data, currently at HealthCompiler." />
+    <title>Sanket Pande — Full Stack Engineer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

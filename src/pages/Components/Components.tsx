@@ -13,7 +13,7 @@ const scope = { Button, Chip: ChipList, Stat, ThemeToggle, Section };
 
 export default function ComponentsPage() {
   return (
-    <main className={styles.page}>
+    <main id="main" className={styles.page}>
       <header className={styles.intro}>
         <p className={styles.eyebrow}>Component library</p>
         <h1>The pieces this site is built from</h1>

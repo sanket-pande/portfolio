@@ -26,6 +26,7 @@ export const componentDemos: ComponentDemo[] = [
     props: [
       { name: "variant", type: '"primary" | "ghost"', note: "defaults to primary" },
       { name: "href", type: "string", note: "renders an <a> instead of a <button>" },
+      { name: "size", type: '"md" | "lg"', note: "lg is the hero and contact CTA" },
     ],
     code: `<div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
   <Button variant="primary" href="#">Primary</Button>
@@ -41,6 +42,7 @@ export const componentDemos: ComponentDemo[] = [
     props: [
       { name: "items", type: "string[]" },
       { name: "tone", type: '"accent" | "muted"', note: "defaults to accent" },
+      { name: "ariaLabel", type: "string", note: "names the list for screen readers" },
     ],
     code: `<Chip items={["Python", "Django", "GCP", "BigQuery"]} tone="accent" />`,
   },
@@ -96,7 +98,7 @@ render(<Demo />);`,
       { name: "eyebrow", type: "string" },
       { name: "title", type: "string" },
       { name: "children", type: "ReactNode" },
-      { name: "noBorder", type: "boolean", note: "Contact reuses this pattern by hand instead — see its source" },
+      { name: "compact", type: "boolean", note: "About uses this — no room of its own, it shares Hero's chapter" },
     ],
     code: `<Section id="demo-section" eyebrow="00 · Example" title="A reusable section header">
   <p style={{ color: "var(--ink-2)", maxWidth: "48ch" }}>

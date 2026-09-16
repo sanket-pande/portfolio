@@ -6,7 +6,7 @@
 
 .chip {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--ui-xs);
   letter-spacing: 0.02em;
   padding: 6px 11px;
   border-radius: 5px;
