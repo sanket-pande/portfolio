@@ -14,7 +14,7 @@
 }
 .btn:active { transform: translateY(1px); }
 
-.primary { background: var(--accent); color: var(--on-accent); }
+.primary { background: var(--accent-fill); color: var(--on-accent); }
 .primary:hover { filter: brightness(1.08); }
 
 .ghost { background: transparent; border-color: var(--line); color: var(--ink); }

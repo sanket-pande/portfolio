@@ -30,6 +30,11 @@
   --line-2:      rgba(17, 20, 42, 0.08);
 
   --accent:      #2440D9;
+  /* Button backgrounds. Deliberately separate from --accent: text and
+     lines need a lighter blue to be readable on dark, but a FILL carries
+     its own white label, so it can stay the exact brand blue in both
+     themes. Light mode happens to use the same value for both. */
+  --accent-fill: #2440D9;
   --accent-glow: rgba(36, 64, 217, 0.10);
   --grid-line:   rgba(36, 64, 217, 0.07);
   --chip-bg:     rgba(36, 64, 217, 0.07);
@@ -48,26 +53,27 @@
   /* ---------- dark palette values — the single source of truth ----------
      Never referenced directly by a component; the dark block below
      aliases the live tokens onto these. */
-  --dk-bg:          #070911;
-  --dk-panel:       #1A2138;
-  --dk-panel-2:     #212A45;
-  --dk-ink:         #F2F5FF;
-  --dk-ink-2:       #B7BEDC;
-  --dk-ink-3:       #8A92AF;
-  --dk-line:        rgba(126, 134, 163, 0.22);
-  --dk-line-2:      rgba(126, 134, 163, 0.14);
+  --dk-bg:          #060A11;
+  --dk-panel:       #152238;
+  --dk-panel-2:     #1C2B45;
+  --dk-ink:         #EFF6FF;
+  --dk-ink-2:       #ADC1DC;
+  --dk-ink-3:       #8195AE;
+  --dk-line:        rgba(117, 137, 162, 0.22);
+  --dk-line-2:      rgba(117, 137, 162, 0.14);
 
-  --dk-accent:      #6E86FF;
-  --dk-accent-glow: rgba(61, 90, 254, 0.22);
-  --dk-grid-line:   #0C0F1B;
-  --dk-chip-bg:     rgba(61, 90, 254, 0.14);
-  --dk-chip-border: rgba(109, 134, 255, 0.32);
-  --dk-chip-text:   #AEBEFF;
+  --dk-accent:      #3992FD;
+  --dk-accent-fill: #2440D9;
+  --dk-accent-glow: rgba(5, 108, 230, 0.22);
+  --dk-grid-line:   #09101B;
+  --dk-chip-bg:     rgba(5, 108, 230, 0.14);
+  --dk-chip-border: rgba(57, 146, 253, 0.32);
+  --dk-chip-text:   #99C5FE;
   --dk-signal:      #4FD6E0;
-  --dk-on-accent:   #0B0D14;
+  --dk-on-accent:   #FFFFFF;
 
-  --dk-surface-a: #070911;
-  --dk-surface-b: #0E1322;
+  --dk-surface-a: #060A11;
+  --dk-surface-b: #0B1422;
 
   --dk-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 24px 60px -30px rgba(0, 0, 0, 0.85);
 
@@ -111,6 +117,7 @@
   --line-2:      var(--dk-line-2);
 
   --accent:      var(--dk-accent);
+  --accent-fill: var(--dk-accent-fill);
   --accent-glow: var(--dk-accent-glow);
   --grid-line:   var(--dk-grid-line);
   --chip-bg:     var(--dk-chip-bg);
@@ -186,7 +193,7 @@ img { max-width: 100%; display: block; }
   left: 12px;
   z-index: 200;
   transform: translateY(calc(-100% - 24px));
-  background: var(--accent);
+  background: var(--accent-fill);
   color: var(--on-accent);
   font-family: var(--font-mono);
   font-size: var(--ui-sm);
