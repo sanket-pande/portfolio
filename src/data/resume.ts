@@ -26,7 +26,7 @@ export const profile = {
   greeting: "Hi, I am",
   name: "Sanket Pande",
   /** One positioning string — used by the <title>, the header and the footer. */
-  title: "Full Stack Engineer",
+  title: "Full Stack Software Engineer",
   location: "Mumbai, India",
   currentEmployer: "HealthCompiler",
   yearsExperience: "7+",

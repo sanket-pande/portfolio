@@ -153,30 +153,17 @@
   box-shadow: inset 0 -2px 0 var(--accent);
   padding-bottom: 4px;
 }
-/* the one link that leaves the page rather than jumping down it */
-.routeLink { display: inline-flex; align-items: center; gap: 6px; }
-.routeLink::before {
-  content: "";
-  width: 1px;
-  height: 13px;
-  margin-right: 10px;
-  background: var(--line);
-}
 
 @media (pointer: coarse) {
   .navLinks a { min-height: 44px; }
 }
 
 /* Phones keep the nav to ONE row — wrapping it turned the sticky header
-   into a third of the viewport. Tightening the gap instead fits all five
-   links, Contact included, without scrolling at typical phone widths;
-   below that the mask still signals the row scrolls. */
+   into a third of the viewport. A tighter gap keeps all four links on the
+   row; below that the mask still signals the row scrolls. */
 @media (max-width: 480px) {
   .navLinks { gap: 12px; }
-  /* the route-link divider costs 11px that "Contact" needs more */
-  .routeLink { gap: 0; }
-  .routeLink::before { display: none; }
+  /* the download mark costs the ~24px that lets brand, Résumé and the
+     toggle share one row on a phone — the word alone says enough there */
+  .resumeIcon { display: none; }
 }
-
-/* the route link now carries a mark as well as the divider */
-.routeLink { gap: 7px; }

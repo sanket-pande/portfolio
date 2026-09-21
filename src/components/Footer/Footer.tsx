@@ -24,8 +24,6 @@ export default function Footer() {
           LinkedIn
         </a>
       </nav>
-
-      <p>Built with React, TypeScript &amp; Vite</p>
     </footer>
   );
 }

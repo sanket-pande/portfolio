@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import type { Theme } from "../../hooks/useTheme";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
 import Button from "../Button/Button";
@@ -55,7 +55,7 @@ export default function Header({ theme, onToggleTheme }: HeaderProps) {
   return (
     <header ref={headerRef} className={styles.header}>
       <div className={styles.inner}>
-        <Link to="/" className={styles.brand}>
+        <Link to="/#" className={styles.brand}>
           <span className={styles.brandMark} aria-hidden="true">
             <span className={styles.brandMarkDot} />
           </span>
@@ -87,17 +87,11 @@ export default function Header({ theme, onToggleTheme }: HeaderProps) {
               );
             })}
           </span>
-
-          {/* a route change, not a jump — so it sits apart, over on the right */}
-          <NavLink to="/components" className={styles.routeLink}>
-            <Icon name="layers" size={15} />
-            Components
-          </NavLink>
         </nav>
 
         <div className={styles.actions}>
           <Button variant="ghost" href="/Sanket-Pande-Resume.pdf" download>
-            <Icon name="download" size={15} />
+            <Icon name="download" size={15} className={styles.resumeIcon} />
             Résumé
           </Button>
           <ThemeToggle theme={theme} onToggle={onToggleTheme} />

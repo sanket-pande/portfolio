@@ -26,6 +26,11 @@
 
 .marker {
   grid-area: marker;
+  /* .role is align-items:start so the date sits at the top of its rail —
+     but the marker must still run the FULL row height, because the
+     connector below is drawn relative to it. Without this it collapses to
+     the dot's height and the line becomes a short stub. */
+  align-self: stretch;
   display: flex;
   justify-content: center;
   padding-top: 6px;
