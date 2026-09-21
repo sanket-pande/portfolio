@@ -88,6 +88,33 @@ render(<Demo />);`,
     noInline: true,
   },
   {
+    id: "icon",
+    name: "Icon",
+    summary:
+      "Inline SVG on a 24×24 grid, no icon library. Every glyph inherits currentColor, so it takes the colour of whatever text it sits beside and needs no separate light/dark version. Decorative by default — each one sits next to a real label, so it's hidden from screen readers rather than announced twice.",
+    usedIn: [
+      "Header — Résumé download, Components",
+      "Hero — the primary CTA arrow",
+      "Contact — email, LinkedIn, GitHub",
+      "Footer — the three links",
+      "ThemeToggle — sun / moon",
+    ],
+    props: [
+      { name: "name", type: '"mail" | "linkedin" | "github" | "download" | "arrowRight" | "sun" | "moon" | "layers"' },
+      { name: "size", type: "number", note: "px square; defaults to 16" },
+    ],
+    code: `<div style={{ display: "flex", gap: 18, alignItems: "center", color: "var(--ink-2)" }}>
+  <Icon name="mail" size={22} />
+  <Icon name="linkedin" size={22} />
+  <Icon name="github" size={22} />
+  <Icon name="download" size={22} />
+  <Icon name="arrowRight" size={22} />
+  <Icon name="layers" size={22} />
+  <Icon name="sun" size={22} />
+  <Icon name="moon" size={22} />
+</div>`,
+  },
+  {
     id: "section",
     name: "Section",
     summary:

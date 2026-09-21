@@ -1,4 +1,5 @@
 import type { Theme } from "../../hooks/useTheme";
+import Icon from "../Icon/Icon";
 import styles from "./ThemeToggle.module.css";
 
 interface ThemeToggleProps {
@@ -16,9 +17,7 @@ export default function ThemeToggle({ theme, onToggle }: ThemeToggleProps) {
 
   return (
     <button type="button" className={styles.toggle} onClick={onToggle} title={label}>
-      <span className={styles.icon} aria-hidden="true">
-        {isDark ? "☀" : "☾"}
-      </span>
+      <Icon name={isDark ? "sun" : "moon"} />
       <span className={styles.label}>{label}</span>
     </button>
   );

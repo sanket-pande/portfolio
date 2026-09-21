@@ -1,6 +1,7 @@
 import ChipList from "../Chip/Chip";
 import Button from "../Button/Button";
 import Stat from "../Stat/Stat";
+import Icon from "../Icon/Icon";
 import { coreStack, profile, stats } from "../../data/resume";
 import styles from "./Hero.module.css";
 
@@ -23,6 +24,7 @@ export default function Hero() {
         <div className={`${styles.actions} ${styles.animate} ${styles.delay3}`}>
           <Button variant="primary" size="lg" href="#contact">
             Contact me
+            <Icon name="arrowRight" size={17} />
           </Button>
           <Button variant="ghost" size="lg" href="#experience">
             View experience

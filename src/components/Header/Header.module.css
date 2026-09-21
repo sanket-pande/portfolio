@@ -177,3 +177,6 @@
   .routeLink { gap: 0; }
   .routeLink::before { display: none; }
 }
+
+/* the route link now carries a mark as well as the divider */
+.routeLink { gap: 7px; }

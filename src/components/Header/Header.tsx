@@ -3,6 +3,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import type { Theme } from "../../hooks/useTheme";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
 import Button from "../Button/Button";
+import Icon from "../Icon/Icon";
 import { profile } from "../../data/resume";
 import { useScrollSpy } from "../../hooks/useScrollSpy";
 import styles from "./Header.module.css";
@@ -89,12 +90,14 @@ export default function Header({ theme, onToggleTheme }: HeaderProps) {
 
           {/* a route change, not a jump — so it sits apart, over on the right */}
           <NavLink to="/components" className={styles.routeLink}>
+            <Icon name="layers" size={15} />
             Components
           </NavLink>
         </nav>
 
         <div className={styles.actions}>
           <Button variant="ghost" href="/Sanket-Pande-Resume.pdf" download>
+            <Icon name="download" size={15} />
             Résumé
           </Button>
           <ThemeToggle theme={theme} onToggle={onToggleTheme} />

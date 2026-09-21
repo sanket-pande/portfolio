@@ -56,3 +56,6 @@
 @media (max-width: 560px) {
   .panel { padding: 30px 22px 32px; }
 }
+
+/* icon sits with the address, not floating beside it */
+.links a { gap: 10px; }

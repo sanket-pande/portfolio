@@ -16,8 +16,6 @@
 }
 .toggle:hover { color: var(--ink); border-color: var(--accent); }
 
-.icon { font-size: var(--ui-md); line-height: 1; }
-
 /* The label is long now, so it gives way earlier and the button falls back
    to its icon. It is hidden *visually only* — still the buttons accessible
    name, so screen readers and voice control keep the full phrase. */

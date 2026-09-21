@@ -21,3 +21,5 @@
 @media (pointer: coarse) {
   .links a { min-height: 44px; display: inline-flex; align-items: center; }
 }
+
+.links a { display: inline-flex; align-items: center; gap: 7px; }

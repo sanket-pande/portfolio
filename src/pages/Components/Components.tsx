@@ -5,11 +5,12 @@ import ChipList from "../../components/Chip/Chip";
 import Stat from "../../components/Stat/Stat";
 import ThemeToggle from "../../components/ThemeToggle/ThemeToggle";
 import Section from "../../components/Section/Section";
+import Icon from "../../components/Icon/Icon";
 import { componentDemos } from "./componentDemos";
 import styles from "./Components.module.css";
 
 // What each demo's editable code can reference.
-const scope = { Button, Chip: ChipList, Stat, ThemeToggle, Section };
+const scope = { Button, Chip: ChipList, Stat, ThemeToggle, Section, Icon };
 
 export default function ComponentsPage() {
   return (
