@@ -4,11 +4,10 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="color-scheme" content="light dark" />
-    <!-- Stamp the persisted theme before the stylesheet is applied, so the
-         first paint is already the right palette. Without this the page
-         paints whatever the OS prefers and React corrects it ~370ms later,
-         which the body transition then animates in front of the visitor. -->
+    <meta name="color-scheme" content="dark" />
+    <!-- Dark is the default and lives in the stylesheet. This only stamps a
+         choice someone has already made, before the stylesheet applies, so a
+         returning light-mode visitor never sees a dark first frame. -->
     <script>
       (function () {
         try {
@@ -17,7 +16,7 @@
             document.documentElement.setAttribute("data-theme", stored);
           }
         } catch (e) {
-          /* private mode / blocked storage — fall back to prefers-color-scheme */
+          /* private mode / blocked storage — stay on the dark default */
         }
       })();
     </script>

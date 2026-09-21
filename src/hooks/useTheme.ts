@@ -4,12 +4,8 @@ export type Theme = "light" | "dark";
 
 const STORAGE_KEY = "portfolio-theme";
 
-function systemPrefersDark(): boolean {
-  return (
-    typeof window !== "undefined" &&
-    window.matchMedia?.("(prefers-color-scheme: dark)").matches
-  );
-}
+/** What a first-time visitor sees, regardless of their OS setting. */
+const DEFAULT_THEME: Theme = "dark";
 
 function readStoredTheme(): Theme | null {
   try {
@@ -21,34 +17,25 @@ function readStoredTheme(): Theme | null {
 }
 
 /**
- * Tracks the resolved theme (light/dark) and exposes a toggle.
+ * Tracks the active theme and exposes a toggle.
  *
- * An earlier explicit choice (localStorage) is stamped onto
- * <html data-theme> by a blocking script in index.html, before the
- * stylesheet is applied — so first paint is already correct and this hook
- * only has to keep the attribute in sync afterwards. Otherwise nothing is
- * stamped: the stylesheet's prefers-color-scheme media query drives the
- * page, and this hook mirrors system preference for the toggle button's
- * own icon, live-updating if the OS theme changes. The first click always
- * makes an explicit, persisted choice.
+ * Dark is the default. That default lives in the stylesheet — the dark
+ * palette applies whenever <html> is NOT stamped data-theme="light" — so a
+ * first visit is dark before any script runs. This hook only has to mirror
+ * it for the toggle's own label and icon.
  *
- * It also adds `theme-ready` to <html> one frame after mount. The body's
+ * A choice someone has made (localStorage) is stamped onto <html> by a
+ * blocking script in index.html before the stylesheet applies, so a
+ * returning light-mode visitor never sees a dark flash either. The first
+ * click on the toggle makes that choice and persists it.
+ *
+ * It also adds `theme-ready` to <html> two frames after mount. The body's
  * colour transition is scoped to that class, so the palette never animates
  * on load — only when someone actually flips the switch.
  */
 export function useTheme(): { theme: Theme; toggleTheme: () => void } {
   const [explicit, setExplicit] = useState<Theme | null>(() => readStoredTheme());
-  const [systemDark, setSystemDark] = useState<boolean>(() => systemPrefersDark());
-
-  useEffect(() => {
-    if (!window.matchMedia) return;
-    const media = window.matchMedia("(prefers-color-scheme: dark)");
-    const onChange = (event: MediaQueryListEvent) => setSystemDark(event.matches);
-    media.addEventListener("change", onChange);
-    return () => media.removeEventListener("change", onChange);
-  }, []);
-
-  const theme: Theme = explicit ?? (systemDark ? "dark" : "light");
+  const theme: Theme = explicit ?? DEFAULT_THEME;
 
   useEffect(() => {
     // Two frames: the first commit has painted by the time the second
@@ -66,13 +53,14 @@ export function useTheme(): { theme: Theme; toggleTheme: () => void } {
     if (explicit) {
       root.setAttribute("data-theme", explicit);
     } else {
+      // unstamped = the stylesheet's default, which is dark
       root.removeAttribute("data-theme");
     }
   }, [explicit]);
 
   const toggleTheme = useCallback(() => {
     setExplicit((current) => {
-      const next: Theme = (current ?? (systemDark ? "dark" : "light")) === "dark" ? "light" : "dark";
+      const next: Theme = (current ?? DEFAULT_THEME) === "dark" ? "light" : "dark";
       try {
         window.localStorage.setItem(STORAGE_KEY, next);
       } catch {
@@ -80,7 +68,7 @@ export function useTheme(): { theme: Theme; toggleTheme: () => void } {
       }
       return next;
     });
-  }, [systemDark]);
+  }, []);
 
   return { theme, toggleTheme };
 }

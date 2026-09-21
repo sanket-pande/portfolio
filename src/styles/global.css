@@ -4,18 +4,22 @@
    Imported once in main.tsx. Component/page styling lives in
    their own .module.css files, scoped to that component only.
 
-   Theming is three-way and the dark palette is declared ONCE:
-     1. bare :root            → the light palette (every token)
-                              → plus the dark palette's *values*,
-                                parked on --dk-* source tokens
-     2. prefers-color-scheme  → re-points the live tokens at --dk-*
-     3. [data-theme="dark"]   → re-points them the same way
-   Blocks 2 and 3 contain no colour literals at all — only
-   `--token: var(--dk-token)` aliases — so the two can no longer
-   drift apart the way --surface-b did.
+   DARK IS THE DEFAULT, whatever the visitor's OS prefers. Light is
+   opt-in, via the toggle, and remembered once chosen:
+     1. bare :root                        → the light palette's values
+                                            (every token declared here),
+                                            plus the dark values parked
+                                            on --dk-* source tokens
+     2. :root:not([data-theme="light"])   → re-points every live token
+                                            at --dk-*, i.e. dark unless
+                                            someone has chosen light
+   Because the default lives in CSS rather than JS, a first visit is
+   already dark on its very first frame, before any script has run.
+   The dark block holds no colour literals, only `var(--dk-*)` aliases,
+   so there is one dark palette and it can't drift.
    ============================================================ */
 :root {
-  /* ---------- light palette (the default) ---------- */
+  /* ---------- light palette — opt-in via the toggle ---------- */
   --bg:          #EEF1FA;
   --panel:       #FFFFFF;
   --panel-2:     #F5F7FD;
@@ -42,8 +46,8 @@
   --shadow: 0 1px 2px rgba(17, 20, 42, 0.05), 0 18px 40px -26px rgba(17, 20, 42, 0.32);
 
   /* ---------- dark palette values — the single source of truth ----------
-     Never referenced directly by a component; the two dark selectors
-     below alias the live tokens onto these. */
+     Never referenced directly by a component; the dark block below
+     aliases the live tokens onto these. */
   --dk-bg:          #070911;
   --dk-panel:       #1A2138;
   --dk-panel-2:     #212A45;
@@ -94,35 +98,7 @@
   --header-offset: 88px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    color-scheme: dark;
-
-    --bg:          var(--dk-bg);
-    --panel:       var(--dk-panel);
-    --panel-2:     var(--dk-panel-2);
-    --ink:         var(--dk-ink);
-    --ink-2:       var(--dk-ink-2);
-    --ink-3:       var(--dk-ink-3);
-    --line:        var(--dk-line);
-    --line-2:      var(--dk-line-2);
-
-    --accent:      var(--dk-accent);
-    --accent-glow: var(--dk-accent-glow);
-    --grid-line:   var(--dk-grid-line);
-    --chip-bg:     var(--dk-chip-bg);
-    --chip-border: var(--dk-chip-border);
-    --chip-text:   var(--dk-chip-text);
-    --signal:      var(--dk-signal);
-    --on-accent:   var(--dk-on-accent);
-
-    --surface-a:   var(--dk-surface-a);
-    --surface-b:   var(--dk-surface-b);
-
-    --shadow:      var(--dk-shadow);
-  }
-}
-:root[data-theme="dark"] {
+:root:not([data-theme="light"]) {
   color-scheme: dark;
 
   --bg:          var(--dk-bg);
