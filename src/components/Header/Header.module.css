@@ -23,23 +23,28 @@
   gap: 10px;
 }
 
+/* monogram — a touch larger than the old dot's box so two letters sit in
+   it with room to breathe */
 .brandMark {
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
   background: var(--panel-2);
   border: 1px solid var(--line);
   display: grid;
   place-items: center;
   flex: 0 0 auto;
-}
-
-.brandMarkDot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--accent);
+  font-family: var(--font-display);
+  font-size: var(--ui-sm);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--accent);
   box-shadow: 0 0 0 3px var(--accent-glow);
+  transition: border-color 0.15s ease;
+}
+@media (hover: hover) {
+  .brand:hover .brandMark { border-color: var(--accent); }
 }
 
 .brandText {

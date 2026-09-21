@@ -1,5 +1,5 @@
-import { useEffect, useRef } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useEffect, useRef, type MouseEvent } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import type { Theme } from "../../hooks/useTheme";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
 import Button from "../Button/Button";
@@ -16,6 +16,13 @@ const SECTION_LINKS = [
   { href: "#contact", label: "Contact" },
 ];
 
+/** "Sanket Pande" → "SP". Derived, so it can never disagree with the name. */
+const INITIALS = profile.name
+  .split(/\s+/)
+  .map((word) => word[0])
+  .join("")
+  .toUpperCase();
+
 /** Section ids the spy tracks, in document order. */
 const SPY_IDS = ["about", "experience", "skills", "contact"] as const;
 
@@ -29,6 +36,30 @@ export default function Header({ theme, onToggleTheme }: HeaderProps) {
   const onHome = pathname === "/";
   const activeId = useScrollSpy(SPY_IDS);
   const headerRef = useRef<HTMLElement>(null);
+  const navigate = useNavigate();
+
+  // The brand always takes you to the top of the home page. A plain
+  // <Link to="/"> can't: on the home page it's a no-op (you're already
+  // there), and React Router doesn't reset scroll on navigation, so coming
+  // back from /components you'd land wherever you'd scrolled to.
+  const goToTop = (event: MouseEvent<HTMLAnchorElement>) => {
+    // leave cmd/ctrl/shift/middle-click alone — "open in new tab" still works
+    if (event.defaultPrevented || event.button !== 0) return;
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+
+    if (onHome) {
+      // drop any #section from the URL so it matches where you've landed
+      if (window.location.hash) navigate("/", { replace: true });
+      // no behavior given → follows html's scroll-behavior: smooth, and
+      // becomes an instant jump under prefers-reduced-motion
+      window.scrollTo({ top: 0 });
+    } else {
+      navigate("/");
+      // a different page is appearing — jump, don't glide down from nowhere
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }
+  };
 
   // The header's height changes with viewport width (the nav drops to a
   // second row, the toggle label reflows) and with the user's own font
@@ -55,9 +86,9 @@ export default function Header({ theme, onToggleTheme }: HeaderProps) {
   return (
     <header ref={headerRef} className={styles.header}>
       <div className={styles.inner}>
-        <Link to="/#" className={styles.brand}>
+        <Link to="/" className={styles.brand} onClick={goToTop}>
           <span className={styles.brandMark} aria-hidden="true">
-            <span className={styles.brandMarkDot} />
+            {INITIALS}
           </span>
           <span className={styles.brandText}>
             {profile.name}
