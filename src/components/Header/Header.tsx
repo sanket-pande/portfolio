@@ -8,20 +8,13 @@ import { profile } from "../../data/resume";
 import { useScrollSpy } from "../../hooks/useScrollSpy";
 import styles from "./Header.module.css";
 
-/** The four in-page jumps, in document order — kept as one group. */
+/** The in-page section jumps, in document order — kept as one group, after Home. */
 const SECTION_LINKS = [
   { href: "#about", label: "About" },
   { href: "#experience", label: "Experience" },
   { href: "#skills", label: "Skills" },
   { href: "#contact", label: "Contact" },
 ];
-
-/** "Sanket Pande" → "SP". Derived, so it can never disagree with the name. */
-const INITIALS = profile.name
-  .split(/\s+/)
-  .map((word) => word[0])
-  .join("")
-  .toUpperCase();
 
 /** Section ids the spy tracks, in document order. */
 const SPY_IDS = ["about", "experience", "skills", "contact"] as const;
@@ -87,21 +80,22 @@ export default function Header({ theme, onToggleTheme }: HeaderProps) {
     <header ref={headerRef} className={styles.header}>
       <div className={styles.inner}>
         <Link to="/" className={styles.brand} onClick={goToTop}>
-          <span className={styles.brandMark} aria-hidden="true">
-            {INITIALS}
-          </span>
-          <span className={styles.brandText}>
-            {profile.name}
-            {/* the comma is what stops screen readers running the two spans
-                together as "Sanket PandeFull Stack Engineer" */}
-            <span className={styles.srOnly}>, </span>
-            <span className={styles.brandTag}>{profile.title}</span>
-          </span>
+          {profile.name}
         </Link>
 
         <nav className={styles.navLinks} aria-label="Primary">
           {/* the in-page jumps stay together as one group */}
           <span className={styles.sectionLinks}>
+            {/* Home is the top of the page, not a section — same handler as
+                the brand, so both behave identically on either route. It is
+                "current" while no section has crossed the header line yet. */}
+            <Link
+              to="/"
+              onClick={goToTop}
+              aria-current={onHome && activeId === null ? "location" : undefined}
+            >
+              Home
+            </Link>
             {SECTION_LINKS.map(({ href, label }) => {
               const current = onHome && activeId === href.slice(1);
               // On the home page a bare hash is the cheapest correct thing.
