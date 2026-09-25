@@ -43,8 +43,7 @@
   font-weight: 600;
   letter-spacing: -0.015em;
   line-height: 1.35;
-  /* wide enough that the shortened thesis stays on one line and the
-     accent word is never orphaned */
+  /* wide enough that the shortened thesis stays on one line */
   max-width: 44ch;
   color: var(--ink);
 }

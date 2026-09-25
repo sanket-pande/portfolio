@@ -30,9 +30,11 @@ export const profile = {
   location: "Mumbai, India",
   currentEmployer: "HealthCompiler",
   yearsExperience: "7+",
-  headline: "I build systems that have to be",
-  /** Last clause of the headline, set in the accent colour. */
-  headlineAccent: "right.",
+  /** The headline reads lead + accent + tail: "I build systems that have to be right." */
+  headlineLead: "I build",
+  /** The one word set in the accent colour. */
+  headlineAccent: "systems",
+  headlineTail: "that have to be right.",
   summary:
     "7+ years building reliable, user-focused applications across Python/Django, FastAPI and React, with depth in cloud infrastructure and security hardening. Currently at HealthCompiler, working on data-heavy systems for the US and Canada — third-party integrations, analytics pipelines, and the GCP infrastructure underneath them.",
   email: "sanketpande99001@gmail.com",

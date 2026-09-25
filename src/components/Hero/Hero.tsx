@@ -16,7 +16,7 @@ export default function Hero() {
         </h1>
 
         <p className={`${styles.headline} ${styles.animate} ${styles.delay1}`}>
-          {profile.headline} <em>{profile.headlineAccent}</em>
+          {profile.headlineLead} <em>{profile.headlineAccent}</em> {profile.headlineTail}
         </p>
 
         <p className={`${styles.summary} ${styles.animate} ${styles.delay2}`}>{profile.summary}</p>
