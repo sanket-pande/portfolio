@@ -1,36 +1,131 @@
+/* A day/night switch. The scenery (sky, sun, moon, stars) is illustration,
+   not UI chrome, so its colours are fixed here rather than themed — it reads
+   the same on either page background. */
 .toggle {
+  --w: 64px;
+  --h: 34px;
+  --pad: 3px;
+  --knob: 28px;
+
+  position: relative;
   display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  background: var(--panel-2);
-  border: 1px solid var(--line);
+  flex: none;
+  padding: 0;
+  background: none;
+  border: 0;
   border-radius: 999px;
-  padding: 7px 13px 7px 11px;
-  font-family: var(--font-mono);
-  font-size: var(--ui-xs);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--ink-2);
   cursor: pointer;
-  transition: border-color 0.15s ease, color 0.15s ease;
-}
-.toggle:hover { color: var(--ink); border-color: var(--accent); }
-
-/* The label is long now, so it gives way earlier and the button falls back
-   to its icon. It is hidden *visually only* — still the buttons accessible
-   name, so screen readers and voice control keep the full phrase. */
-@media (max-width: 1000px) {
-  .label {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-  }
-  .toggle { padding: 7px 11px; }
+  -webkit-tap-highlight-color: transparent;
 }
 
+/* Touch devices get a 44px-tall hit area without a taller-looking switch. */
 @media (pointer: coarse) {
-  .toggle { min-height: 44px; padding-inline: 16px; }
+  .toggle::before {
+    content: "";
+    position: absolute;
+    inset: -6px -4px;
+  }
 }
+
+.track {
+  position: relative;
+  display: block;
+  width: var(--w);
+  height: var(--h);
+  border-radius: 999px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #5eb6f7 0%, #a9dcff 100%);
+  box-shadow: inset 0 1px 3px rgba(10, 40, 90, 0.35), 0 0 0 1px rgba(17, 20, 42, 0.14);
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+}
+/* a second sky sitting on top, so the gradient change can cross-fade
+   (gradients themselves can't be transitioned) */
+.track::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #070c24 0%, #1d2b63 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.toggle[data-mode="dark"] .track {
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(117, 137, 162, 0.32);
+}
+.toggle[data-mode="dark"] .track::before { opacity: 1; }
+
+.toggle:hover .track { box-shadow: inset 0 1px 3px rgba(10, 40, 90, 0.35), 0 0 0 1px var(--accent); }
+.toggle[data-mode="dark"]:hover .track { box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--accent); }
+
+.toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* ---------- night: stars ---------- */
+.stars,
+.clouds {
+  position: absolute;
+  inset: 0;
+  transition: opacity 0.35s ease, transform 0.4s ease;
+}
+.stars { opacity: 0; transform: translateX(-8px); }
+.toggle[data-mode="dark"] .stars { opacity: 1; transform: none; transition-delay: 0.1s; }
+
+.star {
+  position: absolute;
+  fill: #f6f3d8;
+  animation: twinkle 3.2s ease-in-out infinite;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.7); }
+}
+
+/* ---------- day: clouds ---------- */
+.clouds { opacity: 1; transform: none; }
+.toggle[data-mode="dark"] .clouds { opacity: 0; transform: translateX(10px); transition-delay: 0s; }
+
+.cloudA,
+.cloudB {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 999px;
+}
+.cloudA { right: 7px; bottom: 6px; width: 16px; height: 6px; }
+.cloudB { right: 14px; bottom: 11px; width: 11px; height: 5px; opacity: 0.75; }
+
+/* ---------- the thumb ----------
+   A solid round handle is what says "switch": it sits at one end of the
+   track and slides to the other. The sun / moon live inside it. */
+.knob {
+  position: absolute;
+  top: var(--pad);
+  left: var(--pad);
+  width: var(--knob);
+  height: var(--knob);
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 3px 8px rgba(0, 0, 0, 0.25);
+  transition: transform 0.4s cubic-bezier(0.5, 0, 0.2, 1), background 0.4s ease;
+}
+.toggle[data-mode="dark"] .knob {
+  transform: translateX(calc(var(--w) - var(--knob) - var(--pad) * 2));
+  background: #eceff9;
+}
+
+.sun,
+.moon {
+  position: absolute;
+  inset: 4px;
+  width: calc(100% - 8px);
+  height: calc(100% - 8px);
+  transition: opacity 0.3s ease, transform 0.5s cubic-bezier(0.5, 0, 0.2, 1);
+}
+
+.sun { fill: #f59e0b; stroke: #f59e0b; stroke-width: 1.9; stroke-linecap: round; }
+.sun circle { stroke: none; }
+
+.moon { fill: #34449a; opacity: 0; transform: rotate(-60deg) scale(0.6); }
+
+.toggle[data-mode="dark"] .sun { opacity: 0; transform: rotate(90deg) scale(0.5); }
+.toggle[data-mode="dark"] .moon { opacity: 1; transform: none; }
+
+/* pressing snaps the knob along faster than the idle glide */
+.toggle:active .knob { transition-duration: 0.15s; }

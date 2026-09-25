@@ -69,7 +69,7 @@ export const componentDemos: ComponentDemo[] = [
     id: "theme-toggle",
     name: "ThemeToggle",
     summary:
-      "The light/dark switch. It's deliberately stateless — it doesn't know what theme is active or how to persist it, it just renders a button and calls onToggle. The useTheme hook owns the real logic.",
+      "The day/night switch — a sun on a sky-blue track in light mode, a crescent moon among twinkling stars in dark. It's deliberately stateless: it doesn't know how the theme is stored, it just renders a role=\"switch\" button (aria-checked = dark) and calls onToggle. The useTheme hook owns the real logic.",
     usedIn: ["Header"],
     props: [
       { name: "theme", type: '"light" | "dark"' },
@@ -97,7 +97,6 @@ render(<Demo />);`,
       "Hero — the primary CTA arrow",
       "Contact — email, LinkedIn, GitHub",
       "Footer — the three links",
-      "ThemeToggle — sun / moon",
     ],
     props: [
       { name: "name", type: '"mail" | "linkedin" | "github" | "download" | "arrowRight" | "sun" | "moon" | "layers"' },
