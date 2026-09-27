@@ -4,6 +4,7 @@ import type { Theme } from "../../hooks/useTheme";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
 import Button from "../Button/Button";
 import Icon from "../Icon/Icon";
+import Logo from "../Logo/Logo";
 import { profile } from "../../data/resume";
 import { useScrollSpy } from "../../hooks/useScrollSpy";
 import styles from "./Header.module.css";
@@ -79,8 +80,16 @@ export default function Header({ theme, onToggleTheme }: HeaderProps) {
   return (
     <header ref={headerRef} className={styles.header}>
       <div className={styles.inner}>
-        <Link to="/" className={styles.brand} onClick={goToTop}>
-          {profile.name}
+        {/* the mark is a drawing, so the link carries the name a screen
+            reader should hear */}
+        <Link
+          to="/"
+          className={styles.brand}
+          onClick={goToTop}
+          aria-label={profile.name}
+          title={profile.name}
+        >
+          <Logo height={26} />
         </Link>
 
         <nav className={styles.navLinks} aria-label="Primary">

@@ -18,15 +18,12 @@
 }
 
 .brand {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: var(--step-0);
-  letter-spacing: -0.01em;
-  white-space: nowrap;
-  transition: color 0.15s ease;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.15s ease;
 }
 @media (hover: hover) {
-  .brand:hover { color: var(--accent); }
+  .brand:hover { opacity: 0.8; }
 }
 
 .navLinks {

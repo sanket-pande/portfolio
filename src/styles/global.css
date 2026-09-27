@@ -43,6 +43,10 @@
   --signal:      #0A6B77;
   --on-accent:   #FFFFFF;
 
+  /* the <sp/> wordmark — the colours in the light logo file */
+  --logo-blue:   #1F5FE0;
+  --logo-ink:    #0A0F1C;
+
   /* alternating section wash — chapters swap between these two so the
      scroll reads as a sequence of rooms, not one flat page */
   --surface-a: #EEF1FA; /* hero+about, skills */
@@ -71,6 +75,10 @@
   --dk-chip-text:   #99C5FE;
   --dk-signal:      #4FD6E0;
   --dk-on-accent:   #FFFFFF;
+
+  /* the dark logo file */
+  --dk-logo-blue:   #4C8DFF;
+  --dk-logo-ink:    #E6EDF7;
 
   --dk-surface-a: #060A11;
   --dk-surface-b: #0B1422;
@@ -125,6 +133,9 @@
   --chip-text:   var(--dk-chip-text);
   --signal:      var(--dk-signal);
   --on-accent:   var(--dk-on-accent);
+
+  --logo-blue:   var(--dk-logo-blue);
+  --logo-ink:    var(--dk-logo-ink);
 
   --surface-a:   var(--dk-surface-a);
   --surface-b:   var(--dk-surface-b);
