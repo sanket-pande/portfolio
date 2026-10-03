@@ -29,6 +29,13 @@ export const profile = {
   title: "Full Stack Software Engineer",
   location: "Mumbai, India",
   currentEmployer: "HealthCompiler",
+  /** Shown as the live status badge in Contact. */
+  availability: "Open for high-scale challenges",
+  /** The reassurance line under the Contact buttons. */
+  responseNote: "Typically responds within 24 hours · Available for remote contracts & full-time roles.",
+  /** The timezone the Contact clock reads in. */
+  timeZone: "Asia/Kolkata",
+  timeZoneLabel: "IST",
   yearsExperience: "7+",
   /** The headline reads lead + accent + tail: "I build systems that have to be right." */
   headlineLead: "I build",

@@ -95,11 +95,11 @@ render(<Demo />);`,
     usedIn: [
       "Header — Résumé download, Components",
       "Hero — the primary CTA arrow",
-      "Contact — email, LinkedIn, GitHub",
+      "Contact — email, LinkedIn, GitHub rows, copy and external-link actions",
       "Footer — the three links",
     ],
     props: [
-      { name: "name", type: '"mail" | "linkedin" | "github" | "download" | "arrowRight" | "sun" | "moon" | "layers"' },
+      { name: "name", type: '"mail" | "linkedin" | "github" | "download" | "arrowRight" | "sun" | "moon" | "layers" | "copy" | "check" | "external" | "clock"' },
       { name: "size", type: "number", note: "px square; defaults to 16" },
     ],
     code: `<div style={{ display: "flex", gap: 18, alignItems: "center", color: "var(--ink-2)" }}>
@@ -111,6 +111,10 @@ render(<Demo />);`,
   <Icon name="layers" size={22} />
   <Icon name="sun" size={22} />
   <Icon name="moon" size={22} />
+  <Icon name="copy" size={22} />
+  <Icon name="check" size={22} />
+  <Icon name="external" size={22} />
+  <Icon name="clock" size={22} />
 </div>`,
   },
   {

@@ -1,3 +1,40 @@
+/* ---------- heading ---------- */
+.pill {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: var(--ui-xs);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--chip-bg);
+  border: 1px solid var(--chip-border);
+  border-radius: 999px;
+  padding: 6px 12px;
+}
+
+.pillDot,
+.liveDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--signal);
+  flex: none;
+  animation: ping 2.4s ease-out infinite;
+}
+
+/* the status dot pulses outward and fades, like a live indicator */
+@keyframes ping {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--signal) 60%, transparent); }
+  70%, 100% { box-shadow: 0 0 0 7px transparent; }
+}
+
+.accent { color: var(--accent); }
+
+/* ---------- panel ---------- */
 .panel {
   background: var(--panel);
   border: 1px solid var(--line);
@@ -16,31 +53,140 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 26px;
+  /* the column is shorter than the link stack beside it, so it sits in the
+     middle of the panel instead of hanging off the top */
+  align-self: center;
+  gap: 24px;
 }
 
-.note {
-  font-size: var(--step-1);
+/* ---------- status chips ---------- */
+.status {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: var(--ui-xs);
+  letter-spacing: 0.02em;
   color: var(--ink-2);
-  line-height: 1.65;
-  max-width: 34ch;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 12px;
+}
+.badge svg { color: var(--ink-3); }
+
+.clockText { font-variant-numeric: tabular-nums; }
+
+/* ---------- actions ---------- */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
 }
 
+/* the arrow slides on hover; the mail glyph tips a little */
+.emailBtn .arrow { transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.3, 1); }
+.emailBtn .mailIcon { transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.3, 1); }
+@media (hover: hover) {
+  .emailBtn:hover .arrow { transform: translateX(4px); }
+  .emailBtn:hover .mailIcon { transform: rotate(-8deg) translateY(-1px); }
+}
+
+.copyBtn { transition: border-color 0.2s ease, color 0.2s ease; }
+.copyBtn[data-copied="true"] {
+  border-color: var(--signal);
+  color: var(--signal);
+}
+
+/* a short pop when the check mark replaces the copy glyph */
+.pop { animation: pop 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.3); }
+@keyframes pop {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ---------- response line ---------- */
+.response {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  max-width: 64ch;
+  font-family: var(--font-mono);
+  font-size: var(--ui-xs);
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+  color: var(--ink-3);
+}
+.responseDot {
+  flex: none;
+  width: 6px;
+  height: 6px;
+  margin-top: 0.5em;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* ---------- contact rows ---------- */
 .links {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 12px;
 }
-.links li { display: flex; flex-direction: column; gap: 2px; }
-.links a {
-  font-size: var(--step-0);
-  color: var(--accent);
-  width: fit-content;
-  min-height: 44px;
-  display: inline-flex;
+
+.links li {
+  opacity: 0;
+  transform: translateY(10px);
+}
+[data-reveal="visible"] .links li {
+  animation: rowIn 0.55s cubic-bezier(0.2, 0.8, 0.3, 1) both;
+  animation-delay: calc(var(--i) * 90ms + 160ms);
+}
+@keyframes rowIn {
+  to { opacity: 1; transform: none; }
+}
+
+.row {
+  display: flex;
   align-items: center;
+  gap: 16px;
+  padding: 16px 18px;
+  min-height: 72px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.3, 1), border-color 0.2s ease,
+    box-shadow 0.25s ease, background-color 0.2s ease;
 }
-.links a:hover { text-decoration: underline; }
+
+.tile {
+  flex: none;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 9px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  color: var(--accent);
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.rowText {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+  flex: 1;
+}
 
 .key {
   font-family: var(--font-mono);
@@ -50,12 +196,80 @@
   color: var(--ink-3);
 }
 
+.value {
+  font-family: var(--font-mono);
+  font-size: var(--ui-md);
+  color: var(--ink);
+  overflow-wrap: anywhere;
+  transition: color 0.2s ease;
+}
+
+.trail {
+  flex: none;
+  color: var(--ink-3);
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.3, 1), color 0.2s ease;
+}
+
+/* the email row is a <button>, so it needs the reset an <a> doesn't */
+.rowButton {
+  width: 100%;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.rowButton:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+/* once copied, the row confirms in the signal colour */
+.rowButton[data-copied="true"] { border-color: var(--signal); }
+.rowButton[data-copied="true"] .key,
+.rowButton[data-copied="true"] .trail { color: var(--signal); }
+
+@media (hover: hover) {
+  .row:hover,
+  .row:focus-visible {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+    box-shadow: 0 14px 28px -22px var(--accent);
+    background: var(--panel);
+  }
+  .row:hover .tile,
+  .row:focus-visible .tile {
+    background: var(--accent-fill);
+    border-color: var(--accent-fill);
+    color: var(--on-accent);
+  }
+  .row:hover .value { color: var(--accent); }
+  .row:hover .trail,
+  .row:focus-visible .trail {
+    transform: translate(2px, -2px);
+    color: var(--accent);
+  }
+}
+
+/* a press settles the row back, so every tap reads as a click */
+.row:active { transform: translateY(0) scale(0.99); }
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---------- responsive ---------- */
 @media (max-width: 860px) {
   .panel { grid-template-columns: 1fr; gap: 30px; }
 }
 @media (max-width: 560px) {
   .panel { padding: 30px 22px 32px; }
+  .row { padding: 14px 12px; gap: 10px; }
+  .tile { width: 32px; height: 32px; }
+  .value { font-size: var(--ui-sm); }
 }
 
-/* icon sits with the address, not floating beside it */
-.links a { gap: 10px; }
+
+/* the narrowest phones: the address drops a size so the email stays on one line */
+@media (max-width: 380px) {
+  .value { font-size: var(--ui-xs); }
+}

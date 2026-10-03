@@ -8,7 +8,11 @@ export type IconName =
   | "arrowRight"
   | "sun"
   | "moon"
-  | "layers";
+  | "layers"
+  | "copy"
+  | "check"
+  | "external"
+  | "clock";
 
 interface IconProps {
   name: IconName;
@@ -98,6 +102,34 @@ export default function Icon({ name, size = 16, className = "" }: IconProps) {
           <path d="m12 3 8.5 4.5L12 12 3.5 7.5 12 3Z" />
           <path d="m4 12 8 4.3 8-4.3" />
           <path d="m4 16.5 8 4.3 8-4.3" />
+        </svg>
+      );
+    case "copy":
+      return (
+        <svg {...common} {...stroke}>
+          <rect x="8.5" y="8.5" width="12" height="12" rx="2.5" />
+          <path d="M15.5 8.5V5.5a2 2 0 0 0-2-2h-8a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h3" />
+        </svg>
+      );
+    case "check":
+      return (
+        <svg {...common} {...stroke}>
+          <path d="m5 12.5 4.5 4.5L19 7.5" />
+        </svg>
+      );
+    case "external":
+      return (
+        <svg {...common} {...stroke}>
+          <path d="M14 4h6v6" />
+          <path d="M20 4 10.5 13.5" />
+          <path d="M18 14v5.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 4 19.5v-11A1.5 1.5 0 0 1 5.5 7H11" />
+        </svg>
+      );
+    case "clock":
+      return (
+        <svg {...common} {...stroke}>
+          <circle cx="12" cy="12" r="9" />
+          <path d="M12 7.5V12l3 2" />
         </svg>
       );
   }
