@@ -4,9 +4,23 @@ export interface Stat {
   context: string;
 }
 
+export interface Skill {
+  name: string;
+  /** The dot colour on the pill, and the pill's border on hover. */
+  color: string;
+  /** One short line, shown in the tooltip on hover or keyboard focus. */
+  tip: string;
+  /** What it's used for — shown in the telemetry bar when the pill is picked. */
+  detail: string;
+}
+
 export interface SkillGroup {
+  /** Stable key for the filter bar. */
+  id: string;
   title: string;
-  items: string[];
+  /** Small mono line under the title. */
+  subtitle: string;
+  items: Skill[];
   /** Where this group actually shows up in the work below — so the
    * section proves its own claim instead of asserting it. */
   note: string;
@@ -78,25 +92,135 @@ export const highlights = [
    up where it belongs — against the role that used it, in Experience. */
 export const skillGroups: SkillGroup[] = [
   {
+    id: "frameworks",
     title: "Languages & Frameworks",
-    items: ["Python", "Django", "FastAPI", "TypeScript", "React", "Celery"],
+    subtitle: "Core Engineering",
+    items: [
+      {
+        name: "Python",
+        color: "#f59e0b",
+        tip: "Primary weapon of choice",
+        detail: "Primary weapon of choice for backend services, data wrangling, and ML pipeline orchestration.",
+      },
+      {
+        name: "Django",
+        color: "#10b981",
+        tip: "Scalable application backbone",
+        detail: "Battle-tested ORM and modular monolith architecture powering large-scale backend systems.",
+      },
+      {
+        name: "FastAPI",
+        color: "#2dd4bf",
+        tip: "Blazing async microservices",
+        detail: "High-throughput async REST endpoints, Pydantic type safety, and streaming responses.",
+      },
+      {
+        name: "TypeScript",
+        color: "#3b82f6",
+        tip: "Type-safe frontend stability",
+        detail: "End-to-end typed contracts bridging API responses smoothly to frontend component state.",
+      },
+      {
+        name: "React",
+        color: "#38bdf8",
+        tip: "Reactive component systems",
+        detail: "Modern reactive user interfaces, atomic state management, and real-time interactive dashboards.",
+      },
+      {
+        name: "Celery",
+        color: "#a3e635",
+        tip: "Asynchronous task master",
+        detail: "Distributed worker task queues managing async jobs, scheduled reporting, and retry logic.",
+      },
+    ],
     note: "The insights backend, and the React UI that replaced its Django templates.",
   },
   {
+    id: "ai",
     title: "AI & Generative AI",
+    subtitle: "Intelligent Systems",
     items: [
-      "LLM Integration",
-      "RAG Pipelines",
-      "Anthropic Claude API",
-      "OpenAI API",
-      "LangChain",
-      "Prompt Engineering",
+      {
+        name: "LLM Integration",
+        color: "#c084fc",
+        tip: "Embedded model pipelines",
+        detail: "Structured JSON schema outputs, function calling, and deterministic evaluation.",
+      },
+      {
+        name: "RAG Pipelines",
+        color: "#ec4899",
+        tip: "Context-grounded retrieval",
+        detail: "Chunking strategies, semantic dense retrieval, vector embeddings, and re-ranking.",
+      },
+      {
+        name: "Anthropic Claude API",
+        color: "#fb923c",
+        tip: "High-context reasoning engine",
+        detail: "Long-context complex code generation, document synthesis, and safety guardrails.",
+      },
+      {
+        name: "OpenAI API",
+        color: "#34d399",
+        tip: "Rapid inference & tooling",
+        detail: "Streaming function calls, embeddings generation, and prompt optimization.",
+      },
+      {
+        name: "LangChain",
+        color: "#fbbf24",
+        tip: "Agent chaining & tools",
+        detail: "Agentic chains, tool orchestration, and memory management.",
+      },
+      {
+        name: "Prompt Engineering",
+        color: "#38bdf8",
+        tip: "Rigorous context steering",
+        detail: "Few-shot exemplar crafting, self-consistency loops, and system constraint calibration.",
+      },
     ],
     note: "LLM tooling shipped into internal workflows to speed up delivery.",
   },
   {
+    id: "cloud",
     title: "Data & Infrastructure",
-    items: ["GCP", "BigQuery", "PostgreSQL", "Terraform", "Docker", "Kubernetes"],
+    subtitle: "Scale & Reliability",
+    items: [
+      {
+        name: "GCP",
+        color: "#4285f4",
+        tip: "Cloud native foundation",
+        detail: "Cloud Run, GKE, Cloud Functions, and secure VPC multi-region architecture.",
+      },
+      {
+        name: "BigQuery",
+        color: "#60a5fa",
+        tip: "Multi-terabyte data warehouse",
+        detail: "Massive analytics SQL queries, partitioned tables, and real-time streaming inserts.",
+      },
+      {
+        name: "PostgreSQL",
+        color: "#818cf8",
+        tip: "Rock-solid relational backbone",
+        detail: "ACID compliance, pgvector similarity search, indexing strategies, and JSONB storage.",
+      },
+      {
+        name: "Terraform",
+        color: "#8b5cf6",
+        tip: "Declarative Infrastructure as Code",
+        detail: "Declarative Infrastructure as Code (IaC) guaranteeing reproducible staging and prod environments.",
+      },
+      {
+        name: "Docker",
+        color: "#22d3ee",
+        tip: "'Works on my machine' & prod",
+        detail: "Multi-stage slim container builds for fast CI/CD compilation and deterministic runtimes.",
+      },
+      {
+        name: "Kubernetes",
+        color: "#2563eb",
+        tip: "Wrangling cluster pods",
+        detail: "Ingress controllers, horizontal pod autoscaling, rolling deployments, and zero-downtime upgrades.",
+      },
+    ],
     note: "Care-gap and Health Risk Assessment pipelines, and the GCP underneath them.",
   },
 ];

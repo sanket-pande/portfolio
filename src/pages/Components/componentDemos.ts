@@ -38,7 +38,7 @@ export const componentDemos: ComponentDemo[] = [
     name: "Chip",
     summary:
       "A flat list of tag pills. Two visual tones, so it can read as an accent (the core stack in the hero) or as neutral reference data (the full skills list).",
-    usedIn: ["Hero — core stack row", "Skills — each grouped list"],
+    usedIn: ["Hero — core stack row"],
     props: [
       { name: "items", type: "string[]" },
       { name: "tone", type: '"accent" | "muted"', note: "defaults to accent" },
@@ -99,7 +99,7 @@ render(<Demo />);`,
       "Footer — the three links",
     ],
     props: [
-      { name: "name", type: '"mail" | "linkedin" | "github" | "download" | "arrowRight" | "sun" | "moon" | "layers" | "copy" | "check" | "external" | "clock"' },
+      { name: "name", type: '"mail" | "linkedin" | "github" | "download" | "arrowRight" | "sun" | "moon" | "layers" | "copy" | "check" | "external" | "clock" | "info"' },
       { name: "size", type: "number", note: "px square; defaults to 16" },
     ],
     code: `<div style={{ display: "flex", gap: 18, alignItems: "center", color: "var(--ink-2)" }}>
@@ -115,6 +115,7 @@ render(<Demo />);`,
   <Icon name="check" size={22} />
   <Icon name="external" size={22} />
   <Icon name="clock" size={22} />
+  <Icon name="info" size={22} />
 </div>`,
   },
   {

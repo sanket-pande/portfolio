@@ -12,7 +12,8 @@ export type IconName =
   | "copy"
   | "check"
   | "external"
-  | "clock";
+  | "clock"
+  | "info";
 
 interface IconProps {
   name: IconName;
@@ -39,7 +40,7 @@ export default function Icon({ name, size = 16, className = "" }: IconProps) {
     className: `${styles.icon} ${className}`.trim(),
   };
 
-  // brand marks are solid shapes; the rest are strokes on the same grid
+  // brand marks (LinkedIn, GitHub) are solid shapes; the rest are strokes on the same grid
   const stroke = {
     fill: "none",
     stroke: "currentColor",
@@ -130,6 +131,14 @@ export default function Icon({ name, size = 16, className = "" }: IconProps) {
         <svg {...common} {...stroke}>
           <circle cx="12" cy="12" r="9" />
           <path d="M12 7.5V12l3 2" />
+        </svg>
+      );
+    case "info":
+      return (
+        <svg {...common} {...stroke}>
+          <circle cx="12" cy="12" r="9" />
+          <path d="M12 11v5.5" />
+          <path d="M12 7.5h.01" />
         </svg>
       );
   }
