@@ -33,7 +33,7 @@
     box-shadow: 0 8px 14px -8px rgba(0, 0, 0, 0.55);
   }
   .primary:hover svg:first-child:not(:last-child) { animation: iconBob 0.7s ease-in-out 1; }
-  .primary:hover svg:last-child { animation: arrowDrive 1s ease-in-out 0.25s infinite; }
+  .primary:hover svg:last-child { animation: arrowDrive 1s ease-in-out infinite; }
 }
 /* a press settles it back down */
 .primary:active { transform: translateY(0) scale(0.98); box-shadow: none; }
@@ -42,11 +42,13 @@
   0% { transform: none; }
   30% { transform: translateY(-4px) rotate(-10deg); }
   60% { transform: translateY(1px) rotate(6deg); }
-  100% { transform: translateY(0) rotate(-6deg); }
+  100% { transform: none; }
 }
+/* starts and ends at rest (0) and runs from the first frame — no delay and
+   no keyframe offset, so there is no jump when the hover begins */
 @keyframes arrowDrive {
-  0%, 100% { transform: translateX(2px); }
-  50% { transform: translateX(7px); }
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(6px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
