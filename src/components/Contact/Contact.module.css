@@ -91,14 +91,6 @@
   gap: 12px;
 }
 
-/* the arrow slides on hover; the mail glyph tips a little */
-.emailBtn .arrow { transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.3, 1); }
-.emailBtn .mailIcon { transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.3, 1); }
-@media (hover: hover) {
-  .emailBtn:hover .arrow { transform: translateX(4px); }
-  .emailBtn:hover .mailIcon { transform: rotate(-8deg) translateY(-1px); }
-}
-
 .copyBtn { transition: border-color 0.2s ease, color 0.2s ease; }
 .copyBtn[data-copied="true"] {
   border-color: var(--signal);

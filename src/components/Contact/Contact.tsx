@@ -106,10 +106,10 @@ export default function Contact() {
           </div>
 
           <div className={styles.actions}>
-            <Button variant="primary" size="lg" href={`mailto:${profile.email}`} className={styles.emailBtn}>
-              <Icon name="mail" size={17} className={styles.mailIcon} />
+            <Button variant="primary" size="lg" href={`mailto:${profile.email}`}>
+              <Icon name="mail" size={17} />
               Email me
-              <Icon name="arrowRight" size={17} className={styles.arrow} />
+              <Icon name="arrowRight" size={17} />
             </Button>
 
             <Button variant="ghost" size="lg" onClick={copy} className={styles.copyBtn} data-copied={copied}>

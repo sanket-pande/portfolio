@@ -21,8 +21,8 @@ export const componentDemos: ComponentDemo[] = [
     id: "button",
     name: "Button",
     summary:
-      "The one interactive control on the site. Renders as a real <button> or, when given an href, an <a> styled identically — so a mailto link and a form submit look the same.",
-    usedIn: ['Hero — "Email me" / "View experience"', 'Header — "Résumé" download'],
+      "The one interactive control on the site. Renders as a real <button> or, when given an href, an <a> styled identically — so a mailto link and a form submit look the same. The primary variant carries the hover motion: a small lift, the leading icon bobbing, and a trailing arrow driving forward.",
+    usedIn: ['Hero — "Contact me" / "View experience"', 'Contact — "Email me" / "Copy email address"', 'Header — "Résumé" download'],
     props: [
       { name: "variant", type: '"primary" | "ghost"', note: "defaults to primary" },
       { name: "href", type: "string", note: "renders an <a> instead of a <button>" },

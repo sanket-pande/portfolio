@@ -14,8 +14,47 @@
 }
 .btn:active { transform: translateY(1px); }
 
-.primary { background: var(--accent-fill); color: var(--on-accent); }
+/* ---------- primary: the call to action gets the motion ----------
+   A small lift, the leading icon bobbing once, and a trailing icon (the
+   arrow) driving forward on a loop while the pointer stays on it. Icons are
+   found by position — leading = first of several, trailing = last — so any
+   primary button with icons picks this up with no extra class. No glow. */
+.primary {
+  background: var(--accent-fill);
+  color: var(--on-accent);
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease, filter 0.15s ease,
+    transform 0.3s cubic-bezier(0.2, 0.8, 0.3, 1), box-shadow 0.3s ease;
+}
+.primary svg { transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.3, 1); }
 .primary:hover { filter: brightness(1.08); }
+@media (hover: hover) {
+  .primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 14px -8px rgba(0, 0, 0, 0.55);
+  }
+  .primary:hover svg:first-child:not(:last-child) { animation: iconBob 0.7s ease-in-out 1; }
+  .primary:hover svg:last-child { animation: arrowDrive 1s ease-in-out 0.25s infinite; }
+}
+/* a press settles it back down */
+.primary:active { transform: translateY(0) scale(0.98); box-shadow: none; }
+
+@keyframes iconBob {
+  0% { transform: none; }
+  30% { transform: translateY(-4px) rotate(-10deg); }
+  60% { transform: translateY(1px) rotate(6deg); }
+  100% { transform: translateY(0) rotate(-6deg); }
+}
+@keyframes arrowDrive {
+  0%, 100% { transform: translateX(2px); }
+  50% { transform: translateX(7px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* keep the lift, drop the looping movement */
+  .primary:hover svg:first-child:not(:last-child),
+  .primary:hover svg:last-child { animation: none; }
+  .primary:hover svg:last-child { transform: translateX(4px); }
+}
 
 .ghost { background: transparent; border-color: var(--line); color: var(--ink); }
 .ghost:hover { border-color: var(--accent); color: var(--accent); }
