@@ -1,3 +1,9 @@
+/** A titled point - About's three numbered columns. */
+export interface Point {
+  title: string;
+  body: string;
+}
+
 export interface Stat {
   value: string;
   label: string;
@@ -37,8 +43,9 @@ export interface Role {
 }
 
 export const profile = {
-  greeting: "Hi, I'm",
   name: "Sanket Pande",
+  /** The mono line beside the name at the top of the Hero. */
+  tagline: ["AI", "Backend", "Cloud infrastructure", "Frontend", "Security"],
   /** One positioning string - used by the <title>, the header and the footer. */
   title: "Full Stack Software Engineer",
   location: "Mumbai, India",
@@ -57,21 +64,26 @@ export const profile = {
   headlineAccent: "systems",
   headlineTail: "that have to be right.",
   summary:
-    "7+ years building backend systems where correctness matters - patient records, healthcare integrations, analytics pipelines - in Python/Django, FastAPI and React, with depth in cloud infrastructure and security hardening. Currently at HealthCompiler, building for US and Canadian healthcare clients: lab and EHR integrations, BigQuery pipelines, and the GCP infrastructure underneath them.",
+    "7+ years building reliable, user-focused applications across Python/Django, FastAPI and React, with depth in cloud infrastructure and security hardening. Currently at HealthCompiler, on data-heavy systems for the US and Canada.",
   email: "sanketpande99001@gmail.com",
   linkedin: "https://linkedin.com/in/sanket-pande",
   github: "https://github.com/sanket-pande",
 };
 
 export const stats: Stat[] = [
-  { value: "60%", label: "Faster queries", context: "Indexing & batch-processing work on patient-record systems at HealthCompiler" },
-  { value: "90%", label: "Faster infra setup", context: "Containerizing Axonator's on-prem deployment for Windows & Linux" },
+  { value: "60%", label: "Performance gain", context: "Optimizing data-heavy systems at HealthCompiler" },
+  { value: "90%", label: "Faster infra setup", context: "Containerizing Axonator's on-prem deployment for Windows and Linux" },
   { value: "10+", label: "Engineers mentored", context: "Leading developers and QA engineers across delivery cycles" },
 ];
 
-export const highlights = [
-  "Leading and mentoring 10+ developers and QA engineers across delivery cycles.",
-  "Turning what stakeholders actually need into specs a team can build from.",
+/** About's three numbered columns. */
+export const highlights: Point[] = [
+  {
+    title: "Stack",
+    body: "Python/Django and FastAPI on the backend, React on the front end, with depth in cloud infrastructure and security hardening.",
+  },
+  { title: "Requirements", body: "Turning what stakeholders actually need into specs a team can build from." },
+  { title: "Mentoring", body: "Leading and mentoring 10+ developers and QA engineers across delivery cycles." },
 ];
 
 /* Trimmed to what's actually reached for day to day. The long tail that

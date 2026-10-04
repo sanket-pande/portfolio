@@ -17,13 +17,6 @@
   min-height: clamp(520px, 78vh, 760px);
 }
 
-/* About: no room of its own - it flows directly under Hero inside the
-   same coloured chapter, so it just wraps its content. */
-.compact {
-  min-height: 0;
-  padding-top: 0;
-}
-
 .head {
   display: flex;
   flex-direction: column;

@@ -12,25 +12,29 @@ export default function Hero() {
     <section ref={ref} id="top" data-play={inView} className={styles.hero}>
       <div className={styles.field} aria-hidden="true" />
       <div className={styles.inner}>
-        {/* one line, one size - the whole greeting is the heading */}
-        <h1 className={`${styles.name} ${styles.animate}`}>
-          {profile.greeting} {profile.name}
-        </h1>
+        <div className={styles.intro}>
+          <p className={`${styles.byline} ${styles.animate}`}>
+            <span className={styles.name}>{profile.name}</span>
+            <span className={styles.rule} aria-hidden="true" />
+            <span className={styles.tagline}>{profile.tagline.join(" · ")}</span>
+          </p>
 
-        <p className={`${styles.headline} ${styles.animate} ${styles.delay1}`}>
-          {profile.headlineLead} <em>{profile.headlineAccent}</em> {profile.headlineTail}
-        </p>
+          {/* the thesis is the heading - the name sits above it as a byline */}
+          <h1 className={`${styles.headline} ${styles.animate} ${styles.delay1}`}>
+            {profile.headlineLead} <em>{profile.headlineAccent}</em> {profile.headlineTail}
+          </h1>
 
-        <p className={`${styles.summary} ${styles.animate} ${styles.delay2}`}>{profile.summary}</p>
+          <p className={`${styles.summary} ${styles.animate} ${styles.delay2}`}>{profile.summary}</p>
 
-        <div className={`${styles.actions} ${styles.animate} ${styles.delay3}`}>
-          <Button variant="primary" size="lg" href="#contact">
-            Contact me
-            <Icon name="arrowRight" size={17} />
-          </Button>
-          <Button variant="ghost" size="lg" href="#experience">
-            View experience
-          </Button>
+          <div className={`${styles.actions} ${styles.animate} ${styles.delay3}`}>
+            <Button variant="primary" size="lg" href="#contact">
+              Get in touch
+              <Icon name="arrowRight" size={17} />
+            </Button>
+            <Button variant="ghost" size="lg" href="#experience">
+              View experience
+            </Button>
+          </div>
         </div>
 
         <div className={`${styles.stats} ${styles.animate} ${styles.delay4}`}>

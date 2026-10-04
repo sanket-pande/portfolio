@@ -1,17 +1,17 @@
+/* open, no tile - the Hero draws one rule above the whole row */
 .stat {
-  background: var(--panel);
-  padding: 18px 18px 20px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
 .value {
   font-family: var(--font-display);
   font-size: var(--step-stat);
   font-weight: 800;
+  line-height: 1.05;
   color: var(--ink);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   font-variant-numeric: tabular-nums;
   margin: 0;
 }
@@ -19,15 +19,15 @@
 .label {
   font-family: var(--font-mono);
   font-size: var(--ui-xs);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--accent);
   margin: 0;
 }
 
 .context {
-  font-size: var(--ui-sm);
-  color: var(--ink-3);
-  line-height: 1.5;
-  margin: 2px 0 0;
+  font-size: var(--ui-md);
+  color: var(--ink-2);
+  line-height: 1.6;
+  margin: 4px 0 0;
 }

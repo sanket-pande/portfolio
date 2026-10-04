@@ -25,34 +25,60 @@
   padding: 64px 24px;
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 56px;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* name - a short rule - what the work is about */
+.byline {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 16px;
 }
 
 .name {
-  font-size: var(--step-4);
+  font-family: var(--font-display);
+  font-size: var(--step-1);
   font-weight: 800;
-  letter-spacing: -0.035em;
-  line-height: 1.05;
+  letter-spacing: -0.02em;
   color: var(--ink);
 }
 
-/* the thesis - clearly second to the name, still the largest sentence */
+.rule {
+  width: 32px;
+  height: 1px;
+  background: var(--line);
+}
+
+.tagline {
+  font-family: var(--font-mono);
+  font-size: var(--ui-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+/* the thesis - the biggest type on the page */
 .headline {
-  font-family: var(--font-display);
-  font-size: var(--step-2);
-  font-weight: 600;
-  letter-spacing: -0.015em;
-  line-height: 1.35;
-  /* wide enough that the shortened thesis stays on one line */
-  max-width: 44ch;
+  font-size: var(--step-5);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1.02;
+  max-width: 13ch;
   color: var(--ink);
 }
 .headline em { font-style: normal; color: var(--accent); }
 
 .summary {
-  font-size: var(--step-0);
+  font-size: var(--step-1);
   color: var(--ink-2);
-  max-width: 62ch;
+  max-width: 54ch;
   line-height: 1.65;
 }
 
@@ -60,23 +86,23 @@
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
+  margin-top: 4px;
 }
 
+/* ---------- stats ---------- */
 .stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  overflow: hidden;
-  margin-top: 8px;
+  gap: 32px 48px;
+  border-top: 1px solid var(--line);
+  padding-top: 40px;
 }
 
 @media (max-width: 720px) {
   .stats { grid-template-columns: 1fr; }
-  .headline { max-width: 100%; }
-  .name { letter-spacing: -0.03em; }
+  .headline { letter-spacing: -0.035em; }
+  /* the tagline drops to its own line here, so the rule would dangle */
+  .rule { display: none; }
 }
 
 /* ---------- entrance sequence ----------

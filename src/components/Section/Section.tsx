@@ -9,27 +9,31 @@ interface SectionProps {
   /** Closing phrase of the heading, set in the accent colour. */
   accent?: string;
   children: ReactNode;
-  /** Folds this section's height into whatever sits above it instead of
-   * claiming its own 80–90vh - used by About, which shares a chapter (and
-   * a background) with Hero rather than reading as a separate room. */
-  compact?: boolean;
 }
 
-export default function Section({ id, eyebrow, title, accent, children, compact }: SectionProps) {
+/** The chapter marker - a pill with a pulsing dot. Exported for About,
+ * which lays out its own heading but keeps the same marker. */
+export function SectionEyebrow({ children }: { children: ReactNode }) {
+  return (
+    // decorative chapter number - the heading is the accessible name
+    <p className={styles.pill} aria-hidden="true">
+      <span className={styles.pillDot} />
+      {children}
+    </p>
+  );
+}
+
+export default function Section({ id, eyebrow, title, accent, children }: SectionProps) {
   const titleId = `${id}-title`;
 
   return (
     <section
       id={id}
       aria-labelledby={titleId}
-      className={`${styles.section} ${compact ? styles.compact : ""}`}
+      className={styles.section}
     >
       <div className={styles.head}>
-        {/* decorative chapter number - the heading is the accessible name */}
-        <p className={styles.pill} aria-hidden="true">
-          <span className={styles.pillDot} />
-          {eyebrow}
-        </p>
+        <SectionEyebrow>{eyebrow}</SectionEyebrow>
         <h2 id={titleId}>
           {title}
           {accent ? (
