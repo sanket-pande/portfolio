@@ -1,7 +1,7 @@
 import { useEffect, useState, type CSSProperties } from "react";
-import Section from "../Section/Section";
-import Button from "../Button/Button";
-import Icon from "../Icon/Icon";
+import Section from "../../components/Section/Section";
+import Button from "../../components/Button/Button";
+import Icon from "../../components/Icon/Icon";
 import { profile } from "../../data/resume";
 import { useInView } from "../../hooks/useInView";
 import styles from "./Contact.module.css";

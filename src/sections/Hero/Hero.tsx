@@ -1,7 +1,7 @@
-import ChipList from "../Chip/Chip";
-import Button from "../Button/Button";
-import Stat from "../Stat/Stat";
-import Icon from "../Icon/Icon";
+import ChipList from "../../components/Chip/Chip";
+import Button from "../../components/Button/Button";
+import Stat from "../../components/Stat/Stat";
+import Icon from "../../components/Icon/Icon";
 import { useInView } from "../../hooks/useInView";
 import { coreStack, profile, stats } from "../../data/resume";
 import styles from "./Hero.module.css";

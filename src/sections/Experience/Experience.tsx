@@ -1,5 +1,5 @@
-import Section from "../Section/Section";
-import ChipList from "../Chip/Chip";
+import Section from "../../components/Section/Section";
+import ChipList from "../../components/Chip/Chip";
 import { experience, type Role } from "../../data/resume";
 import { useInView } from "../../hooks/useInView";
 import styles from "./Experience.module.css";

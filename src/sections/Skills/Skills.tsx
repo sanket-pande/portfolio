@@ -1,6 +1,6 @@
 import { useId, useState, type CSSProperties, type SyntheticEvent } from "react";
-import Section from "../Section/Section";
-import Icon from "../Icon/Icon";
+import Section from "../../components/Section/Section";
+import Icon from "../../components/Icon/Icon";
 import { skillGroups, type Skill, type SkillGroup } from "../../data/resume";
 import { useInView } from "../../hooks/useInView";
 import styles from "./Skills.module.css";

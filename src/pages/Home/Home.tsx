@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import Hero from "../../components/Hero/Hero";
-import About from "../../components/About/About";
-import Experience from "../../components/Experience/Experience";
-import Skills from "../../components/Skills/Skills";
-import Contact from "../../components/Contact/Contact";
+import Hero from "../../sections/Hero/Hero";
+import About from "../../sections/About/About";
+import Experience from "../../sections/Experience/Experience";
+import Skills from "../../sections/Skills/Skills";
+import Contact from "../../sections/Contact/Contact";
 import styles from "./Home.module.css";
 
 export default function Home() {

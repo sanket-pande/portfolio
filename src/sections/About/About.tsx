@@ -1,4 +1,4 @@
-import Section from "../Section/Section";
+import Section from "../../components/Section/Section";
 import { highlights } from "../../data/resume";
 import { useInView } from "../../hooks/useInView";
 import styles from "./About.module.css";
