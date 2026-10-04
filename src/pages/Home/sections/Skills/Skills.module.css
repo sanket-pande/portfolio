@@ -21,10 +21,6 @@
 .heading { display: flex; flex-direction: column; gap: 6px; }
 
 .groupTitle {
-  font-family: var(--font-display);
-  font-size: var(--step-2);
-  font-weight: 700;
-  letter-spacing: -0.01em;
   color: var(--ink);
 }
 
@@ -36,7 +32,7 @@
 
 .note {
   font-size: var(--ui-md);
-  line-height: 1.6;
+  line-height: var(--leading-copy);
   color: var(--ink-3);
 }
 
@@ -92,7 +88,7 @@
 .telemetryLabel {
   font-family: var(--font-mono);
   font-size: var(--ui-xs);
-  letter-spacing: 0.12em;
+  letter-spacing: var(--track-label);
   text-transform: uppercase;
   color: var(--ink-3);
 }
@@ -100,7 +96,7 @@
 .telemetryText {
   font-family: var(--font-mono);
   font-size: var(--ui-md);
-  line-height: 1.55;
+  line-height: var(--leading-copy);
   color: var(--ink);
   animation: textIn 0.35s cubic-bezier(0.2, 0.8, 0.3, 1) both;
 }

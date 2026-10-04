@@ -25,13 +25,13 @@
   padding: 64px 24px;
   display: flex;
   flex-direction: column;
-  gap: 56px;
+  gap: 44px;
 }
 
 .intro {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
 }
 
 /* name - a short rule - what the work is about */
@@ -44,7 +44,7 @@
 
 .name {
   font-family: var(--font-display);
-  font-size: var(--step-1);
+  font-size: var(--step-0);
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--ink);
@@ -59,27 +59,23 @@
 .tagline {
   font-family: var(--font-mono);
   font-size: var(--ui-xs);
-  letter-spacing: 0.14em;
+  letter-spacing: var(--track-label);
   text-transform: uppercase;
   color: var(--ink-2);
 }
 
-/* the thesis - the biggest type on the page */
+/* the thesis - type comes from the global h1 */
 .headline {
-  font-size: var(--step-5);
-  font-weight: 800;
-  letter-spacing: -0.045em;
-  line-height: 1.02;
-  max-width: 13ch;
+  max-width: 14ch;
   color: var(--ink);
 }
 .headline em { font-style: normal; color: var(--accent); }
 
 .summary {
-  font-size: var(--step-1);
+  font-size: var(--step-0);
   color: var(--ink-2);
   max-width: 54ch;
-  line-height: 1.65;
+  line-height: var(--leading-prose);
 }
 
 .actions {
@@ -95,12 +91,11 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 32px 48px;
   border-top: 1px solid var(--line);
-  padding-top: 40px;
+  padding-top: 32px;
 }
 
 @media (max-width: 720px) {
   .stats { grid-template-columns: 1fr; }
-  .headline { letter-spacing: -0.035em; }
   /* the tagline drops to its own line here, so the rule would dangle */
   .rule { display: none; }
 }

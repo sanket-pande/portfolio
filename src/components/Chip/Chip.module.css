@@ -31,7 +31,7 @@
   font-family: var(--font-mono);
   font-size: var(--ui-sm);
   font-weight: 500;
-  letter-spacing: -0.01em;
+  letter-spacing: var(--track-mono);
   color: var(--ink);
   background: var(--panel-2);
   border: 1px solid var(--line);

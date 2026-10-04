@@ -99,16 +99,16 @@ export default function Contact() {
           </div>
 
           <div className={styles.actions}>
-            <Button variant="primary" size="lg" href={`mailto:${profile.email}`}>
-              <Icon name="mail" size={17} />
+            <Button variant="primary" href={`mailto:${profile.email}`}>
+              <Icon name="mail" size={15} />
               Email me
-              <Icon name="arrowRight" size={17} />
+              <Icon name="arrowRight" size={15} />
             </Button>
 
-            <Button variant="ghost" size="lg" onClick={copy} className={styles.copyBtn} data-copied={copied}>
+            <Button variant="ghost" onClick={copy} className={styles.copyBtn} data-copied={copied}>
               <Icon
                 name={copied ? "check" : "copy"}
-                size={17}
+                size={15}
                 className={copied ? styles.pop : undefined}
               />
               {copied ? "Copied" : "Copy email address"}

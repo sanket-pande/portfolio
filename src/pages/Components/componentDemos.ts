@@ -22,11 +22,10 @@ export const componentDemos: ComponentDemo[] = [
     name: "Button",
     summary:
       "The one interactive control on the site. Renders as a real <button> or, when given an href, an <a> styled identically - so a mailto link and a form submit look the same. The primary variant carries the hover motion: a small lift, the leading icon bobbing, and a trailing arrow driving forward.",
-    usedIn: ['Hero - "Contact me" / "View experience"', 'Contact - "Email me" / "Copy email address"', 'Header - "Résumé" download'],
+    usedIn: ['Hero - "Get in touch" / "View experience"', 'Contact - "Email me" / "Copy email address"', 'Header - "Résumé" download'],
     props: [
       { name: "variant", type: '"primary" | "ghost"', note: "defaults to primary" },
       { name: "href", type: "string", note: "renders an <a> instead of a <button>" },
-      { name: "size", type: '"md" | "lg"', note: "lg is the hero and contact CTA" },
     ],
     code: `<div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
   <Button variant="primary" href="#">Primary</Button>

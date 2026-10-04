@@ -14,7 +14,7 @@ export default function About() {
         <SectionEyebrow>03 · About</SectionEyebrow>
 
         <div className={styles.intro}>
-          <h2 id="about-title" className={styles.title}>
+          <h2 id="about-title">
             Take the messy thing and make it obviously correct.
           </h2>
           <p className={styles.lede}>

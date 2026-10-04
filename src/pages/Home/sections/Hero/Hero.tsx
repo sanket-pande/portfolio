@@ -27,11 +27,11 @@ export default function Hero() {
           <p className={`${styles.summary} ${styles.animate} ${styles.delay2}`}>{profile.summary}</p>
 
           <div className={`${styles.actions} ${styles.animate} ${styles.delay3}`}>
-            <Button variant="primary" size="lg" href="#contact">
+            <Button variant="primary" href="#contact">
               Get in touch
-              <Icon name="arrowRight" size={17} />
+              <Icon name="arrowRight" size={15} />
             </Button>
-            <Button variant="ghost" size="lg" href="#experience">
+            <Button variant="ghost" href="#experience">
               View experience
             </Button>
           </div>

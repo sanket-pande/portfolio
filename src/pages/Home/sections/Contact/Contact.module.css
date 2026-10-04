@@ -52,7 +52,7 @@
   gap: 8px;
   font-family: var(--font-mono);
   font-size: var(--ui-xs);
-  letter-spacing: 0.02em;
+  letter-spacing: var(--track-mono);
   color: var(--ink-2);
   background: var(--panel-2);
   border: 1px solid var(--line);
@@ -92,8 +92,8 @@
   max-width: 64ch;
   font-family: var(--font-mono);
   font-size: var(--ui-xs);
-  letter-spacing: 0.02em;
-  line-height: 1.6;
+  letter-spacing: var(--track-mono);
+  line-height: var(--leading-copy);
   color: var(--ink-3);
 }
 .responseDot {
@@ -163,7 +163,7 @@
 .key {
   font-family: var(--font-mono);
   font-size: var(--ui-xs);
-  letter-spacing: 0.08em;
+  letter-spacing: var(--track-label);
   text-transform: uppercase;
   color: var(--ink-3);
 }

@@ -11,7 +11,7 @@
   font-weight: 800;
   line-height: 1.05;
   color: var(--ink);
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
   font-variant-numeric: tabular-nums;
   margin: 0;
 }
@@ -19,15 +19,15 @@
 .label {
   font-family: var(--font-mono);
   font-size: var(--ui-xs);
-  letter-spacing: 0.16em;
+  letter-spacing: var(--track-label);
   text-transform: uppercase;
   color: var(--accent);
   margin: 0;
 }
 
 .context {
-  font-size: var(--ui-md);
+  font-size: var(--ui-sm);
   color: var(--ink-2);
-  line-height: 1.6;
+  line-height: var(--leading-copy);
   margin: 4px 0 0;
 }

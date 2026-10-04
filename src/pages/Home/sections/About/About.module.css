@@ -20,18 +20,10 @@
   align-items: start;
 }
 
-.title {
-  font-size: var(--step-3);
-  font-weight: 800;
-  letter-spacing: -0.035em;
-  line-height: 1.08;
-  color: var(--ink);
-}
-
 .lede {
   font-size: var(--step-0);
   color: var(--ink-2);
-  line-height: 1.8;
+  line-height: var(--leading-prose);
   padding-top: 6px;
 }
 
@@ -53,8 +45,6 @@
 }
 
 .pointTitle {
-  font-size: var(--step-1);
-  font-weight: 700;
   color: var(--ink);
   margin-bottom: 10px;
 }
@@ -62,7 +52,7 @@
 .pointBody {
   font-size: var(--ui-md);
   color: var(--ink-2);
-  line-height: 1.7;
+  line-height: var(--leading-copy);
   max-width: 40ch;
 }
 

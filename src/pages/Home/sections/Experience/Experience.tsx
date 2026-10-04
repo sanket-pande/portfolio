@@ -38,7 +38,7 @@ function RoleCard({ role, index }: { role: Role; index: number }) {
       </div>
 
       <div className={styles.body}>
-        <h3 className={styles.title}>{role.title}</h3>
+        <h3>{role.title}</h3>
         <p className={styles.company}>{role.company}</p>
         <ChipList
           items={role.tech}
