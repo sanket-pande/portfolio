@@ -59,8 +59,8 @@ export default function Experience() {
     <Section
       id="experience"
       eyebrow="01 · Experience"
-      title="Three companies, one thread -"
-      accent="make the backend disappear"
+      title="Where I've worked,"
+      accent="and what changed because of it."
     >
       <ol className={styles.timeline} role="list">
         {experience.map((role, index) => (
