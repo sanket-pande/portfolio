@@ -60,15 +60,19 @@
 @media (max-width: 900px) {
   .inner {
     flex-wrap: wrap;
-    gap: 10px 16px;
-    padding: 12px 16px 8px;
+    gap: 12px 16px;
+    /* 24px sides - the same gutter as the page content, so the nav row
+       lines up with the text under it */
+    padding: 14px 24px 10px;
   }
 
   .brand { margin-right: auto; }
 
   .navLinks {
     order: 3;
-    width: 100%;
+    /* full row plus the bleed below, so the edge fade sits at the screen's
+       edge rather than 48px in */
+    width: calc(100% + 48px);
     flex: none;
     margin-inline: 0;
     gap: 20px;
@@ -80,16 +84,17 @@
     scrollbar-width: none;
     /* bleed to the screen edges so the row visibly runs off, which is
        what tells you it scrolls */
-    margin-inline: -16px;
-    padding-inline: 16px;
+    margin-inline: -24px;
+    padding-inline: 24px;
   }
   .navLinks::-webkit-scrollbar { display: none; }
   /* the row is already its own line - no need to centre the group in it */
   .sectionLinks { margin-inline: 0; gap: 20px; }
   /* fades the last item rather than guillotining it, so the row reads as
-     scrollable instead of broken */
+     scrollable instead of broken - the fade sits inside the 24px gutter, so
+     a row that fits is never faded */
   .navLinks {
-    mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+    mask-image: linear-gradient(to right, #000 calc(100% - 24px), transparent);
   }
   .navLinks a {
     white-space: nowrap;
@@ -116,13 +121,15 @@
 }
 
 /* Phones keep the nav to ONE row - wrapping it turned the sticky header
-   into a third of the viewport. A tighter gap keeps all four links on the
-   row; below that the mask still signals the row scrolls. */
+   into a third of the viewport. The links spread across the full row, Home
+   on the left gutter and Contact on the right; 11px is the floor the gap
+   shrinks to before the row starts to scroll. */
 @media (max-width: 480px) {
-  .navLinks { gap: 12px; }
-  /* five links now (Home + four sections) - the group's own gap is what
-     has to give for Contact to stay on screen at 360px */
-  .sectionLinks { gap: 11px; }
+  .sectionLinks {
+    flex: 1;
+    justify-content: space-between;
+    gap: 11px;
+  }
   /* the download mark costs the ~24px that lets brand, Résumé and the
      toggle share one row on a phone - the word alone says enough there */
   .resumeIcon { display: none; }

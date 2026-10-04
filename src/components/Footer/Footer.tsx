@@ -15,14 +15,6 @@ export default function Footer() {
           <Icon name="layers" size={14} />
           Components
         </Link>
-        <a href={profile.github} target="_blank" rel="noreferrer">
-          <Icon name="github" size={14} />
-          GitHub
-        </a>
-        <a href={profile.linkedin} target="_blank" rel="noreferrer">
-          <Icon name="linkedin" size={14} />
-          LinkedIn
-        </a>
       </nav>
     </footer>
   );

@@ -1,12 +1,12 @@
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   font-family: var(--font-mono);
-  font-size: var(--ui-sm);
+  font-size: var(--ui-md);
   letter-spacing: var(--track-mono);
-  padding: 9px 16px;
-  border-radius: 6px;
+  padding: 11px 20px;
+  border-radius: 14px;
   border: 1px solid transparent;
   cursor: pointer;
   text-decoration: none;

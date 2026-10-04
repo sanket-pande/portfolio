@@ -1,11 +1,17 @@
 .footer {
-  max-width: var(--container);
-  margin-inline: auto;
-  padding: 32px 24px 56px;
+  /* full width like the header, not capped at --container: the same side
+     padding puts the name under the brand and the links under the actions */
+  padding: 28px 32px;
+  /* full-width, like the header's bottom border - the footer is chrome,
+     not another section, so it doesn't use the content-width hairline */
+  border-top: 1px solid var(--line-2);
+  /* one line: name/location on the left, the links on the right - wraps on
+     a narrow screen */
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
-  gap: 8px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px 24px;
   font-family: var(--font-mono);
   font-size: var(--ui-xs);
   letter-spacing: var(--track-mono);
@@ -14,9 +20,17 @@
 
 .links {
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
 }
 .links a:hover { color: var(--accent); }
+
+/* the header's side padding drops to the page gutter here - follow it,
+   and drop the desktop's deep bottom air, which on a phone just reads as
+   dead space under the last line */
+@media (max-width: 900px) {
+  .footer { padding: 20px 24px 24px; }
+}
 
 @media (pointer: coarse) {
   .links a { min-height: 44px; display: inline-flex; align-items: center; }
