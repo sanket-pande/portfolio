@@ -17,7 +17,7 @@ export type IconName =
 
 interface IconProps {
   name: IconName;
-  /** Pixel size of the square. Defaults to 16 — matches the mono label line. */
+  /** Pixel size of the square. Defaults to 16 - matches the mono label line. */
   size?: number;
   className?: string;
 }

@@ -24,7 +24,7 @@ interface ChipProps {
   name: string;
   /** Dot colour. Defaults to the technology's own colour, then the accent. */
   color?: string;
-  /** Position in its row — staggers the entrance. */
+  /** Position in its row - staggers the entrance. */
   index?: number;
   /** Makes the chip a button (hover motion, pressed state, optional tooltip). */
   onSelect?: () => void;
@@ -85,7 +85,7 @@ interface ChipListProps {
   ariaLabel?: string;
 }
 
-/** A static list of chips — the core stack, a role's tech. */
+/** A static list of chips - the core stack, a role's tech. */
 export default function ChipList({ items, ariaLabel }: ChipListProps) {
   return (
     <ChipRow ariaLabel={ariaLabel}>

@@ -31,7 +31,7 @@ function useLocalClock() {
 /**
  * Writes to the clipboard. Uses the async API where it's allowed, and falls
  * back to a hidden textarea where it isn't (insecure origins, some embedded
- * browsers). Returns false only if both fail — the mailto link still works.
+ * browsers). Returns false only if both fail - the mailto link still works.
  */
 async function writeClipboard(text: string): Promise<boolean> {
   try {

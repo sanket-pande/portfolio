@@ -5,7 +5,7 @@ import Footer from "./components/Footer/Footer";
 import Home from "./pages/Home/Home";
 import { useTheme } from "./hooks/useTheme";
 
-// react-live pulls in a Babel-based transpiler — only worth loading
+// react-live pulls in a Babel-based transpiler - only worth loading
 // when someone actually visits the component playground.
 const ComponentsPage = lazy(() => import("./pages/Components/Components"));
 

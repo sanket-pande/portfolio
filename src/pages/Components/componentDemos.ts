@@ -11,7 +11,7 @@ export interface ComponentDemo {
   usedIn: string[];
   props: PropSpec[];
   code: string;
-  /** Set when the demo needs to declare a function before rendering it — react-live
+  /** Set when the demo needs to declare a function before rendering it - react-live
    * requires an explicit render(...) call in that mode instead of a trailing expression. */
   noInline?: boolean;
 }
@@ -21,8 +21,8 @@ export const componentDemos: ComponentDemo[] = [
     id: "button",
     name: "Button",
     summary:
-      "The one interactive control on the site. Renders as a real <button> or, when given an href, an <a> styled identically — so a mailto link and a form submit look the same. The primary variant carries the hover motion: a small lift, the leading icon bobbing, and a trailing arrow driving forward.",
-    usedIn: ['Hero — "Contact me" / "View experience"', 'Contact — "Email me" / "Copy email address"', 'Header — "Résumé" download'],
+      "The one interactive control on the site. Renders as a real <button> or, when given an href, an <a> styled identically - so a mailto link and a form submit look the same. The primary variant carries the hover motion: a small lift, the leading icon bobbing, and a trailing arrow driving forward.",
+    usedIn: ['Hero - "Contact me" / "View experience"', 'Contact - "Email me" / "Copy email address"', 'Header - "Résumé" download'],
     props: [
       { name: "variant", type: '"primary" | "ghost"', note: "defaults to primary" },
       { name: "href", type: "string", note: "renders an <a> instead of a <button>" },
@@ -37,8 +37,8 @@ export const componentDemos: ComponentDemo[] = [
     id: "chip",
     name: "Chip",
     summary:
-      "The one technology pill used across the site: a dot in the technology's own colour and its name. Static in a list (each role's tech in Experience); give a chip onSelect and it becomes a button with hover motion, a pressed state and an optional tooltip — that's how the Skills section uses it.",
-    usedIn: ["Experience — each role's tech", "Skills — the interactive stack"],
+      "The one technology pill used across the site: a dot in the technology's own colour and its name. Static in a list (each role's tech in Experience); give a chip onSelect and it becomes a button with hover motion, a pressed state and an optional tooltip - that's how the Skills section uses it.",
+    usedIn: ["Experience - each role's tech", "Skills - the interactive stack"],
     props: [
       { name: "items", type: "string[]", note: "ChipList: the names to show" },
       { name: "ariaLabel", type: "string", note: "names the list for screen readers" },
@@ -52,7 +52,7 @@ export const componentDemos: ComponentDemo[] = [
     name: "Stat",
     summary:
       "One number-first tile: a big tabular-figure value, a mono label, and a line of context underneath explaining where the number came from.",
-    usedIn: ["Hero — the three stat tiles under the headline"],
+    usedIn: ["Hero - the three stat tiles under the headline"],
     props: [
       { name: "value", type: "string" },
       { name: "label", type: "string" },
@@ -70,7 +70,7 @@ export const componentDemos: ComponentDemo[] = [
     id: "theme-toggle",
     name: "ThemeToggle",
     summary:
-      "The day/night switch — a sun on a sky-blue track in light mode, a crescent moon among twinkling stars in dark. It's deliberately stateless: it doesn't know how the theme is stored, it just renders a role=\"switch\" button (aria-checked = dark) and calls onToggle. The useTheme hook owns the real logic.",
+      "The day/night switch - a sun on a sky-blue track in light mode, a crescent moon among twinkling stars in dark. It's deliberately stateless: it doesn't know how the theme is stored, it just renders a role=\"switch\" button (aria-checked = dark) and calls onToggle. The useTheme hook owns the real logic.",
     usedIn: ["Header"],
     props: [
       { name: "theme", type: '"light" | "dark"' },
@@ -92,12 +92,12 @@ render(<Demo />);`,
     id: "icon",
     name: "Icon",
     summary:
-      "Inline SVG on a 24×24 grid, no icon library. Every glyph inherits currentColor, so it takes the colour of whatever text it sits beside and needs no separate light/dark version. Decorative by default — each one sits next to a real label, so it's hidden from screen readers rather than announced twice.",
+      "Inline SVG on a 24×24 grid, no icon library. Every glyph inherits currentColor, so it takes the colour of whatever text it sits beside and needs no separate light/dark version. Decorative by default - each one sits next to a real label, so it's hidden from screen readers rather than announced twice.",
     usedIn: [
-      "Header — Résumé download, Components",
-      "Hero — the primary CTA arrow",
-      "Contact — email, LinkedIn, GitHub rows, copy and external-link actions",
-      "Footer — the three links",
+      "Header - Résumé download, Components",
+      "Hero - the primary CTA arrow",
+      "Contact - email, LinkedIn, GitHub rows, copy and external-link actions",
+      "Footer - the three links",
     ],
     props: [
       { name: "name", type: '"mail" | "linkedin" | "github" | "download" | "arrowRight" | "sun" | "moon" | "layers" | "copy" | "check" | "external" | "clock" | "info"' },
@@ -131,7 +131,7 @@ render(<Demo />);`,
       { name: "title", type: "string", note: "the heading's lead-in" },
       { name: "accent", type: "string", note: "closing phrase, set in the accent colour" },
       { name: "children", type: "ReactNode" },
-      { name: "compact", type: "boolean", note: "About uses this — no room of its own, it shares Hero's chapter" },
+      { name: "compact", type: "boolean", note: "About uses this - no room of its own, it shares Hero's chapter" },
     ],
     code: `<Section id="demo-section" eyebrow="00 · Example" title="A reusable section header" accent="with an accent">
   <p style={{ color: "var(--ink-2)", maxWidth: "48ch" }}>

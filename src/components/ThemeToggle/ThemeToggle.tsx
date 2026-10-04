@@ -6,7 +6,7 @@ interface ThemeToggleProps {
   onToggle: () => void;
 }
 
-/** [left %, top %, size px, twinkle delay s] — scattered on the night side. */
+/** [left %, top %, size px, twinkle delay s] - scattered on the night side. */
 const STARS: ReadonlyArray<readonly [number, number, number, number]> = [
   [14, 24, 5, 0],
   [30, 64, 3, 0.6],
@@ -36,7 +36,7 @@ export default function ThemeToggle({ theme, onToggle }: ThemeToggleProps) {
       onClick={onToggle}
     >
       <span className={styles.track} aria-hidden="true">
-        {/* night sky — fades in with the moon */}
+        {/* night sky - fades in with the moon */}
         <span className={styles.stars}>
           {STARS.map(([left, top, size, delay]) => (
             <svg
@@ -56,7 +56,7 @@ export default function ThemeToggle({ theme, onToggle }: ThemeToggleProps) {
           ))}
         </span>
 
-        {/* daytime — two soft clouds on the side the sun has left */}
+        {/* daytime - two soft clouds on the side the sun has left */}
         <span className={styles.clouds}>
           <span className={styles.cloudA} />
           <span className={styles.cloudB} />

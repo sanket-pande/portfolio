@@ -59,7 +59,7 @@ export default function Experience() {
     <Section
       id="experience"
       eyebrow="02 · Experience"
-      title="Three companies, one thread —"
+      title="Three companies, one thread -"
       accent="make the backend disappear"
     >
       <ol className={styles.timeline} role="list">

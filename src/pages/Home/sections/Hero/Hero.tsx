@@ -12,7 +12,7 @@ export default function Hero() {
     <section ref={ref} id="top" data-play={inView} className={styles.hero}>
       <div className={styles.field} aria-hidden="true" />
       <div className={styles.inner}>
-        {/* one line, one size — the whole greeting is the heading */}
+        {/* one line, one size - the whole greeting is the heading */}
         <h1 className={`${styles.name} ${styles.animate}`}>
           {profile.greeting} {profile.name}
         </h1>

@@ -17,7 +17,7 @@
 /* ---------- primary: the call to action gets the motion ----------
    A small lift, the leading icon bobbing once, and a trailing icon (the
    arrow) driving forward on a loop while the pointer stays on it. Icons are
-   found by position — leading = first of several, trailing = last — so any
+   found by position - leading = first of several, trailing = last - so any
    primary button with icons picks this up with no extra class. No glow. */
 .primary {
   background: var(--accent-fill);
@@ -44,7 +44,7 @@
   60% { transform: translateY(1px) rotate(6deg); }
   100% { transform: none; }
 }
-/* starts and ends at rest (0) and runs from the first frame — no delay and
+/* starts and ends at rest (0) and runs from the first frame - no delay and
    no keyframe offset, so there is no jump when the hover begins */
 @keyframes arrowDrive {
   0%, 100% { transform: translateX(0); }

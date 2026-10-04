@@ -26,7 +26,7 @@
 
 .marker {
   grid-area: marker;
-  /* .role is align-items:start so the date sits at the top of its rail —
+  /* .role is align-items:start so the date sits at the top of its rail -
      but the marker must still run the FULL row height, because the
      connector below is drawn relative to it. Without this it collapses to
      the dot's height and the line becomes a short stub. */
@@ -69,7 +69,7 @@
 }
 
 .title { font-size: var(--step-2); font-weight: 700; }
-/* not a link, so it must not wear the accent — that's the link signal */
+/* not a link, so it must not wear the accent - that's the link signal */
 .company { font-size: var(--ui-md); color: var(--ink-2); font-weight: 600; margin-top: -6px; }
 
 .bullets {
@@ -87,7 +87,7 @@
   position: relative;
 }
 .bullets li::before {
-  content: "—";
+  content: "-";
   position: absolute;
   left: 0;
   color: var(--ink-3);

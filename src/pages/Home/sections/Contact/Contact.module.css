@@ -23,7 +23,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
   gap: 36px 56px;
-  /* sizes to its content — a panel stretched to fill the room just frames
+  /* sizes to its content - a panel stretched to fill the room just frames
      the emptiness instead of removing it */
   align-items: start;
   box-shadow: var(--shadow);

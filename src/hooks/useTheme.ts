@@ -19,8 +19,8 @@ function readStoredTheme(): Theme | null {
 /**
  * Tracks the active theme and exposes a toggle.
  *
- * Dark is the default. That default lives in the stylesheet — the dark
- * palette applies whenever <html> is NOT stamped data-theme="light" — so a
+ * Dark is the default. That default lives in the stylesheet - the dark
+ * palette applies whenever <html> is NOT stamped data-theme="light" - so a
  * first visit is dark before any script runs. This hook only has to mirror
  * it for the toggle's own label and icon.
  *
@@ -31,7 +31,7 @@ function readStoredTheme(): Theme | null {
  *
  * It also adds `theme-ready` to <html> two frames after mount. The body's
  * colour transition is scoped to that class, so the palette never animates
- * on load — only when someone actually flips the switch.
+ * on load - only when someone actually flips the switch.
  */
 export function useTheme(): { theme: Theme; toggleTheme: () => void } {
   const [explicit, setExplicit] = useState<Theme | null>(() => readStoredTheme());

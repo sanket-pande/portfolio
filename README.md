@@ -1,4 +1,4 @@
-# Sanket Pande — Portfolio
+# Sanket Pande - Portfolio
 
 React + TypeScript + Vite, styled with CSS Modules. "Control Plane" direction: a
 console-styled hero with an ambient blue glow/grid, and a light/dark toggle that
@@ -11,8 +11,8 @@ src/
   pages/
     Home/                 the one-page site
       Home.tsx            composes Hero → About → Experience → Skills → Contact
-      sections/           the page's chapters — each in its own folder with its .tsx and .module.css
-        Hero/              landing section — headline, summary, stats
+      sections/           the page's chapters - each in its own folder with its .tsx and .module.css
+        Hero/              landing section - headline, summary, stats
         About/
         Experience/        the timeline
         Skills/            the stack by group, with the telemetry bar
@@ -24,19 +24,19 @@ src/
     Logo/                 the <sp/> wordmark
     ThemeToggle/
     Button/
-    Chip/                 the one technology pill — static in lists, interactive in Skills
+    Chip/                 the one technology pill - static in lists, interactive in Skills
     Stat/
     Icon/                 inline SVG icon set
     Section/              shared section chrome (pill eyebrow + heading with accent), used by every section
-  data/resume.ts          typed content — profile, stats, experience, skills (edit this to update copy)
+  data/resume.ts          typed content - profile, stats, experience, skills (edit this to update copy)
   hooks/                  useTheme (light/dark, persisted), useInView (replaying reveal), useScrollSpy
-  styles/global.css        design tokens (light + dark), reset, base typography — the only global stylesheet
+  styles/global.css        design tokens (light + dark), reset, base typography - the only global stylesheet
 public/
   Sanket-Pande-Resume.pdf   served at /Sanket-Pande-Resume.pdf, linked from the header
 ```
 
 Every component's styles are scoped to it via CSS Modules (`Component.module.css`,
-imported as `styles` and applied as `styles.thing`) — nothing leaks between components
+imported as `styles` and applied as `styles.thing`) - nothing leaks between components
 except the design tokens in `global.css`, which every module reads from via `var(--token)`.
 
 ## Run it
@@ -50,11 +50,11 @@ npm run preview   # serve the production build locally
 
 ## Editing content
 
-Everything text-based — the headline, stats, experience bullets, skills, contact links —
+Everything text-based - the headline, stats, experience bullets, skills, contact links -
 lives in `src/data/resume.ts` as typed data, not scattered through the components. Update
 it there and every section that uses it updates automatically.
 
 ## Deploying
 
-`npm run build` produces a static `dist/` folder — drop it on Vercel, Netlify, GitHub
+`npm run build` produces a static `dist/` folder - drop it on Vercel, Netlify, GitHub
 Pages, or any static host. No server-side code involved.

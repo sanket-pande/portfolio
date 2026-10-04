@@ -10,7 +10,7 @@ interface SectionProps {
   accent?: string;
   children: ReactNode;
   /** Folds this section's height into whatever sits above it instead of
-   * claiming its own 80–90vh — used by About, which shares a chapter (and
+   * claiming its own 80–90vh - used by About, which shares a chapter (and
    * a background) with Hero rather than reading as a separate room. */
   compact?: boolean;
 }
@@ -25,7 +25,7 @@ export default function Section({ id, eyebrow, title, accent, children, compact 
       className={`${styles.section} ${compact ? styles.compact : ""}`}
     >
       <div className={styles.head}>
-        {/* decorative chapter number — the heading is the accessible name */}
+        {/* decorative chapter number - the heading is the accessible name */}
         <p className={styles.pill} aria-hidden="true">
           <span className={styles.pillDot} />
           {eyebrow}

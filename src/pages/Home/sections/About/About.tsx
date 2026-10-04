@@ -16,7 +16,7 @@ export default function About() {
     >
       <div ref={ref} data-reveal={inView ? "visible" : "hidden"} className={styles.grid}>
         <p className={styles.lede}>
-          Seven years in, the part that hasn't changed is enjoying the simplification — taking a
+          Seven years in, the part that hasn't changed is enjoying the simplification - taking a
           messy integration or a slow query and making it obviously correct. The part that has
           changed is how much of that now happens through other people.
         </p>

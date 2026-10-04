@@ -1,5 +1,5 @@
 /* A day/night switch. The scenery (sky, sun, moon, stars) is illustration,
-   not UI chrome, so its colours are fixed here rather than themed — it reads
+   not UI chrome, so its colours are fixed here rather than themed - it reads
    the same on either page background. */
 .toggle {
   --w: 64px;

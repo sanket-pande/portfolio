@@ -25,7 +25,7 @@ export default function Home() {
 
   return (
     <main id="main" className={styles.home}>
-      {/* hero + about share one chapter — same wash, no seam between them */}
+      {/* hero + about share one chapter - same wash, no seam between them */}
       <div className={`${styles.chapter} ${styles.flush} ${styles.surfaceA}`}>
         <Hero />
         <About />

@@ -19,7 +19,7 @@ export default function ComponentsPage() {
         <p className={styles.eyebrow}>Component library</p>
         <h1>The pieces this site is built from</h1>
         <p className={styles.lede}>
-          Every reusable component on the portfolio, live. Edit the code under any preview —
+          Every reusable component on the portfolio, live. Edit the code under any preview -
           it re-renders instantly against the real component, not a screenshot of one.
         </p>
       </header>

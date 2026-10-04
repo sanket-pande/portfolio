@@ -78,7 +78,7 @@
 .interactive[aria-pressed="true"] .dot { transform: scale(1.25); }
 
 /* ---------- tooltip ----------
-   display:none until wanted — a hidden-but-laid-out tooltip beside a chip at
+   display:none until wanted - a hidden-but-laid-out tooltip beside a chip at
    the edge would widen the page. --dx is set from script to keep it on screen. */
 .tip {
   display: none;
@@ -103,7 +103,7 @@
   to { opacity: 1; transform: translateX(calc(-50% + var(--dx, 0px))) translateY(0); }
 }
 
-/* a finger can't hover — the tooltip would only ever stick after a tap */
+/* a finger can't hover - the tooltip would only ever stick after a tap */
 @media (hover: none) {
   .tip { display: none; }
 }

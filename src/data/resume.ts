@@ -10,7 +10,7 @@ export interface Skill {
   color: string;
   /** One short line, shown in the tooltip on hover or keyboard focus. */
   tip: string;
-  /** What it's used for — shown in the telemetry bar when the pill is picked. */
+  /** What it's used for - shown in the telemetry bar when the pill is picked. */
   detail: string;
 }
 
@@ -21,7 +21,7 @@ export interface SkillGroup {
   /** Small mono line under the title. */
   subtitle: string;
   items: Skill[];
-  /** Where this group actually shows up in the work below — so the
+  /** Where this group actually shows up in the work below - so the
    * section proves its own claim instead of asserting it. */
   note: string;
 }
@@ -30,7 +30,7 @@ export interface Role {
   title: string;
   company: string;
   period: string;
-  /** Technologies named in this role's own work — scannable, so the
+  /** Technologies named in this role's own work - scannable, so the
    * prose underneath doesn't have to carry the tooling too. */
   tech: string[];
   bullets: string[];
@@ -39,7 +39,7 @@ export interface Role {
 export const profile = {
   greeting: "Hi, I am",
   name: "Sanket Pande",
-  /** One positioning string — used by the <title>, the header and the footer. */
+  /** One positioning string - used by the <title>, the header and the footer. */
   title: "Full Stack Software Engineer",
   location: "Mumbai, India",
   currentEmployer: "HealthCompiler",
@@ -57,7 +57,7 @@ export const profile = {
   headlineAccent: "systems",
   headlineTail: "that have to be right.",
   summary:
-    "7+ years building reliable, user-focused applications across Python/Django, FastAPI and React, with depth in cloud infrastructure and security hardening. Currently at HealthCompiler, working on data-heavy systems for the US and Canada — third-party integrations, analytics pipelines, and the GCP infrastructure underneath them.",
+    "7+ years building reliable, user-focused applications across Python/Django, FastAPI and React, with depth in cloud infrastructure and security hardening. Currently at HealthCompiler, working on data-heavy systems for the US and Canada - third-party integrations, analytics pipelines, and the GCP infrastructure underneath them.",
   email: "sanketpande99001@gmail.com",
   linkedin: "https://linkedin.com/in/sanket-pande",
   github: "https://github.com/sanket-pande",
@@ -76,7 +76,7 @@ export const highlights = [
 
 /* Trimmed to what's actually reached for day to day. The long tail that
    used to live here (PHP, Drupal, Bootstrap, Angular, Solr, …) still shows
-   up where it belongs — against the role that used it, in Experience. */
+   up where it belongs - against the role that used it, in Experience. */
 export const skillGroups: SkillGroup[] = [
   {
     id: "frameworks",
@@ -239,19 +239,19 @@ export const experience: Role[] = [
   {
     title: "Software Engineer",
     company: "Taliun Solutions / HealthCompiler",
-    period: "Jul 2023 — Present",
+    period: "Jul 2023 - Present",
     tech: ["Django", "React", "BigQuery", "GCP", "Anthropic Claude API", "OpenAI API"],
     bullets: [
       "Improved query and processing performance by 60% for systems storing millions of patient records through targeted indexing, query optimization, and batch-processing improvements.",
       "Led migration of a top healthcare company's (US/Canada) UI from Django templates to React, improving performance and user experience.",
-      "Built and shipped LLM/generative AI tooling — including the Anthropic Claude and OpenAI APIs — into internal workflows to accelerate development.",
+      "Built and shipped LLM/generative AI tooling - including the Anthropic Claude and OpenAI APIs - into internal workflows to accelerate development.",
       "Built lab/EHR integrations (Elation, Hint Clinical) for patient and employer onboarding, and the BigQuery analytics pipelines behind care-gap and Health Risk Assessment dashboards.",
     ],
   },
   {
     title: "Fullstack Developer",
     company: "Axonator",
-    period: "Apr 2021 — May 2023",
+    period: "Apr 2021 - May 2023",
     tech: ["AngularJS", "Angular 13", "Containerization", "CI/CD", "Windows", "Linux"],
     bullets: [
       "Containerized Axonator's complete infrastructure for on-premise Windows and Linux deployment, cutting initial setup time by 90%.",
@@ -263,11 +263,11 @@ export const experience: Role[] = [
   {
     title: "Fullstack Developer",
     company: "Sankey Solutions",
-    period: "Jul 2019 — Mar 2021",
+    period: "Jul 2019 - Mar 2021",
     tech: ["Django", "Docker", "Kubernetes", "Ruby on Rails", "AWS", "Nginx"],
     bullets: [
       "Built a customer web portal for one of India's top automobile manufacturers using Django, Docker, and Kubernetes in a microservices architecture.",
-      "Built the UI for an AI-driven, text-to-movie project — real-time rendering and a timeline editor for previewing and editing scenes before export.",
+      "Built the UI for an AI-driven, text-to-movie project - real-time rendering and a timeline editor for previewing and editing scenes before export.",
       "Migrated a luck-based game project to new infrastructure; built Ruby on Rails backend services with a GitLab CI/CD pipeline and an nginx reverse proxy.",
       "Managed AWS infrastructure and led technical support for one of India's top 10 news organizations.",
     ],

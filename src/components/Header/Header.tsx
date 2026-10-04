@@ -9,7 +9,7 @@ import { profile } from "../../data/resume";
 import { useScrollSpy } from "../../hooks/useScrollSpy";
 import styles from "./Header.module.css";
 
-/** The in-page section jumps, in document order — kept as one group, after Home. */
+/** The in-page section jumps, in document order - kept as one group, after Home. */
 const SECTION_LINKS = [
   { href: "#about", label: "About" },
   { href: "#experience", label: "Experience" },
@@ -37,7 +37,7 @@ export default function Header({ theme, onToggleTheme }: HeaderProps) {
   // there), and React Router doesn't reset scroll on navigation, so coming
   // back from /components you'd land wherever you'd scrolled to.
   const goToTop = (event: MouseEvent<HTMLAnchorElement>) => {
-    // leave cmd/ctrl/shift/middle-click alone — "open in new tab" still works
+    // leave cmd/ctrl/shift/middle-click alone - "open in new tab" still works
     if (event.defaultPrevented || event.button !== 0) return;
     if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     event.preventDefault();
@@ -50,14 +50,14 @@ export default function Header({ theme, onToggleTheme }: HeaderProps) {
       window.scrollTo({ top: 0 });
     } else {
       navigate("/");
-      // a different page is appearing — jump, don't glide down from nowhere
+      // a different page is appearing - jump, don't glide down from nowhere
       window.scrollTo({ top: 0, behavior: "instant" });
     }
   };
 
   // The header's height changes with viewport width (the nav drops to a
   // second row, the toggle label reflows) and with the user's own font
-  // size. Anything that hardcodes it — scroll-padding, the scroll spy —
+  // size. Anything that hardcodes it - scroll-padding, the scroll spy -
   // is wrong at some width, so publish the real measured value instead
   // and let both read it.
   useEffect(() => {
@@ -95,7 +95,7 @@ export default function Header({ theme, onToggleTheme }: HeaderProps) {
         <nav className={styles.navLinks} aria-label="Primary">
           {/* the in-page jumps stay together as one group */}
           <span className={styles.sectionLinks}>
-            {/* Home is the top of the page, not a section — same handler as
+            {/* Home is the top of the page, not a section - same handler as
                 the brand, so both behave identically on either route. It is
                 "current" while no section has crossed the header line yet. */}
             <Link

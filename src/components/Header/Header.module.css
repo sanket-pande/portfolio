@@ -55,8 +55,8 @@
 
 /* Below 700px the nav drops to its own row under the brand rather than
    disappearing: five short words scroll horizontally if they have to, so
-   every section — and /components, which is linked nowhere else in the
-   header — stays reachable on a phone. */
+   every section - and /components, which is linked nowhere else in the
+   header - stays reachable on a phone. */
 @media (max-width: 900px) {
   .inner {
     flex-wrap: wrap;
@@ -84,7 +84,7 @@
     padding-inline: 16px;
   }
   .navLinks::-webkit-scrollbar { display: none; }
-  /* the row is already its own line — no need to centre the group in it */
+  /* the row is already its own line - no need to centre the group in it */
   .sectionLinks { margin-inline: 0; gap: 20px; }
   /* fades the last item rather than guillotining it, so the row reads as
      scrollable instead of broken */
@@ -104,7 +104,7 @@
   color: var(--accent);
   position: relative;
 }
-/* drawn INSIDE the link box — an outside ::after gets clipped by the
+/* drawn INSIDE the link box - an outside ::after gets clipped by the
    mobile nav's overflow-x:auto, which also forces overflow-y */
 .navLinks a[aria-current] {
   box-shadow: inset 0 -2px 0 var(--accent);
@@ -115,15 +115,15 @@
   .navLinks a { min-height: 44px; }
 }
 
-/* Phones keep the nav to ONE row — wrapping it turned the sticky header
+/* Phones keep the nav to ONE row - wrapping it turned the sticky header
    into a third of the viewport. A tighter gap keeps all four links on the
    row; below that the mask still signals the row scrolls. */
 @media (max-width: 480px) {
   .navLinks { gap: 12px; }
-  /* five links now (Home + four sections) — the group's own gap is what
+  /* five links now (Home + four sections) - the group's own gap is what
      has to give for Contact to stay on screen at 360px */
   .sectionLinks { gap: 11px; }
   /* the download mark costs the ~24px that lets brand, Résumé and the
-     toggle share one row on a phone — the word alone says enough there */
+     toggle share one row on a phone - the word alone says enough there */
   .resumeIcon { display: none; }
 }

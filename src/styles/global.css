@@ -1,5 +1,5 @@
 /* ============================================================
-   GLOBAL TOKENS — Control Plane: dark console as the resting
+   GLOBAL TOKENS - Control Plane: dark console as the resting
    state, a real light "IDE" variant, royal blue as the signal.
    Imported once in main.tsx. Component/page styling lives in
    their own .module.css files, scoped to that component only.
@@ -19,7 +19,7 @@
    so there is one dark palette and it can't drift.
    ============================================================ */
 :root {
-  /* ---------- light palette — opt-in via the toggle ---------- */
+  /* ---------- light palette - opt-in via the toggle ---------- */
   --bg:          #EEF1FA;
   --panel:       #FFFFFF;
   --panel-2:     #F5F7FD;
@@ -43,18 +43,18 @@
   --signal:      #0A6B77;
   --on-accent:   #FFFFFF;
 
-  /* the <sp/> wordmark — the colours in the light logo file */
+  /* the <sp/> wordmark - the colours in the light logo file */
   --logo-blue:   #1F5FE0;
   --logo-ink:    #0A0F1C;
 
-  /* alternating section wash — chapters swap between these two so the
+  /* alternating section wash - chapters swap between these two so the
      scroll reads as a sequence of rooms, not one flat page */
   --surface-a: #EEF1FA; /* hero+about, skills */
   --surface-b: #DCE3F5; /* experience, contact */
 
   --shadow: 0 1px 2px rgba(17, 20, 42, 0.05), 0 18px 40px -26px rgba(17, 20, 42, 0.32);
 
-  /* ---------- dark palette values — the single source of truth ----------
+  /* ---------- dark palette values - the single source of truth ----------
      Never referenced directly by a component; the dark block below
      aliases the live tokens onto these. */
   --dk-bg:          #060A11;
@@ -95,19 +95,19 @@
      --step-* is the body/display ladder. Nothing sets a raw font-size
      outside this block, so "how big is a section heading" has exactly
      one answer. */
-  --ui-xs: 0.75rem;    /* 12px — eyebrows, chips, keys, footer */
-  --ui-sm: 0.8125rem;  /* 13px — dates, buttons, prop tables */
-  --ui-md: 0.875rem;   /* 14px — bullets, captions */
+  --ui-xs: 0.75rem;    /* 12px - eyebrows, chips, keys, footer */
+  --ui-sm: 0.8125rem;  /* 13px - dates, buttons, prop tables */
+  --ui-md: 0.875rem;   /* 14px - bullets, captions */
 
-  --step-0: 1rem;      /* 16px — body */
-  --step-1: 1.125rem;  /* 18px — lede */
-  --step-2: 1.25rem;   /* 20px — h3 */
-  --step-3: clamp(1.9rem, 1.2rem + 2vw, 2.6rem);   /* h2 — ~42px at 1400 */
-  --step-4: clamp(2.3rem, 1.5rem + 3.4vw, 3.6rem); /* h1 — 57.6px, h1:h2 ≈ 1.4 */
+  --step-0: 1rem;      /* 16px - body */
+  --step-1: 1.125rem;  /* 18px - lede */
+  --step-2: 1.25rem;   /* 20px - h3 */
+  --step-3: clamp(1.9rem, 1.2rem + 2vw, 2.6rem);   /* h2 - ~42px at 1400 */
+  --step-4: clamp(2.3rem, 1.5rem + 3.4vw, 3.6rem); /* h1 - 57.6px, h1:h2 ≈ 1.4 */
   --step-stat: clamp(1.6rem, 1.2rem + 1.4vw, 2rem); /* the stat numerals */
 
   --container: 1080px;
-  /* fallback only — Header measures the real height and overwrites this
+  /* fallback only - Header measures the real height and overwrites this
      on <html> at runtime, so no anchor depends on this number being right */
   --header-offset: 88px;
 }
@@ -150,7 +150,7 @@ html {
   color-scheme: light dark;
   scroll-behavior: smooth;
   /* every in-page anchor clears the sticky header instead of landing
-     under it — the header measures ~71px, this leaves a little air */
+     under it - the header measures ~71px, this leaves a little air */
   scroll-padding-top: var(--header-offset);
 }
 body {
@@ -164,7 +164,7 @@ body {
 }
 /* The palette is stamped on <html> by a blocking script before first
    paint, so load never needs to animate. `theme-ready` is added one
-   frame after mount — from then on a user toggle cross-fades. */
+   frame after mount - from then on a user toggle cross-fades. */
 :root.theme-ready body {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
@@ -184,7 +184,7 @@ img { max-width: 100%; display: block; }
 /* ---------- scroll reveal ----------
    Driven by the useInView hook: an element renders with
    data-reveal="hidden" until it scrolls into view, then
-   data-reveal="visible" — and back to hidden once it has fully scrolled
+   data-reveal="visible" - and back to hidden once it has fully scrolled
    out, so the reveal plays again every time it returns. */
 [data-reveal] {
   transition: opacity 0.7s cubic-bezier(0.16, 0.8, 0.3, 1), transform 0.7s cubic-bezier(0.16, 0.8, 0.3, 1);
@@ -197,7 +197,7 @@ img { max-width: 100%; display: block; }
 }
 
 /* ---------- skip link ----------
-   Off-screen until focused, then the first thing in the tab order —
+   Off-screen until focused, then the first thing in the tab order -
    the header holds 8 controls out of ~13 focusable elements on the page. */
 .skip-link {
   position: fixed;

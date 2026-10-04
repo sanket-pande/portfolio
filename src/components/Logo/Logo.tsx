@@ -10,7 +10,7 @@ import styles from "./Logo.module.css";
  *
  * Path coordinates are in the file's own glyph space (baseline at y = 0,
  * so most of the mark is negative). The viewBox below is the mark's tight
- * bounds in that space — no padding, so `height` is the height of the mark.
+ * bounds in that space - no padding, so `height` is the height of the mark.
  */
 const BRACKET_LEFT = "M85 -253V-357L515 -598V-492L184 -309V-301L515 -119V-12Z";
 const BRACKET_RIGHT = "M2205 -118 2536 -301V-309L2205 -491V-598L2635 -357V-253L2205 -12Z";

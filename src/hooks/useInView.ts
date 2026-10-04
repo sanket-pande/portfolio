@@ -10,7 +10,7 @@ const DEFAULT_OPTIONS: IntersectionObserverInit = {
 };
 
 /**
- * Tracks whether an element is on screen, and does it every time — it turns
+ * Tracks whether an element is on screen, and does it every time - it turns
  * true as the element scrolls in and false once it has fully scrolled out (off
  * the top or the bottom), so the site's reveal motion (see the [data-reveal]
  * rules in global.css) plays again on each return rather than once.
@@ -34,7 +34,7 @@ export function useInView<T extends HTMLElement>(options: IntersectionObserverIn
 
     const observer = new IntersectionObserver((entries) => {
       // A fast scroll can deliver several entries in one batch (in, then out,
-      // say). Only the newest one says where the element is now — acting on the
+      // say). Only the newest one says where the element is now - acting on the
       // first would leave the state stuck on a position it has already left.
       const entry = entries[entries.length - 1];
       if (!entry.isIntersecting || entry.intersectionRatio === 0) setInView(false);

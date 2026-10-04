@@ -36,7 +36,7 @@
   color: var(--ink);
 }
 
-/* the thesis — clearly second to the name, still the largest sentence */
+/* the thesis - clearly second to the name, still the largest sentence */
 .headline {
   font-family: var(--font-display);
   font-size: var(--step-2);
