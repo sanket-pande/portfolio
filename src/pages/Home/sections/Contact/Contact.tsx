@@ -68,11 +68,11 @@ function useCopy(text: string) {
   return { copied, copy };
 }
 
-/** Staggers each row's entrance: row n starts n × 90ms after the panel. */
+/** Staggers each item's entrance: item n starts n × 90ms after the row. */
 const stagger = (n: number) => ({ "--i": n }) as CSSProperties;
 
 export default function Contact() {
-  const { ref, inView } = useInView<HTMLDivElement>();
+  const { ref, inView } = useInView<HTMLUListElement>();
   const clock = useLocalClock();
   const { copied, copy } = useCopy(profile.email);
 
@@ -82,21 +82,22 @@ export default function Contact() {
       eyebrow="04 · Contact"
       title="Building something that has to be right?"
       accent="Let's talk."
-    >
-      <div ref={ref} data-reveal={inView ? "visible" : "hidden"} className={styles.panel}>
+      aside={
         <div className={styles.intro}>
-          <div className={styles.status}>
-            <span className={styles.badge}>
+          <p className={styles.status}>
+            <span className={styles.statusItem}>
               <span className={styles.liveDot} aria-hidden="true" />
               {profile.availability}
             </span>
-            <span className={styles.badge}>
+            <span className={styles.statusItem}>
               <Icon name="clock" size={14} />
               <span className={styles.clockText}>
                 {profile.timeZoneLabel} · {clock ?? "--:--:--"}
               </span>
             </span>
-          </div>
+          </p>
+
+          <p className={styles.lede}>{profile.responseNote}</p>
 
           <div className={styles.actions}>
             <Button variant="primary" href={`mailto:${profile.email}`}>
@@ -118,68 +119,57 @@ export default function Contact() {
               {copied ? "Email address copied" : ""}
             </span>
           </div>
-
-          <p className={styles.response}>
-            <span className={styles.responseDot} aria-hidden="true" />
-            {profile.responseNote}
-          </p>
         </div>
-
-        <ul className={styles.links}>
-          <li style={stagger(0)}>
-            {/* the whole row copies the address; "Email me" is the one that
-                opens the mail app */}
-            <button
-              type="button"
-              className={`${styles.row} ${styles.rowButton}`}
-              onClick={copy}
-              data-copied={copied}
-              aria-label={copied ? "Email address copied" : `Copy email address, ${profile.email}`}
-            >
-              <span className={styles.tile}>
-                <Icon name="mail" size={18} />
-              </span>
-              <span className={styles.rowText}>
-                <span className={styles.key}>{copied ? "Copied to clipboard" : "Email"}</span>
-                <span className={styles.value}>{profile.email}</span>
-              </span>
+      }
+    >
+      <ul ref={ref} data-reveal={inView ? "visible" : "hidden"} className={styles.links} role="list">
+        <li style={stagger(0)}>
+          {/* the whole item copies the address; "Email me" is the one that
+              opens the mail app */}
+          <button
+            type="button"
+            className={`${styles.item} ${styles.itemButton}`}
+            onClick={copy}
+            data-copied={copied}
+            aria-label={copied ? "Email address copied" : `Copy email address, ${profile.email}`}
+          >
+            <span className={styles.itemHead}>
+              <Icon name="mail" size={18} className={styles.icon} />
+              <span className={styles.key}>{copied ? "Copied to clipboard" : "Email"}</span>
               <Icon
                 name={copied ? "check" : "copy"}
                 size={16}
                 className={`${styles.trail} ${copied ? styles.pop : ""}`.trim()}
               />
-            </button>
-          </li>
+            </span>
+            <span className={styles.value}>{profile.email}</span>
+          </button>
+        </li>
 
-          <li style={stagger(1)}>
-            <a className={styles.row} href={profile.linkedin} target="_blank" rel="noreferrer">
-              <span className={styles.tile}>
-                <Icon name="linkedin" size={18} />
-              </span>
-              <span className={styles.rowText}>
-                <span className={styles.key}>LinkedIn</span>
-                <span className={styles.value}>linkedin.com/in/sanket-pande</span>
-              </span>
+        <li style={stagger(1)}>
+          <a className={styles.item} href={profile.linkedin} target="_blank" rel="noreferrer">
+            <span className={styles.itemHead}>
+              <Icon name="linkedin" size={18} className={styles.icon} />
+              <span className={styles.key}>LinkedIn</span>
               <Icon name="external" size={16} className={styles.trail} />
-              <span className={styles.srOnly}>(opens in a new tab)</span>
-            </a>
-          </li>
+            </span>
+            <span className={styles.value}>linkedin.com/in/sanket-pande</span>
+            <span className={styles.srOnly}>(opens in a new tab)</span>
+          </a>
+        </li>
 
-          <li style={stagger(2)}>
-            <a className={styles.row} href={profile.github} target="_blank" rel="noreferrer">
-              <span className={styles.tile}>
-                <Icon name="github" size={18} />
-              </span>
-              <span className={styles.rowText}>
-                <span className={styles.key}>GitHub</span>
-                <span className={styles.value}>github.com/sanket-pande</span>
-              </span>
+        <li style={stagger(2)}>
+          <a className={styles.item} href={profile.github} target="_blank" rel="noreferrer">
+            <span className={styles.itemHead}>
+              <Icon name="github" size={18} className={styles.icon} />
+              <span className={styles.key}>GitHub</span>
               <Icon name="external" size={16} className={styles.trail} />
-              <span className={styles.srOnly}>(opens in a new tab)</span>
-            </a>
-          </li>
-        </ul>
-      </div>
+            </span>
+            <span className={styles.value}>github.com/sanket-pande</span>
+            <span className={styles.srOnly}>(opens in a new tab)</span>
+          </a>
+        </li>
+      </ul>
     </Section>
   );
 }

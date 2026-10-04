@@ -52,8 +52,8 @@ export const profile = {
   currentEmployer: "HealthCompiler",
   /** Shown as the live status badge in Contact. */
   availability: "Open to senior backend & full-stack roles",
-  /** The reassurance line under the Contact buttons. */
-  responseNote: "I usually reply within a day · Remote or on-site, contract or full-time.",
+  /** The reassurance line in Contact, above the buttons. */
+  responseNote: "I usually reply within a day, and I'm open to remote or on-site work, on contract or full-time.",
   /** The timezone the Contact clock reads in. */
   timeZone: "Asia/Kolkata",
   timeZoneLabel: "IST",

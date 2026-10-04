@@ -8,23 +8,26 @@ interface SectionProps {
   title: string;
   /** Closing phrase of the heading, set in the accent colour. */
   accent?: string;
+  /** Sits beside the heading instead of under it - the heading takes the
+   * left column, this the right. About and Contact use it for their lede. */
+  aside?: ReactNode;
   children: ReactNode;
 }
 
-/** The chapter marker - a pill with a pulsing dot. Exported for About,
- * which lays out its own heading but keeps the same marker. */
-export function SectionEyebrow({ children }: { children: ReactNode }) {
-  return (
-    // decorative chapter number - the heading is the accessible name
-    <p className={styles.pill} aria-hidden="true">
-      <span className={styles.pillDot} />
-      {children}
-    </p>
-  );
-}
-
-export default function Section({ id, eyebrow, title, accent, children }: SectionProps) {
+export default function Section({ id, eyebrow, title, accent, aside, children }: SectionProps) {
   const titleId = `${id}-title`;
+
+  const heading = (
+    <h2 id={titleId}>
+      {title}
+      {accent ? (
+        <>
+          {" "}
+          <span className={styles.accent}>{accent}</span>
+        </>
+      ) : null}
+    </h2>
+  );
 
   return (
     <section
@@ -33,16 +36,19 @@ export default function Section({ id, eyebrow, title, accent, children }: Sectio
       className={styles.section}
     >
       <div className={styles.head}>
-        <SectionEyebrow>{eyebrow}</SectionEyebrow>
-        <h2 id={titleId}>
-          {title}
-          {accent ? (
-            <>
-              {" "}
-              <span className={styles.accent}>{accent}</span>
-            </>
-          ) : null}
-        </h2>
+        {/* decorative chapter number - the heading is the accessible name */}
+        <p className={styles.pill} aria-hidden="true">
+          <span className={styles.pillDot} />
+          {eyebrow}
+        </p>
+        {aside ? (
+          <div className={styles.split}>
+            {heading}
+            <div className={styles.aside}>{aside}</div>
+          </div>
+        ) : (
+          heading
+        )}
       </div>
       {children}
     </section>

@@ -62,3 +62,19 @@
      instead of a body one */
   max-width: 20ch;
 }
+
+/* with an aside: heading on the left, the aside on the right */
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 20px 48px;
+  align-items: start;
+}
+.split h2 { max-width: none; }
+/* drops the aside's first line to sit level with the heading's cap height */
+.aside { padding-top: 6px; }
+
+@media (max-width: 860px) {
+  .split { grid-template-columns: 1fr; }
+  .aside { padding-top: 0; }
+}

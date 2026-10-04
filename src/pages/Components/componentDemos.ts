@@ -122,18 +122,19 @@ render(<Demo />);`,
     id: "section",
     name: "Section",
     summary:
-      "The chapter header that opens Experience, Skills and Contact: a pill with a pulsing dot, then the heading with its closing phrase in the accent colour. It exists so every section shares exact spacing and type scale without copies of the same CSS.",
-    usedIn: ["Experience", "Skills", "Contact"],
+      "The chapter header that opens every section after the Hero: a pill with a pulsing dot, then the heading with its closing phrase in the accent colour. It exists so every section shares exact spacing and type scale without copies of the same CSS.",
+    usedIn: ["Experience", "Skills", "About - with an aside", "Contact - with an aside"],
     props: [
       { name: "id", type: "string" },
       { name: "eyebrow", type: "string" },
       { name: "title", type: "string", note: "the heading's lead-in" },
       { name: "accent", type: "string", note: "closing phrase, set in the accent colour" },
+      { name: "aside", type: "ReactNode", note: "sits beside the heading instead of under it" },
       { name: "children", type: "ReactNode" },
     ],
     code: `<Section id="demo-section" eyebrow="00 · Example" title="A reusable section header" accent="with an accent">
   <p style={{ color: "var(--ink-2)", maxWidth: "48ch" }}>
-    Section renders the eyebrow and heading pattern shared by Experience, Skills and Contact.
+    Section renders the eyebrow and heading pattern shared by every section after the Hero.
   </p>
 </Section>`,
   },

@@ -14,53 +14,42 @@
   70%, 100% { box-shadow: 0 0 0 7px transparent; }
 }
 
-/* ---------- panel ---------- */
-.panel {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 38px 40px 40px;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
-  gap: 36px 56px;
-  /* each column sizes to its content - no stretching to match the other */
-  align-items: start;
-  box-shadow: var(--shadow);
-}
-
+/* ---------- layout ----------
+   The same shape as About: heading on the left with the ask beside it
+   (Section's aside), then a hairline and the three ways to reach me as
+   columns. Open, like every other section - no panel. */
 .intro {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  /* the column is shorter than the link stack beside it, so it sits in the
-     middle of the panel instead of hanging off the top */
-  align-self: center;
-  gap: 24px;
+  gap: 20px;
 }
 
-/* ---------- status chips ---------- */
+/* ---------- status line ---------- */
 .status {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-}
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+  gap: 8px 24px;
   font-family: var(--font-mono);
   font-size: var(--ui-xs);
   letter-spacing: var(--track-mono);
   color: var(--ink-2);
-  background: var(--panel-2);
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 6px 12px;
 }
-.badge svg { color: var(--ink-3); }
+
+.statusItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.statusItem svg { color: var(--ink-3); }
 
 .clockText { font-variant-numeric: tabular-nums; }
+
+.lede {
+  color: var(--ink-2);
+  line-height: var(--leading-prose);
+  max-width: 46ch;
+}
 
 /* ---------- actions ---------- */
 .actions {
@@ -68,6 +57,7 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 12px;
+  margin-top: 4px;
 }
 
 .copyBtn { transition: border-color 0.2s ease, color 0.2s ease; }
@@ -83,39 +73,22 @@
   100% { transform: scale(1); opacity: 1; }
 }
 
-/* ---------- response line ---------- */
-.response {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  max-width: 64ch;
-  font-family: var(--font-mono);
-  font-size: var(--ui-xs);
-  letter-spacing: var(--track-mono);
-  line-height: var(--leading-copy);
-  color: var(--ink-3);
-}
-.responseDot {
-  flex: none;
-  width: 6px;
-  height: 6px;
-  margin-top: 0.5em;
-  border-radius: 50%;
-  background: var(--accent);
-}
-
-/* ---------- contact rows ---------- */
+/* ---------- contact columns ---------- */
 .links {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px 48px;
+  border-top: 1px solid var(--line);
+  padding-top: 36px;
+  margin-top: 24px;
 }
 
 .links li {
   opacity: 0;
   transform: translateY(10px);
 }
-[data-reveal="visible"] .links li {
+/* the reveal flag sits on the list itself */
+.links[data-reveal="visible"] li {
   animation: rowIn 0.55s cubic-bezier(0.2, 0.8, 0.3, 1) both;
   animation-delay: calc(var(--i) * 90ms + 160ms);
 }
@@ -123,40 +96,25 @@
   to { opacity: 1; transform: none; }
 }
 
-.row {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 16px 18px;
-  min-height: 72px;
-  background: var(--panel-2);
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  color: inherit;
-  text-decoration: none;
-  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.3, 1), border-color 0.2s ease,
-    box-shadow 0.25s ease, background-color 0.2s ease;
-}
-
-.tile {
-  flex: none;
-  width: 38px;
-  height: 38px;
-  display: grid;
-  place-items: center;
-  border-radius: 9px;
-  background: var(--panel);
-  border: 1px solid var(--line);
-  color: var(--accent);
-  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-}
-
-.rowText {
+/* icon + label + action glyph on one line, the address under it */
+.item {
   display: flex;
   flex-direction: column;
-  gap: 3px;
-  min-width: 0;
-  flex: 1;
+  gap: 10px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.itemHead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon {
+  flex: none;
+  color: var(--ink-3);
+  transition: color 0.2s ease;
 }
 
 .key {
@@ -177,47 +135,35 @@
 
 .trail {
   flex: none;
+  margin-left: auto;
   color: var(--ink-3);
   transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.3, 1), color 0.2s ease;
 }
 
-/* the email row is a <button>, so it needs the reset an <a> doesn't */
-.rowButton {
+/* the email item is a <button>, so it needs the reset an <a> doesn't */
+.itemButton {
   width: 100%;
+  padding: 0;
+  background: none;
+  border: 0;
   font: inherit;
   text-align: left;
   cursor: pointer;
 }
-.rowButton:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-/* once copied, the row confirms in the signal colour */
-.rowButton[data-copied="true"] { border-color: var(--signal); }
-.rowButton[data-copied="true"] .key,
-.rowButton[data-copied="true"] .trail { color: var(--signal); }
+.item:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; border-radius: 4px; }
+/* once copied, the item confirms in the signal colour */
+.itemButton[data-copied="true"] .key,
+.itemButton[data-copied="true"] .icon,
+.itemButton[data-copied="true"] .trail { color: var(--signal); }
 
 @media (hover: hover) {
-  .row:hover,
-  .row:focus-visible {
-    transform: translateY(-2px);
-    border-color: var(--accent);
-    box-shadow: 0 14px 28px -22px var(--accent);
-    background: var(--panel);
-  }
-  .row:hover .tile,
-  .row:focus-visible .tile {
-    background: var(--accent-fill);
-    border-color: var(--accent-fill);
-    color: var(--on-accent);
-  }
-  .row:hover .value { color: var(--accent); }
-  .row:hover .trail,
-  .row:focus-visible .trail {
+  .item:hover .icon,
+  .item:hover .value { color: var(--accent); }
+  .item:hover .trail {
     transform: translate(2px, -2px);
     color: var(--accent);
   }
 }
-
-/* a press settles the row back, so every tap reads as a click */
-.row:active { transform: translateY(0) scale(0.99); }
 
 .srOnly {
   position: absolute;
@@ -230,17 +176,10 @@
 
 /* ---------- responsive ---------- */
 @media (max-width: 860px) {
-  .panel { grid-template-columns: 1fr; gap: 30px; }
+  .links { grid-template-columns: 1fr; gap: 28px; margin-top: 8px; }
 }
-@media (max-width: 560px) {
-  .panel { padding: 30px 22px 32px; }
-  .row { padding: 14px 12px; gap: 10px; }
-  .tile { width: 32px; height: 32px; }
+
+/* the narrowest phones: the address drops a size so it stays on one line */
+@media (max-width: 360px) {
   .value { font-size: var(--ui-sm); }
-}
-
-
-/* the narrowest phones: the address drops a size so the email stays on one line */
-@media (max-width: 380px) {
-  .value { font-size: var(--ui-xs); }
 }
