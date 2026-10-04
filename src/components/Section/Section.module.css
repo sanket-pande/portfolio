@@ -1,8 +1,7 @@
-/* Each section is a "room": tall enough that the next one only ever peeks
-   in along the bottom edge of the viewport, never appears in full, until
-   the visitor actually scrolls to it. Content is top-anchored, so every
-   anchor link lands the eyebrow at the same predictable offset under the
-   sticky header - and short sections stop floating in a pool of dead wash. */
+/* Each section sizes to its content, with the same air above (from the
+   chapter wrapper) and below. Content is top-anchored, so every anchor
+   link lands the eyebrow at the same predictable offset under the sticky
+   header. */
 .section {
   max-width: var(--container);
   margin-inline: auto;
@@ -14,7 +13,6 @@
   flex-direction: column;
   justify-content: flex-start;
   gap: 32px;
-  min-height: clamp(520px, 78vh, 760px);
 }
 
 .head {

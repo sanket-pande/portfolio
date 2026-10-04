@@ -2,9 +2,6 @@
 .groups {
   display: flex;
   flex-direction: column;
-  /* deliberately does NOT stretch to the section's min-height: spreading
-     three groups over 500px orphans each rule from the group it divides.
-     Better an honestly short room than a stretched rhythm. */
   gap: 28px;
 }
 

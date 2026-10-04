@@ -27,19 +27,19 @@ export default function Home() {
     <main id="main" className={styles.home}>
       {/* the pitch, then the proof (experience, skills), then how I work and
           how to reach me - About follows the proof so it doesn't repeat the Hero */}
-      <div className={`${styles.chapter} ${styles.flush} ${styles.surfaceA}`}>
+      <div className={`${styles.chapter} ${styles.flush}`}>
         <Hero />
       </div>
-      <div className={`${styles.chapter} ${styles.surfaceB}`}>
+      <div className={styles.chapter}>
         <Experience />
       </div>
-      <div className={`${styles.chapter} ${styles.surfaceA}`}>
+      <div className={styles.chapter}>
         <Skills />
       </div>
-      <div className={`${styles.chapter} ${styles.surfaceB}`}>
+      <div className={styles.chapter}>
         <About />
       </div>
-      <div className={`${styles.chapter} ${styles.surfaceA}`}>
+      <div className={styles.chapter}>
         <Contact />
       </div>
     </main>

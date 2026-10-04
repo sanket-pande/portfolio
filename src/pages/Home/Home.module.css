@@ -2,15 +2,20 @@
   min-height: 100dvh;
 }
 
-/* Scoped to theme-ready for the same reason body's transition is: the
-   chapter washes must not animate while the page is still loading. */
-:global(html.theme-ready) .chapter {
-  transition: background-color 0.25s ease;
-}
-
+/* One background for the whole page - sections are separated by a hairline
+   and even spacing instead of alternating washes. */
 .chapter { padding-top: 76px; }
+/* the hairline spans the content column, not the viewport */
+.chapter + .chapter { position: relative; }
+.chapter + .chapter::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(min(100%, var(--container)) - 48px);
+  height: 1px;
+  background: var(--line-2);
+}
 /* the opening chapter is just the hero, which brings its own height */
 .flush { padding-top: 0; }
-
-.surfaceA { background: var(--surface-a); }
-.surfaceB { background: var(--surface-b); }

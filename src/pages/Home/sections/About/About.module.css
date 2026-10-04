@@ -1,9 +1,8 @@
-/* matches Section's box - a room of its own, like the sections around it */
+/* matches Section's box */
 .about {
   max-width: var(--container);
   margin-inline: auto;
   padding: 0 24px 76px;
-  min-height: clamp(520px, 78vh, 760px);
 }
 
 .inner {

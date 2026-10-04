@@ -51,7 +51,7 @@ export const componentDemos: ComponentDemo[] = [
     name: "Stat",
     summary:
       "One number-first stat: a big tabular-figure value, a mono label, and a line of context underneath explaining where the number came from.",
-    usedIn: ["Hero - the row of three stats under the pitch"],
+    usedIn: ["Hero - the three stats beside the pitch"],
     props: [
       { name: "value", type: "string" },
       { name: "label", type: "string" },
