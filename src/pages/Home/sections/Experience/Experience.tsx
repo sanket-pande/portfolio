@@ -58,7 +58,7 @@ export default function Experience() {
   return (
     <Section
       id="experience"
-      eyebrow="02 · Experience"
+      eyebrow="01 · Experience"
       title="Three companies, one thread -"
       accent="make the backend disappear"
     >

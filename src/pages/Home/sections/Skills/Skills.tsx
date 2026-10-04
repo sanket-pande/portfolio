@@ -55,7 +55,7 @@ export default function Skills() {
   return (
     <Section
       id="skills"
-      eyebrow="03 · Skills"
+      eyebrow="02 · Skills"
       title="The stack, grouped"
       accent="the way I actually reach for it"
     >

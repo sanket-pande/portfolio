@@ -25,10 +25,10 @@ export default function Home() {
 
   return (
     <main id="main" className={styles.home}>
-      {/* hero + about share one chapter - same wash, no seam between them */}
+      {/* the pitch, then the proof (experience, skills), then how I work and
+          how to reach me - About follows the proof so it doesn't repeat the Hero */}
       <div className={`${styles.chapter} ${styles.flush} ${styles.surfaceA}`}>
         <Hero />
-        <About />
       </div>
       <div className={`${styles.chapter} ${styles.surfaceB}`}>
         <Experience />
@@ -37,6 +37,9 @@ export default function Home() {
         <Skills />
       </div>
       <div className={`${styles.chapter} ${styles.surfaceB}`}>
+        <About />
+      </div>
+      <div className={`${styles.chapter} ${styles.surfaceA}`}>
         <Contact />
       </div>
     </main>

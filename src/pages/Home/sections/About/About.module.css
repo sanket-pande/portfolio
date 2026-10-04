@@ -1,8 +1,9 @@
-/* matches Section's box, minus the room height - About shares Hero's chapter */
+/* matches Section's box - a room of its own, like the sections around it */
 .about {
   max-width: var(--container);
   margin-inline: auto;
   padding: 0 24px 76px;
+  min-height: clamp(520px, 78vh, 760px);
 }
 
 .inner {

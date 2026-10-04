@@ -3,15 +3,15 @@ import { highlights } from "../../../../data/resume";
 import { useInView } from "../../../../hooks/useInView";
 import styles from "./About.module.css";
 
-/* About doesn't use Section: its heading shares a row with the lede, and it
-   has no room of its own - it flows straight on from Hero in the same chapter. */
+/* About doesn't use Section: its heading shares a row with the lede, which
+   Section's stacked head can't do. It keeps Section's box and eyebrow. */
 export default function About() {
   const { ref, inView } = useInView<HTMLDivElement>();
 
   return (
     <section id="about" aria-labelledby="about-title" className={styles.about}>
       <div ref={ref} data-reveal={inView ? "visible" : "hidden"} className={styles.inner}>
-        <SectionEyebrow>01 · About</SectionEyebrow>
+        <SectionEyebrow>03 · About</SectionEyebrow>
 
         <div className={styles.intro}>
           <h2 id="about-title" className={styles.title}>

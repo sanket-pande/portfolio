@@ -11,14 +11,14 @@ import styles from "./Header.module.css";
 
 /** The in-page section jumps, in document order - kept as one group, after Home. */
 const SECTION_LINKS = [
-  { href: "#about", label: "About" },
   { href: "#experience", label: "Experience" },
   { href: "#skills", label: "Skills" },
+  { href: "#about", label: "About" },
   { href: "#contact", label: "Contact" },
 ];
 
 /** Section ids the spy tracks, in document order. */
-const SPY_IDS = ["about", "experience", "skills", "contact"] as const;
+const SPY_IDS = ["experience", "skills", "about", "contact"] as const;
 
 interface HeaderProps {
   theme: Theme;

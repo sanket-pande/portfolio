@@ -79,8 +79,8 @@ export const stats: Stat[] = [
 /** About's three numbered columns. */
 export const highlights: Point[] = [
   {
-    title: "Stack",
-    body: "Python/Django and FastAPI on the backend, React on the front end, with depth in cloud infrastructure and security hardening.",
+    title: "Healthcare",
+    body: "Patient records, lab and EHR integrations, and compliance findings - work where getting it wrong has a real cost.",
   },
   { title: "Requirements", body: "Turning what stakeholders actually need into specs a team can build from." },
   { title: "Mentoring", body: "Leading and mentoring 10+ developers and QA engineers across delivery cycles." },

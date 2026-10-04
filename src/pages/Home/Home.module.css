@@ -9,7 +9,7 @@
 }
 
 .chapter { padding-top: 76px; }
-/* the opening chapter starts with the hero, which brings its own height */
+/* the opening chapter is just the hero, which brings its own height */
 .flush { padding-top: 0; }
 
 .surfaceA { background: var(--surface-a); }
