@@ -9,8 +9,10 @@ import styles from "./Logo.module.css";
  * ones in the logo files, so the mark re-colours with the toggle.
  *
  * Path coordinates are in the file's own glyph space (baseline at y = 0,
- * so most of the mark is negative). The viewBox below is the mark's tight
- * bounds in that space - no padding, so `height` is the height of the mark.
+ * so most of the mark is negative). The viewBox is the mark's bounds
+ * (x 85-2635, y -760-200) plus 24 units of air on every side: with the
+ * bounds flush to the edges, the anti-aliasing on the slash tip, the p's
+ * descender and the bracket points got clipped into hard, jagged cuts.
  */
 const BRACKET_LEFT = "M85 -253V-357L515 -598V-492L184 -309V-301L515 -119V-12Z";
 const BRACKET_RIGHT = "M2205 -118 2536 -301V-309L2205 -491V-598L2635 -357V-253L2205 -12Z";
@@ -32,7 +34,7 @@ export default function Logo({ height = 28, className = "" }: LogoProps) {
   return (
     <svg
       className={`${styles.logo} ${className}`.trim()}
-      viewBox="85 -760 2550 960"
+      viewBox="61 -784 2598 1008"
       height={height}
       aria-hidden="true"
       focusable="false"

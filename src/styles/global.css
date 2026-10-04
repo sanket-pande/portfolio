@@ -20,7 +20,7 @@
    ============================================================ */
 :root {
   /* ---------- light palette - opt-in via the toggle ---------- */
-  --bg:          #EEF1FA;
+  --bg:          #E7EDFB;
   --panel:       #FFFFFF;
   --panel-2:     #F5F7FD;
   --ink:         #11142A;
@@ -36,11 +36,15 @@
      themes. Light mode happens to use the same value for both. */
   --accent-fill: #2440D9;
   --accent-glow: rgba(36, 64, 217, 0.10);
-  --grid-line:   rgba(36, 64, 217, 0.07);
+  --grid-line:   rgba(36, 64, 217, 0.04);
   --chip-bg:     rgba(36, 64, 217, 0.07);
   --chip-border: rgba(36, 64, 217, 0.28);
   --chip-text:   #2440D9;
-  --signal:      #0A6B77;
+  /* "live" teal: --signal for dots, rings and glows (decorative, so it can
+     be vivid); --signal-ink for text in that colour, the brightest teal that
+     still clears 4.5:1 on the light background */
+  --signal:      #0EA5B0;
+  --signal-ink:  #007682;
   --on-accent:   #FFFFFF;
 
   /* the <sp/> wordmark - the colours in the light logo file */
@@ -69,6 +73,7 @@
   --dk-chip-border: rgba(57, 146, 253, 0.32);
   --dk-chip-text:   #99C5FE;
   --dk-signal:      #4FD6E0;
+  --dk-signal-ink:  #4FD6E0;
   --dk-on-accent:   #FFFFFF;
 
   /* the dark logo file */
@@ -134,6 +139,7 @@
   --chip-border: var(--dk-chip-border);
   --chip-text:   var(--dk-chip-text);
   --signal:      var(--dk-signal);
+  --signal-ink:  var(--dk-signal-ink);
   --on-accent:   var(--dk-on-accent);
 
   --logo-blue:   var(--dk-logo-blue);
@@ -162,11 +168,15 @@ body {
   line-height: var(--leading-copy);
   -webkit-font-smoothing: antialiased;
 }
-/* The palette is stamped on <html> by a blocking script before first
-   paint, so load never needs to animate. `theme-ready` is added one
-   frame after mount - from then on a user toggle cross-fades. */
-:root.theme-ready body {
-  transition: background-color 0.2s ease, color 0.2s ease;
+/* A theme flip is instant. useTheme puts `theme-switching` on <html> for a
+   moment and every transition is off, so all colours change in the same
+   frame - a cross-fade between opposite palettes always passes a point
+   where text matches its background, which reads as a flicker. The toggle
+   (data-theme-toggle) keeps its own slide. */
+:root.theme-switching *:not([data-theme-toggle], [data-theme-toggle] *),
+:root.theme-switching *:not([data-theme-toggle], [data-theme-toggle] *)::before,
+:root.theme-switching *:not([data-theme-toggle], [data-theme-toggle] *)::after {
+  transition: none !important;
 }
 
 h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; line-height: 1.15; letter-spacing: -0.02em; }

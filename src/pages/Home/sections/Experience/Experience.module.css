@@ -36,7 +36,7 @@
   padding-top: 6px;
   position: relative;
 }
-.current .period { color: var(--signal); }
+.current .period { color: var(--signal-ink); }
 .current .dot {
   border-color: var(--signal);
   box-shadow: 0 0 0 4px color-mix(in srgb, var(--signal) 18%, transparent);

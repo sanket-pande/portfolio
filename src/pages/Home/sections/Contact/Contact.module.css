@@ -147,6 +147,16 @@
   transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.3, 1), color 0.2s ease;
 }
 
+/* light mode only: the secondary text and glyphs take the full ink colour
+   instead of grey. Sits above the hover and copied rules, which have the
+   same specificity and must still win. */
+:global(:root[data-theme="light"]) .status,
+:global(:root[data-theme="light"]) .statusItem svg,
+:global(:root[data-theme="light"]) .lede,
+:global(:root[data-theme="light"]) .icon,
+:global(:root[data-theme="light"]) .key,
+:global(:root[data-theme="light"]) .trail { color: var(--ink); }
+
 /* the email item is a <button>, so it needs the reset an <a> doesn't */
 .itemButton {
   width: 100%;
@@ -161,7 +171,7 @@
 /* once copied, the item confirms in the signal colour */
 .itemButton[data-copied="true"] .key,
 .itemButton[data-copied="true"] .icon,
-.itemButton[data-copied="true"] .trail { color: var(--signal); }
+.itemButton[data-copied="true"] .trail { color: var(--signal-ink); }
 
 @media (hover: hover) {
   .item:hover .icon,

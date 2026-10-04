@@ -89,7 +89,7 @@ export default function Header({ theme, onToggleTheme }: HeaderProps) {
           aria-label={profile.name}
           title={profile.name}
         >
-          <Logo height={26} />
+          <Logo height={27} />
         </Link>
 
         <nav className={styles.navLinks} aria-label="Primary">

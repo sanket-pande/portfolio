@@ -33,6 +33,7 @@ export default function ThemeToggle({ theme, onToggle }: ThemeToggleProps) {
       title={action}
       className={styles.toggle}
       data-mode={theme}
+      data-theme-toggle
       onClick={onToggle}
     >
       <span className={styles.track} aria-hidden="true">

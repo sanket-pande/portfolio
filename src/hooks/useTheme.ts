@@ -1,8 +1,12 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export type Theme = "light" | "dark";
 
 const STORAGE_KEY = "portfolio-theme";
+
+/** How long `theme-switching` stays on <html> - long enough to cover the
+ * render and effect that actually re-stamp data-theme. */
+const SWITCH_MS = 150;
 
 /** What a first-time visitor sees, regardless of their OS setting. */
 const DEFAULT_THEME: Theme = "dark";
@@ -29,24 +33,17 @@ function readStoredTheme(): Theme | null {
  * returning light-mode visitor never sees a dark flash either. The first
  * click on the toggle makes that choice and persists it.
  *
- * It also adds `theme-ready` to <html> two frames after mount. The body's
- * colour transition is scoped to that class, so the palette never animates
- * on load - only when someone actually flips the switch.
+ * A flip is instant: it puts `theme-switching` on <html> for a moment,
+ * which turns every transition off (see global.css), so the whole palette
+ * changes in one frame. A cross-fade between opposite palettes always
+ * passes a point where text matches its background, and elements with
+ * their own hover transitions would fade out of step with the rest - both
+ * read as a flicker. The toggle itself keeps its animation.
  */
 export function useTheme(): { theme: Theme; toggleTheme: () => void } {
   const [explicit, setExplicit] = useState<Theme | null>(() => readStoredTheme());
   const theme: Theme = explicit ?? DEFAULT_THEME;
-
-  useEffect(() => {
-    // Two frames: the first commit has painted by the time the second
-    // fires, so enabling transitions here can never catch the load paint.
-    let frame = requestAnimationFrame(() => {
-      frame = requestAnimationFrame(() => {
-        document.documentElement.classList.add("theme-ready");
-      });
-    });
-    return () => cancelAnimationFrame(frame);
-  }, []);
+  const switchTimer = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -58,7 +55,14 @@ export function useTheme(): { theme: Theme; toggleTheme: () => void } {
     }
   }, [explicit]);
 
+  useEffect(() => () => window.clearTimeout(switchTimer.current), []);
+
   const toggleTheme = useCallback(() => {
+    const root = document.documentElement;
+    root.classList.add("theme-switching");
+    window.clearTimeout(switchTimer.current);
+    switchTimer.current = window.setTimeout(() => root.classList.remove("theme-switching"), SWITCH_MS);
+
     setExplicit((current) => {
       const next: Theme = (current ?? DEFAULT_THEME) === "dark" ? "light" : "dark";
       try {
