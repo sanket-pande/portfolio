@@ -1,7 +1,7 @@
-import Section from "../../components/Section/Section";
-import ChipList from "../../components/Chip/Chip";
-import { experience, type Role } from "../../data/resume";
-import { useInView } from "../../hooks/useInView";
+import Section from "../../../../components/Section/Section";
+import ChipList from "../../../../components/Chip/Chip";
+import { experience, type Role } from "../../../../data/resume";
+import { useInView } from "../../../../hooks/useInView";
 import styles from "./Experience.module.css";
 
 // The quantified claims are the point of these bullets, but they sit
