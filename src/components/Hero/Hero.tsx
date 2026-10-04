@@ -2,12 +2,15 @@ import ChipList from "../Chip/Chip";
 import Button from "../Button/Button";
 import Stat from "../Stat/Stat";
 import Icon from "../Icon/Icon";
+import { useInView } from "../../hooks/useInView";
 import { coreStack, profile, stats } from "../../data/resume";
 import styles from "./Hero.module.css";
 
 export default function Hero() {
+  const { ref, inView } = useInView<HTMLElement>();
+
   return (
-    <section id="top" className={styles.hero}>
+    <section ref={ref} id="top" data-play={inView} className={styles.hero}>
       <div className={styles.field} aria-hidden="true" />
       <div className={styles.inner}>
         {/* one line, one size — the whole greeting is the heading */}

@@ -79,19 +79,22 @@
   .name { letter-spacing: -0.03em; }
 }
 
-/* ---------- entrance sequence (page-load, not scroll-triggered —
-   the hero is always in the initial viewport) ---------- */
+/* ---------- entrance sequence ----------
+   Plays on load and again each time the hero scrolls back into view
+   (the data-play flag comes from useInView). */
 @keyframes heroIn {
   from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }
 }
-.animate { animation: heroIn 0.7s cubic-bezier(0.16, 0.8, 0.3, 1) both; }
-.delay1 { animation-delay: 0.08s; }
-.delay2 { animation-delay: 0.18s; }
-.delay3 { animation-delay: 0.28s; }
-.delay4 { animation-delay: 0.38s; }
-.delay5 { animation-delay: 0.46s; }
+.animate { opacity: 0; }
+.hero[data-play="true"] .animate { animation: heroIn 0.7s cubic-bezier(0.16, 0.8, 0.3, 1) both; }
+.hero[data-play="true"] .delay1 { animation-delay: 0.08s; }
+.hero[data-play="true"] .delay2 { animation-delay: 0.18s; }
+.hero[data-play="true"] .delay3 { animation-delay: 0.28s; }
+.hero[data-play="true"] .delay4 { animation-delay: 0.38s; }
+.hero[data-play="true"] .delay5 { animation-delay: 0.46s; }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate { animation: none; }
+  .hero[data-play] .animate { animation: none; opacity: 1; }
+  .animate { opacity: 1; }
 }

@@ -184,7 +184,8 @@ img { max-width: 100%; display: block; }
 /* ---------- scroll reveal ----------
    Driven by the useInView hook: an element renders with
    data-reveal="hidden" until it scrolls into view, then
-   data-reveal="visible" is set once (not on every scroll). */
+   data-reveal="visible" — and back to hidden once it has fully scrolled
+   out, so the reveal plays again every time it returns. */
 [data-reveal] {
   transition: opacity 0.7s cubic-bezier(0.16, 0.8, 0.3, 1), transform 0.7s cubic-bezier(0.16, 0.8, 0.3, 1);
 }
