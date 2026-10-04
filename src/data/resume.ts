@@ -63,19 +63,6 @@ export const profile = {
   github: "https://github.com/sanket-pande",
 };
 
-export const coreStack = [
-  "Python",
-  "Django",
-  "FastAPI",
-  "React",
-  "TypeScript",
-  "GCP",
-  "BigQuery",
-  "Terraform",
-  "Docker",
-  "Kubernetes",
-];
-
 export const stats: Stat[] = [
   { value: "60%", label: "Faster queries", context: "Indexing & batch-processing work on patient-record systems at HealthCompiler" },
   { value: "90%", label: "Faster infra setup", context: "Containerizing Axonator's on-prem deployment for Windows & Linux" },
@@ -224,6 +211,29 @@ export const skillGroups: SkillGroup[] = [
     note: "Care-gap and Health Risk Assessment pipelines, and the GCP underneath them.",
   },
 ];
+
+/** Dot colours for technologies that only appear in a role's tech list. */
+const extraTechColors: Record<string, string> = {
+  AngularJS: "#dd0031",
+  "Angular 13": "#c3002f",
+  Containerization: "#22d3ee",
+  "CI/CD": "#f97316",
+  Windows: "#38bdf8",
+  Linux: "#fbbf24",
+  "Ruby on Rails": "#e0115f",
+  AWS: "#ff9900",
+  Nginx: "#009639",
+};
+
+const techColors: Record<string, string> = {
+  ...Object.fromEntries(skillGroups.flatMap((group) => group.items.map((skill) => [skill.name, skill.color]))),
+  ...extraTechColors,
+};
+
+/** The dot colour for a technology, wherever its chip appears. */
+export function techColor(name: string): string | undefined {
+  return techColors[name];
+}
 
 export const experience: Role[] = [
   {

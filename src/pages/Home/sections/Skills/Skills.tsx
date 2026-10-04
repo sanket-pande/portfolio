@@ -1,62 +1,10 @@
-import { useId, useState, type CSSProperties, type SyntheticEvent } from "react";
+import { useState, type CSSProperties } from "react";
 import Section from "../../../../components/Section/Section";
 import Icon from "../../../../components/Icon/Icon";
+import { Chip, ChipRow } from "../../../../components/Chip/Chip";
 import { skillGroups, type Skill, type SkillGroup } from "../../../../data/resume";
 import { useInView } from "../../../../hooks/useInView";
 import styles from "./Skills.module.css";
-
-/**
- * Keeps a tooltip inside the viewport. It's centred over its pill by default;
- * a pill near an edge would push it past the screen, so shift it back by
- * exactly the overshoot. Runs on hover/focus, when the tooltip is laid out.
- */
-function keepTipOnScreen(event: SyntheticEvent<HTMLElement>) {
-  const tip = event.currentTarget.querySelector<HTMLElement>('[role="tooltip"]');
-  if (!tip) return;
-  tip.style.setProperty("--dx", "0px");
-  const { left, right } = tip.getBoundingClientRect();
-  const margin = 12;
-  const view = document.documentElement.clientWidth;
-  let dx = 0;
-  if (left < margin) dx = margin - left;
-  else if (right > view - margin) dx = view - margin - right;
-  tip.style.setProperty("--dx", `${Math.round(dx)}px`);
-}
-
-interface PillProps {
-  skill: Skill;
-  index: number;
-  selected: boolean;
-  onSelect: () => void;
-}
-
-function Pill({ skill, index, selected, onSelect }: PillProps) {
-  const tipId = useId();
-
-  return (
-    <li
-      className={styles.pillItem}
-      style={{ "--c": skill.color, "--i": index } as CSSProperties}
-      onMouseEnter={keepTipOnScreen}
-      onFocus={keepTipOnScreen}
-    >
-      <button
-        type="button"
-        className={styles.pill}
-        aria-pressed={selected}
-        aria-describedby={tipId}
-        onClick={onSelect}
-      >
-        <span className={styles.dot} aria-hidden="true" />
-        {skill.name}
-      </button>
-      {/* shown on hover and on keyboard focus; touch gets the telemetry bar */}
-      <span id={tipId} role="tooltip" className={styles.tip}>
-        {skill.tip}
-      </span>
-    </li>
-  );
-}
 
 interface GroupBlockProps {
   group: SkillGroup;
@@ -79,17 +27,19 @@ function GroupBlock({ group, index, selectedName, onSelect }: GroupBlockProps) {
         <h3 className={styles.groupTitle}>{group.title}</h3>
         <p className={styles.subtitle}>{group.subtitle}</p>
       </div>
-      <ul className={styles.pills} role="list" aria-label={group.title}>
+      <ChipRow ariaLabel={group.title}>
         {group.items.map((skill, i) => (
-          <Pill
+          <Chip
             key={skill.name}
-            skill={skill}
+            name={skill.name}
+            color={skill.color}
+            tip={skill.tip}
             index={i}
             selected={selectedName === skill.name}
             onSelect={() => onSelect(skill)}
           />
         ))}
-      </ul>
+      </ChipRow>
       <p className={styles.note}>{group.note}</p>
     </div>
   );

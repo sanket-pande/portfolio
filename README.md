@@ -8,25 +8,26 @@ re-themes every token in the page, not just the background.
 
 ```
 src/
-  sections/              the page's chapters — each in its own folder with its .tsx and .module.css
-    Hero/                 landing section — headline, stats, core stack
-    About/
-    Experience/           the timeline
-    Skills/               the stack by group, with the telemetry bar
-    Contact/
-  components/            reusable pieces shared across sections
+  pages/
+    Home/                 the one-page site
+      Home.tsx            composes Hero → About → Experience → Skills → Contact
+      sections/           the page's chapters — each in its own folder with its .tsx and .module.css
+        Hero/              landing section — headline, summary, stats
+        About/
+        Experience/        the timeline
+        Skills/            the stack by group, with the telemetry bar
+        Contact/
+    Components/           the live component library at /components
+  components/            reusable pieces shared across the site
     Header/               site nav + résumé link + theme toggle
     Footer/
     Logo/                 the <sp/> wordmark
     ThemeToggle/
     Button/
-    Chip/                 shared tag-pill list, used by Hero
+    Chip/                 the one technology pill — static in lists, interactive in Skills
     Stat/
     Icon/                 inline SVG icon set
     Section/              shared section chrome (pill eyebrow + heading with accent), used by every section
-  pages/
-    Home/                 composes Hero → About → Experience → Skills → Contact
-    Components/           the live component library at /components
   data/resume.ts          typed content — profile, stats, experience, skills (edit this to update copy)
   hooks/                  useTheme (light/dark, persisted), useInView (replaying reveal), useScrollSpy
   styles/global.css        design tokens (light + dark), reset, base typography — the only global stylesheet

@@ -42,7 +42,6 @@ function RoleCard({ role, index }: { role: Role; index: number }) {
         <p className={styles.company}>{role.company}</p>
         <ChipList
           items={role.tech}
-          tone="muted"
           ariaLabel={`Technologies used at ${role.company}`}
         />
         <ul className={styles.bullets} role="list">

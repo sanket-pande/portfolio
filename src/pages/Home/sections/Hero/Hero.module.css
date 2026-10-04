@@ -92,7 +92,6 @@
 .hero[data-play="true"] .delay2 { animation-delay: 0.18s; }
 .hero[data-play="true"] .delay3 { animation-delay: 0.28s; }
 .hero[data-play="true"] .delay4 { animation-delay: 0.38s; }
-.hero[data-play="true"] .delay5 { animation-delay: 0.46s; }
 
 @media (prefers-reduced-motion: reduce) {
   .hero[data-play] .animate { animation: none; opacity: 1; }

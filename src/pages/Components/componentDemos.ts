@@ -37,14 +37,15 @@ export const componentDemos: ComponentDemo[] = [
     id: "chip",
     name: "Chip",
     summary:
-      "A flat list of tag pills. Two visual tones, so it can read as an accent (the core stack in the hero) or as neutral reference data (the full skills list).",
-    usedIn: ["Hero — core stack row"],
+      "The one technology pill used across the site: a dot in the technology's own colour and its name. Static in a list (each role's tech in Experience); give a chip onSelect and it becomes a button with hover motion, a pressed state and an optional tooltip — that's how the Skills section uses it.",
+    usedIn: ["Experience — each role's tech", "Skills — the interactive stack"],
     props: [
-      { name: "items", type: "string[]" },
-      { name: "tone", type: '"accent" | "muted"', note: "defaults to accent" },
+      { name: "items", type: "string[]", note: "ChipList: the names to show" },
       { name: "ariaLabel", type: "string", note: "names the list for screen readers" },
+      { name: "name", type: "string", note: "Chip: one pill; dot colour comes from the technology" },
+      { name: "onSelect", type: "() => void", note: "Chip: makes it a button" },
     ],
-    code: `<Chip items={["Python", "Django", "GCP", "BigQuery"]} tone="accent" />`,
+    code: `<Chip items={["Python", "Django", "GCP", "BigQuery"]} />`,
   },
   {
     id: "stat",

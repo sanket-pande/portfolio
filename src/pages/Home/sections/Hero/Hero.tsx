@@ -1,9 +1,8 @@
-import ChipList from "../../../../components/Chip/Chip";
 import Button from "../../../../components/Button/Button";
 import Stat from "../../../../components/Stat/Stat";
 import Icon from "../../../../components/Icon/Icon";
 import { useInView } from "../../../../hooks/useInView";
-import { coreStack, profile, stats } from "../../../../data/resume";
+import { profile, stats } from "../../../../data/resume";
 import styles from "./Hero.module.css";
 
 export default function Hero() {
@@ -34,11 +33,7 @@ export default function Hero() {
           </Button>
         </div>
 
-        <div className={`${styles.animate} ${styles.delay4}`}>
-          <ChipList items={coreStack} tone="accent" ariaLabel="Core stack" />
-        </div>
-
-        <div className={`${styles.stats} ${styles.animate} ${styles.delay5}`}>
+        <div className={`${styles.stats} ${styles.animate} ${styles.delay4}`}>
           {stats.map((stat) => (
             <Stat key={stat.label} {...stat} />
           ))}
