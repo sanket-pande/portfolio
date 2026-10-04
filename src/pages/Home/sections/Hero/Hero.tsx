@@ -15,7 +15,6 @@ export default function Hero() {
         <div className={styles.intro}>
           <p className={`${styles.byline} ${styles.animate}`}>
             <span className={styles.name}>{profile.name}</span>
-            <span className={styles.rule} aria-hidden="true" />
             <span className={styles.tagline}>{profile.tagline.join(" · ")}</span>
           </p>
 

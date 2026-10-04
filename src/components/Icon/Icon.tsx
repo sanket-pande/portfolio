@@ -13,7 +13,8 @@ export type IconName =
   | "check"
   | "external"
   | "clock"
-  | "info";
+  | "info"
+  | "phone";
 
 interface IconProps {
   name: IconName;
@@ -139,6 +140,12 @@ export default function Icon({ name, size = 16, className = "" }: IconProps) {
           <circle cx="12" cy="12" r="9" />
           <path d="M12 11v5.5" />
           <path d="M12 7.5h.01" />
+        </svg>
+      );
+    case "phone":
+      return (
+        <svg {...common} {...stroke}>
+          <path d="M20.5 16.4v2.9a1.9 1.9 0 0 1-2.1 1.9 18.8 18.8 0 0 1-8.2-2.9 18.5 18.5 0 0 1-5.7-5.7 18.8 18.8 0 0 1-2.9-8.2A1.9 1.9 0 0 1 3.5 2.3h2.9a1.9 1.9 0 0 1 1.9 1.6c.1 .9.4 1.8.7 2.7a1.9 1.9 0 0 1-.4 2l-1.2 1.2a15.2 15.2 0 0 0 5.7 5.7l1.2-1.2a1.9 1.9 0 0 1 2-.4c.9.3 1.8.6 2.7.7a1.9 1.9 0 0 1 1.6 1.9z" />
         </svg>
       );
   }

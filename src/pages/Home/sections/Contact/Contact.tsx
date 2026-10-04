@@ -98,27 +98,19 @@ export default function Contact() {
           </p>
 
           <p className={styles.lede}>{profile.responseNote}</p>
-
-          <div className={styles.actions}>
-            <Button variant="primary" href={`mailto:${profile.email}`}>
-              <Icon name="mail" size={15} />
-              Email me
-              <Icon name="arrowRight" size={15} />
-            </Button>
-
-            <Button variant="ghost" onClick={copy} className={styles.copyBtn} data-copied={copied}>
-              <Icon
-                name={copied ? "check" : "copy"}
-                size={15}
-                className={copied ? styles.pop : undefined}
-              />
-              {copied ? "Copied" : "Copy email address"}
-            </Button>
-            {/* announces the copy to screen readers without moving focus */}
-            <span role="status" className={styles.srOnly}>
-              {copied ? "Email address copied" : ""}
-            </span>
-          </div>
+        </div>
+      }
+      action={
+        <div className={styles.actions}>
+          <Button variant="primary" href={`mailto:${profile.email}`}>
+            <Icon name="mail" size={15} />
+            Email me
+            <Icon name="arrowRight" size={15} />
+          </Button>
+          {/* announces the email item's copy to screen readers without moving focus */}
+          <span role="status" className={styles.srOnly}>
+            {copied ? "Email address copied" : ""}
+          </span>
         </div>
       }
     >
@@ -147,6 +139,17 @@ export default function Contact() {
         </li>
 
         <li style={stagger(1)}>
+          <a className={styles.item} href={`tel:${profile.phoneHref}`}>
+            <span className={styles.itemHead}>
+              <Icon name="phone" size={18} className={styles.icon} />
+              <span className={styles.key}>Phone</span>
+              <Icon name="arrowRight" size={16} className={styles.trail} />
+            </span>
+            <span className={styles.value}>{profile.phone}</span>
+          </a>
+        </li>
+
+        <li style={stagger(2)}>
           <a className={styles.item} href={profile.linkedin} target="_blank" rel="noreferrer">
             <span className={styles.itemHead}>
               <Icon name="linkedin" size={18} className={styles.icon} />
@@ -158,7 +161,7 @@ export default function Contact() {
           </a>
         </li>
 
-        <li style={stagger(2)}>
+        <li style={stagger(3)}>
           <a className={styles.item} href={profile.github} target="_blank" rel="noreferrer">
             <span className={styles.itemHead}>
               <Icon name="github" size={18} className={styles.icon} />

@@ -74,7 +74,25 @@
 /* drops the aside's first line to sit level with the heading's cap height */
 .aside { padding-top: 6px; }
 
+/* with an action too: it takes the left column under the heading, while
+   the aside runs down the right beside both */
+.withAction {
+  grid-template-areas:
+    "heading aside"
+    "action  aside";
+  grid-template-rows: auto 1fr;
+}
+.withAction > h2 { grid-area: heading; }
+.withAction > .aside { grid-area: aside; }
+.action { grid-area: action; padding-top: 8px; }
+
 @media (max-width: 860px) {
   .split { grid-template-columns: 1fr; }
   .aside { padding-top: 0; }
+  /* stacked, the action follows what it acts on */
+  .withAction {
+    grid-template-areas: "heading" "aside" "action";
+    grid-template-rows: auto;
+  }
+  .action { padding-top: 4px; }
 }

@@ -22,7 +22,7 @@ export const componentDemos: ComponentDemo[] = [
     name: "Button",
     summary:
       "The one interactive control on the site. Renders as a real <button> or, when given an href, an <a> styled identically - so a mailto link and a form submit look the same. The primary variant carries the hover motion: a small lift, the leading icon bobbing, and a trailing arrow driving forward.",
-    usedIn: ['Hero - "Get in touch" / "View experience"', 'Contact - "Email me" / "Copy email address"', 'Header - "Résumé" download'],
+    usedIn: ['Hero - "Get in touch" / "View experience"', 'Contact - "Email me"', 'Header - "Résumé" download'],
     props: [
       { name: "variant", type: '"primary" | "ghost"', note: "defaults to primary" },
       { name: "href", type: "string", note: "renders an <a> instead of a <button>" },
@@ -95,11 +95,11 @@ render(<Demo />);`,
     usedIn: [
       "Header - Résumé download, Components",
       "Hero - the primary CTA arrow",
-      "Contact - email, LinkedIn, GitHub rows, copy and external-link actions",
-      "Footer - the three links",
+      "Contact - email, phone, LinkedIn, GitHub, copy and external-link actions",
+      "Footer - the Components link",
     ],
     props: [
-      { name: "name", type: '"mail" | "linkedin" | "github" | "download" | "arrowRight" | "sun" | "moon" | "layers" | "copy" | "check" | "external" | "clock" | "info"' },
+      { name: "name", type: '"mail" | "linkedin" | "github" | "download" | "arrowRight" | "sun" | "moon" | "layers" | "copy" | "check" | "external" | "clock" | "info" | "phone"' },
       { name: "size", type: "number", note: "px square; defaults to 16" },
     ],
     code: `<div style={{ display: "flex", gap: 18, alignItems: "center", color: "var(--ink-2)" }}>
@@ -116,6 +116,7 @@ render(<Demo />);`,
   <Icon name="external" size={22} />
   <Icon name="clock" size={22} />
   <Icon name="info" size={22} />
+  <Icon name="phone" size={22} />
 </div>`,
   },
   {
@@ -130,6 +131,7 @@ render(<Demo />);`,
       { name: "title", type: "string", note: "the heading's lead-in" },
       { name: "accent", type: "string", note: "closing phrase, set in the accent colour" },
       { name: "aside", type: "ReactNode", note: "sits beside the heading instead of under it" },
+      { name: "action", type: "ReactNode", note: "with an aside: under the heading on the left" },
       { name: "children", type: "ReactNode" },
     ],
     code: `<Section id="demo-section" eyebrow="00 · Example" title="A reusable section header" accent="with an accent">

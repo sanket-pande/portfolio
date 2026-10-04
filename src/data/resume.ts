@@ -66,6 +66,9 @@ export const profile = {
   summary:
     "7+ years building reliable, user-focused applications across Python/Django, FastAPI and React, with depth in cloud infrastructure and security hardening. Currently at HealthCompiler, on data-heavy systems for the US and Canada.",
   email: "sanketpande99001@gmail.com",
+  /** Shown in Contact; `phoneHref` is the same number for the tel: link. */
+  phone: "+91 84596 89469",
+  phoneHref: "+918459689469",
   linkedin: "https://linkedin.com/in/sanket-pande",
   github: "https://github.com/sanket-pande",
 };

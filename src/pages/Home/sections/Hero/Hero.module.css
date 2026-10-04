@@ -36,12 +36,12 @@
   gap: 20px;
 }
 
-/* name - a short rule - what the work is about */
+/* the name, with what the work is about on the line under it */
 .byline {
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
 }
 
 .name {
@@ -50,12 +50,6 @@
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--ink);
-}
-
-.rule {
-  width: 32px;
-  height: 1px;
-  background: var(--line);
 }
 
 .tagline {
@@ -95,12 +89,6 @@
   padding-left: 40px;
 }
 
-/* beside the stats column the tagline no longer fits on the name's line
-   until the container reaches full width - drop the rule so it can't dangle */
-@media (min-width: 901px) and (max-width: 1140px) {
-  .rule { display: none; }
-}
-
 /* below the two-column width the stats drop under the pitch as a row */
 @media (max-width: 900px) {
   .inner { grid-template-columns: 1fr; }
@@ -116,8 +104,6 @@
 
 @media (max-width: 720px) {
   .stats { grid-template-columns: 1fr; }
-  /* the tagline drops to its own line here, so the rule would dangle */
-  .rule { display: none; }
 }
 
 /* ---------- entrance sequence ----------

@@ -11,10 +11,13 @@ interface SectionProps {
   /** Sits beside the heading instead of under it - the heading takes the
    * left column, this the right. About and Contact use it for their lede. */
   aside?: ReactNode;
+  /** Only with an aside: sits under the heading in the left column, and
+   * drops below the aside once the columns stack. Contact's call to action. */
+  action?: ReactNode;
   children: ReactNode;
 }
 
-export default function Section({ id, eyebrow, title, accent, aside, children }: SectionProps) {
+export default function Section({ id, eyebrow, title, accent, aside, action, children }: SectionProps) {
   const titleId = `${id}-title`;
 
   const heading = (
@@ -42,9 +45,10 @@ export default function Section({ id, eyebrow, title, accent, aside, children }:
           {eyebrow}
         </p>
         {aside ? (
-          <div className={styles.split}>
+          <div className={`${styles.split} ${action ? styles.withAction : ""}`}>
             {heading}
             <div className={styles.aside}>{aside}</div>
+            {action ? <div className={styles.action}>{action}</div> : null}
           </div>
         ) : (
           heading
