@@ -1,5 +1,5 @@
 import { useEffect, useState, type CSSProperties } from "react";
-import sectionStyles from "../Section/Section.module.css";
+import Section from "../Section/Section";
 import Button from "../Button/Button";
 import Icon from "../Icon/Icon";
 import { profile } from "../../data/resume";
@@ -77,19 +77,12 @@ export default function Contact() {
   const { copied, copy } = useCopy(profile.email);
 
   return (
-    <section id="contact" aria-labelledby="contact-title" className={sectionStyles.section}>
-      {/* the head sits outside the panel so this section's anchor lands at
-          the same height as every other one */}
-      <div className={sectionStyles.head}>
-        <p className={styles.pill} aria-hidden="true">
-          <span className={styles.pillDot} />
-          04 · Contact
-        </p>
-        <h2 id="contact-title">
-          Building something that has to be right? <span className={styles.accent}>Let's talk.</span>
-        </h2>
-      </div>
-
+    <Section
+      id="contact"
+      eyebrow="04 · Contact"
+      title="Building something that has to be right?"
+      accent="Let's talk."
+    >
       <div ref={ref} data-reveal={inView ? "visible" : "hidden"} className={styles.panel}>
         <div className={styles.intro}>
           <div className={styles.status}>
@@ -187,6 +180,6 @@ export default function Contact() {
           </li>
         </ul>
       </div>
-    </section>
+    </Section>
   );
 }

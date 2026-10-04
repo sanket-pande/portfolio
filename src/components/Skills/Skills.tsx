@@ -103,7 +103,12 @@ export default function Skills() {
   };
 
   return (
-    <Section id="skills" eyebrow="03 · Skills" title="The stack, grouped the way I actually reach for it">
+    <Section
+      id="skills"
+      eyebrow="03 · Skills"
+      title="The stack, grouped"
+      accent="the way I actually reach for it"
+    >
       <div className={styles.telemetry} data-active={selected ? "true" : "false"}>
         {/* re-keyed per pick so the ring below replays on every change */}
         {selected ? <span key={selected.name} className={styles.ring} aria-hidden="true" /> : null}
