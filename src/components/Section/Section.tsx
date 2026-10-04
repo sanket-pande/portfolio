@@ -4,7 +4,10 @@ import styles from "./Section.module.css";
 interface SectionProps {
   id: string;
   eyebrow: string;
+  /** The heading's lead-in. */
   title: string;
+  /** Closing phrase of the heading, set in the accent colour. */
+  accent?: string;
   children: ReactNode;
   /** Folds this section's height into whatever sits above it instead of
    * claiming its own 80–90vh — used by About, which shares a chapter (and
@@ -12,7 +15,7 @@ interface SectionProps {
   compact?: boolean;
 }
 
-export default function Section({ id, eyebrow, title, children, compact }: SectionProps) {
+export default function Section({ id, eyebrow, title, accent, children, compact }: SectionProps) {
   const titleId = `${id}-title`;
 
   return (
@@ -23,10 +26,19 @@ export default function Section({ id, eyebrow, title, children, compact }: Secti
     >
       <div className={styles.head}>
         {/* decorative chapter number — the heading is the accessible name */}
-        <p className={styles.eyebrow} aria-hidden="true">
+        <p className={styles.pill} aria-hidden="true">
+          <span className={styles.pillDot} />
           {eyebrow}
         </p>
-        <h2 id={titleId}>{title}</h2>
+        <h2 id={titleId}>
+          {title}
+          {accent ? (
+            <>
+              {" "}
+              <span className={styles.accent}>{accent}</span>
+            </>
+          ) : null}
+        </h2>
       </div>
       {children}
     </section>
